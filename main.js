@@ -8,7 +8,6 @@ import Vant from 'vant'
 // import store from "./store"
 Vue.prototype.$store = store
 // Vue.prototype.$axios = axios
-console.log('test');
 Vue.config.productionTip = false
 Vue.use(Vant)
 App.mpType = 'app'

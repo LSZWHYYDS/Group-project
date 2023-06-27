@@ -1,1 +1,63 @@
-"use strict";var r=require("./icons.js"),c=require("../../../../common/vendor.js");const s=e=>typeof e=="number"||/^[0-9]*$/g.test(e)?e+"px":e,u={name:"UniIcons",emits:["click"],props:{type:{type:String,default:""},color:{type:String,default:"#333333"},size:{type:[Number,String],default:16},customPrefix:{type:String,default:""}},data(){return{icons:r.icons.glyphs}},computed:{unicode(){let e=this.icons.find(t=>t.font_class===this.type);return e?unescape(`%u${e.unicode}`):""},iconSize(){return s(this.size)}},methods:{_onClick(){this.$emit("click")}}};function d(e,t,n,_,m,i){return{a:n.color,b:i.iconSize,c:c.n("uniui-"+n.type),d:c.n(n.customPrefix),e:c.n(n.customPrefix?n.type:""),f:c.o((...o)=>i._onClick&&i._onClick(...o))}}var a=c._export_sfc(u,[["render",d],["__file","D:/WXFile/WeChat Files/wxid_24g7xarmwwne22/FileStorage/File/2023-06/483a303c5dc0354ecc26cfa10a7ddca7_c3ad831319d2832c177ef660df75d852_8/wkkcApplet/uni_modules/uni-icons/components/uni-icons/uni-icons.vue"]]);wx.createComponent(a);
+"use strict";
+var uni_modules_uniIcons_components_uniIcons_icons = require("./icons.js");
+var common_vendor = require("../../../../common/vendor.js");
+const getVal = (val) => {
+  const reg = /^[0-9]*$/g;
+  return typeof val === "number" || reg.test(val) ? val + "px" : val;
+};
+const _sfc_main = {
+  name: "UniIcons",
+  emits: ["click"],
+  props: {
+    type: {
+      type: String,
+      default: ""
+    },
+    color: {
+      type: String,
+      default: "#333333"
+    },
+    size: {
+      type: [Number, String],
+      default: 16
+    },
+    customPrefix: {
+      type: String,
+      default: ""
+    }
+  },
+  data() {
+    return {
+      icons: uni_modules_uniIcons_components_uniIcons_icons.icons.glyphs
+    };
+  },
+  computed: {
+    unicode() {
+      let code = this.icons.find((v) => v.font_class === this.type);
+      if (code) {
+        return unescape(`%u${code.unicode}`);
+      }
+      return "";
+    },
+    iconSize() {
+      return getVal(this.size);
+    }
+  },
+  methods: {
+    _onClick() {
+      this.$emit("click");
+    }
+  }
+};
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+  return {
+    a: $props.color,
+    b: $options.iconSize,
+    c: common_vendor.n("uniui-" + $props.type),
+    d: common_vendor.n($props.customPrefix),
+    e: common_vendor.n($props.customPrefix ? $props.type : ""),
+    f: common_vendor.o((...args) => $options._onClick && $options._onClick(...args))
+  };
+}
+var Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "E:/Code/BeiJing-Digitalsee/Group-project/uni_modules/uni-icons/components/uni-icons/uni-icons.vue"]]);
+wx.createComponent(Component);

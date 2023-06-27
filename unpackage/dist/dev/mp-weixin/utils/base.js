@@ -1,1 +1,8 @@
-"use strict";let t;t="https://test.wkkc.vip";let l="https://wkkc.vip",r=l+"/s/";var u=t;exports.url=u;exports.urlOSS=r;
+"use strict";
+let url;
+url = "https://test.wkkc.vip";
+let urlPath = "https://wkkc.vip";
+let urlOSS = urlPath + "/s/";
+var url$1 = url;
+exports.url = url$1;
+exports.urlOSS = urlOSS;

@@ -1,1 +1,508 @@
-"use strict";var D=Object.defineProperty;var S=Object.getOwnPropertySymbols;var _=Object.prototype.hasOwnProperty,A=Object.prototype.propertyIsEnumerable;var g=(e,i,o)=>i in e?D(e,i,{enumerable:!0,configurable:!0,writable:!0,value:o}):e[i]=o,y=(e,i)=>{for(var o in i||(i={}))_.call(i,o)&&g(e,o,i[o]);if(S)for(var o of S(i))A.call(i,o)&&g(e,o,i[o]);return e};var s=require("../../common/vendor.js"),h=require("../../utils/index.js");require("../../utils/base.js");var m=require("../../utils/api.js");require("../../utils/ali-oss.js");var c=require("../../common/assets.js");require("../../utils/http.js");require("../../utils/index1.js");const I=()=>"../../components/tabber.js",b={data(){return{number:1,sortNum:1,isSelectAll:!1,isShowTitle:!0,timeDate:[],timename:[],fileList:[],flodersList:[],filezonglist:[],folderId:0,breadCrumList:[],selectArray:[],selectItemsAry:[],itemData:"",allSelect:!1,quanxuan:!0,pageNum:1,timeSort:!1,sizeSort:!1,defaultSort:!0,showPage:!1}},onLoad(){},components:{tabber:I},created(){s.index.hideKeyboard()},methods:{closeSelect(){this.$parent.isSelectAll=!1,this.isSelectAll=!1;for(let e=0;e<this.selectItemsAry.length;e++)this.selectItemsAry[e].select=!1;this.selectItemsAry=[]},closePop(){this.$refs.midPop.close()},closeDel(){this.$refs.delAll.close()},selectShare(){if(this.selectItemsAry.length==0){s.index.showToast({icon:"none",title:"\u8BF7\u9009\u62E9\u6587\u4EF6"});return}this.$refs.selectRef.changeBtn(),this.$refs.selectRef.selectItemsAry=this.selectItemsAry,this.$refs.selectRef.$refs.sharePop.open()},multiplcDeleteFunc(){if(this.selectItemsAry.length==0){s.index.showToast({icon:"none",title:"\u8BF7\u9009\u62E9\u6587\u4EF6"});return}this.$refs.delAll.open()},async deleteSelectList(){s.index.showLoading({title:"\u5220\u9664\u4E2D"});let e=[];this.selectItemsAry.forEach(o=>{let l={};o.moveType=="1"?l.deleteID=o.fileId:l.deleteID=o.folderId,l.deleteType=o.moveType,e.push(l)});const i=await m.batchDelete(e);if(i.data.code!==0){s.index.showToast({icon:"none",title:i.data.msg});return}else s.index.hideLoading(),s.index.showToast({icon:"none",title:i.data.msg}),this.selectItemsAry=[],this.closeDel(),this.createData()},maskClose(){},getDetail(e){let i=0;this.breadCrumList.length!==0&&(i=this.breadCrumList[this.breadCrumList.length-1].folderId),this.superFolder=i,console.log(e),this.$refs.indexPop.showPage=!0,this.$refs.indexPop.$refs.shareSett.superFolder=i,this.$refs.indexPop.$refs.midPop.showPop(),this.$refs.indexPop.$refs.midPop.isShow=!0;let o=e;if(e.moveType==2)o.fileClass="floder";else{let l=h.getSuffix(e.fileName);h.isImage(l)?e.fileClass="image":h.isVideo(l)?e.fileClass="video":e.fileClass="file"}e.fileSize?o.size=e.fileSize:o.size=e.folderSize,e.fileName?o.name=e.fileName:o.name=e.folderName,this.$refs.indexPop.listItem=o},allSelectFunc(){this.quanxuan=!1,this.fileList.forEach(e=>e.select=!0),this.flodersList.forEach(e=>e.select=!0),this.allSelect=!this.allSelect,this.selectItemsAry=this.selectItemsAry.concat(this.fileList).concat(this.flodersList)},cancelAllSelectFunc(){this.quanxuan=!0,this.fileList.forEach(e=>e.select=!1),this.flodersList.forEach(e=>e.select=!1),this.allSelect=!this.allSelect,this.selectItemsAry=[]},delItemsFunc(e){this.selectItemsAry.push(e),this.itemData=e,e.select=!0,console.log(this.selectItemsAry)},breadFunc(e,i){if(this.selectArray=[],this.checked=!1,console.log(this.selectArray),e==0){this.breadCrumList=[],this.folderId=0,this.isShowTitle=!0,this.createData();return}this.breadCrumList.splice(i+1,this.breadCrumList.length),this.folderId=e.folderId,this.createData()},async createData(){let e=this.folderId;m.getEverboxList({superFolder:e,pageNum:this.pageNum,pageSize:1e3,defaultSort:this.defaultSort,timeSort:this.timeSort,sizeSort:this.sizeSort}).then(i=>{i.data.code!=401&&this.openNewListData(i)})},selectItemFunc(e){e.select=!1,this.allSelect=!1;for(let i=0;i<this.selectItemsAry.length;i++)this.selectItemsAry[i].select==!1&&this.selectItemsAry.splice(i,1);console.log(this.selectItemsAry)},goFolder(e){this.isSelectAll||(this.isShowTitle=!1,this.folderId=e.folderId,this.breadCrumList.push(e),m.getEverboxList({superFolder:e.folderId,pageNum:this.pageNum,defaultSort:!0,timeSort:!1,pageSize:1e3}).then(i=>{i.data.code==0&&(this.openNewListData(i),this.selectArray=[])}))},openNewListData(e){let i=e.data.data.foldersList;i.forEach(l=>{l.select=!1,l.moveType="2",l.utilsType=!1;let a=this.$options.filters.timedown(l.createDate),r=this.$options.filters.timedownnum(l.createDate);if(r==!0){let t=this.$options.filters.timedownshow(l.createDate),n=this.$options.filters.timedownshowmm(l.createDate);this.timeDate.push("\u4ECA\u5929  "+t+":"+n)}else if(a<=2&&r==!1){let t=this.$options.filters.timedownshow(l.createDate),n=this.$options.filters.timedownshowmm(l.createDate);this.timeDate.push("\u6628\u5929  "+t+":"+n)}else this.timeDate.push(l.createDate)});let o=e.data.data.filesList;o.forEach(l=>{l.select=!1,l.moveType="1",l.utilsType=!1;let a=this.$options.filters.timedown(l.createDate),r=this.$options.filters.timedownnum(l.createDate),t=l.fileName,n=t.split(".")[0],d=t.split(".")[t.split(".").length-1];if(n.length<=10)this.timename.push(n+"."+d);else{let u=n.substring(0,10);this.timename.push(u+"... ."+d)}if(r==!0){let u=this.$options.filters.timedownshow(l.createDate),p=this.$options.filters.timedownshowmm(l.createDate);this.timeDate.push("\u4ECA\u5929  "+u+":"+p)}else if(a<=2&&r==!1){let u=this.$options.filters.timedownshow(l.createDate),p=this.$options.filters.timedownshowmm(l.createDate);this.timeDate.push("\u6628\u5929  "+u+":"+p)}else this.timeDate.push(l.createDate);let w=h.getSuffix(l.fileName);h.isImage(w)?l.fileClass="image":h.isVideo(w)?l.fileClass="video":l.fileClass="file"}),this.flodersList=[],this.flodersList=this.flodersList.concat(i),this.fileList=[],this.fileList=this.fileList.concat(o)},closeSort(){this.$refs.sortPop.close()},titleChange(e){console.log(e),this.number=e},bodyCloseSelected(){this.isShowCollect=!1},searchClick(){s.index.navigateTo({url:"/pageIndex/index/searchCloud"})},showSort(){this.$refs.sortPop.open()},selectAll(){this.$parent.isSelectAll=!0,this.isSelectAll=!0},sortClick(e){this.sortNum=e},dateFormate(e){let i=this.$options.filters.timedown(e),o=this.$options.filters.timedownnum(e);if(o==!0){let l=this.$options.filters.timedownshow(e),a=this.$options.filters.timedownshowmm(e);return"\u4ECA\u5929  "+l+":"+a}else if(i<=2&&o==!1){let l=this.$options.filters.timedownshow(e),a=this.$options.filters.timedownshowmm(e);return"\u6628\u5929  "+l+":"+a}else return e},byTes(e){return e<=0?"0B":h.bytesToSize(e)}},computed:y({},s.mapState({userFlowData:e=>s.index.getStorageSync("userFlowData")?JSON.parse(e.userFlowData):{}})),filters:{typeDate(e){if(!!e)return DateYMD(e.expireDate)},hiddenAccout(e){if(e)return e.replace(/(\d{3})\d*(\d{4})/,"$1****$2")},formatinstDataaa(e){return formatinstData(e)},residue(e){return residuePrecision(e)},timedown(e){return h.timedown(e)},timedownshow(e){return h.timedownshow(e)},timedownshowmm(e){return h.timedownshowmm(e)},timedownnum(e){return h.timedownnum(e)}},async mounted(){const e=await m.getEverboxList({superFolder:0,pageNum:1,defaultSort:!0,timeSort:!1,pageSize:1e3});e.data.code==0&&await this.openNewListData(e)}};Array||s.resolveComponent("tabber")();function L(e,i,o,l,a,r){return s.e({a:!a.isSelectAll},a.isSelectAll?s.e({i:c._imports_3,j:s.o((...t)=>r.closeSelect&&r.closeSelect(...t)),k:a.quanxuan},a.quanxuan?{l:s.o((...t)=>r.allSelectFunc&&r.allSelectFunc(...t))}:{m:s.o((...t)=>r.cancelAllSelectFunc&&r.cancelAllSelectFunc(...t))}):{b:c._imports_0$1,c:s.o((...t)=>r.searchClick&&r.searchClick(...t)),d:s.o((...t)=>r.showSort&&r.showSort(...t)),e:c._imports_1,f:s.o((...t)=>r.selectAll&&r.selectAll(...t)),g:c._imports_2,h:a.isShowTitle==!1?1:""},{n:a.isShowTitle==!1},a.isShowTitle==!1?{o:s.o(t=>r.breadFunc(0)),p:s.f(a.breadCrumList,(t,n,d)=>({a:s.t(t.folderName),b:s.o(f=>r.breadFunc(t,n)),c:n}))}:{},{q:s.f(a.flodersList,(t,n,d)=>s.e({a:s.o(f=>r.goFolder(t)),b:s.t(t.folderName),c:s.t(r.dateFormate(t.createDate)),d:s.t(r.byTes(t.folderSize)),e:s.o(f=>r.goFolder(t))},a.isSelectAll?s.e({h:!t.select},t.select?{k:s.o(f=>r.selectItemFunc(t)),l:c._imports_7}:{i:s.o(f=>r.delItemsFunc(t)),j:c._imports_6}):{f:c._imports_5,g:s.o(f=>r.getDetail(t))},{m:n})),r:c._imports_4,s:!a.isSelectAll,t:s.f(a.fileList,(t,n,d)=>s.e({a:t.fileClass=="image"},t.fileClass=="image"?{b:c._imports_8}:{},{c:t.fileClass=="video"},t.fileClass=="video"?{d:c._imports_9}:{},{e:t.fileClass=="file"},t.fileClass=="file"?{f:c._imports_10}:{},{g:s.t(t.fileName),h:s.t(r.dateFormate(t.createDate)),i:s.t(r.byTes(t.fileSize))},a.isSelectAll?s.e({l:!t.select},t.select?{o:s.o(f=>r.selectItemFunc(t)),p:c._imports_7}:{m:s.o(f=>r.delItemsFunc(t)),n:c._imports_6}):{j:c._imports_5,k:s.o(f=>r.getDetail(t))},{q:n})),v:!a.isSelectAll,w:a.isSelectAll==!0?1:"",x:!a.isSelectAll},a.isSelectAll?{z:c._imports_11,A:s.o((...t)=>r.multiplcDeleteFunc&&r.multiplcDeleteFunc(...t))}:{y:s.p({pagePath:"/pageIndex/index/index"})})}var x=s._export_sfc(b,[["render",L],["__scopeId","data-v-7225d126"],["__file","D:/WXFile/WeChat Files/wxid_24g7xarmwwne22/FileStorage/File/2023-06/483a303c5dc0354ecc26cfa10a7ddca7_c3ad831319d2832c177ef660df75d852_8/wkkcApplet/pageIndex/myShare/myShare.vue"]]);wx.createComponent(x);
+"use strict";
+var __defProp = Object.defineProperty;
+var __getOwnPropSymbols = Object.getOwnPropertySymbols;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __propIsEnum = Object.prototype.propertyIsEnumerable;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __spreadValues = (a, b) => {
+  for (var prop in b || (b = {}))
+    if (__hasOwnProp.call(b, prop))
+      __defNormalProp(a, prop, b[prop]);
+  if (__getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(b)) {
+      if (__propIsEnum.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
+    }
+  return a;
+};
+var common_vendor = require("../../common/vendor.js");
+var utils_index = require("../../utils/index.js");
+require("../../utils/base.js");
+var utils_api = require("../../utils/api.js");
+require("../../utils/ali-oss.js");
+var common_assets = require("../../common/assets.js");
+require("../../utils/http.js");
+require("../../utils/index1.js");
+const tabber = () => "../../components/tabber.js";
+const _sfc_main = {
+  data() {
+    return {
+      number: 1,
+      sortNum: 1,
+      isSelectAll: false,
+      isShowTitle: true,
+      timeDate: [],
+      timename: [],
+      fileList: [],
+      flodersList: [],
+      filezonglist: [],
+      folderId: 0,
+      breadCrumList: [],
+      selectArray: [],
+      selectItemsAry: [],
+      itemData: "",
+      allSelect: false,
+      quanxuan: true,
+      pageNum: 1,
+      timeSort: false,
+      sizeSort: false,
+      defaultSort: true,
+      showPage: false
+    };
+  },
+  onLoad() {
+  },
+  components: {
+    tabber
+  },
+  created() {
+    common_vendor.index.hideKeyboard();
+  },
+  methods: {
+    closeSelect() {
+      this.$parent.isSelectAll = false;
+      this.isSelectAll = false;
+      for (let i = 0; i < this.selectItemsAry.length; i++) {
+        this.selectItemsAry[i].select = false;
+      }
+      this.selectItemsAry = [];
+    },
+    closePop() {
+      this.$refs.midPop.close();
+    },
+    closeDel() {
+      this.$refs.delAll.close();
+    },
+    selectShare() {
+      if (this.selectItemsAry.length == 0) {
+        common_vendor.index.showToast({
+          icon: "none",
+          title: "\u8BF7\u9009\u62E9\u6587\u4EF6"
+        });
+        return;
+      }
+      this.$refs.selectRef.changeBtn();
+      this.$refs.selectRef.selectItemsAry = this.selectItemsAry;
+      this.$refs.selectRef.$refs.sharePop.open();
+    },
+    multiplcDeleteFunc() {
+      if (this.selectItemsAry.length == 0) {
+        common_vendor.index.showToast({
+          icon: "none",
+          title: "\u8BF7\u9009\u62E9\u6587\u4EF6"
+        });
+        return;
+      }
+      this.$refs.delAll.open();
+    },
+    async deleteSelectList() {
+      common_vendor.index.showLoading({ title: "\u5220\u9664\u4E2D" });
+      let ary = [];
+      this.selectItemsAry.forEach((item) => {
+        let obj = {};
+        if (item.moveType == "1") {
+          obj.deleteID = item.fileId;
+        } else {
+          obj.deleteID = item.folderId;
+        }
+        obj.deleteType = item.moveType;
+        ary.push(obj);
+      });
+      const res = await utils_api.batchDelete(ary);
+      if (res.data.code !== 0) {
+        common_vendor.index.showToast({
+          icon: "none",
+          title: res.data.msg
+        });
+        return;
+      } else {
+        common_vendor.index.hideLoading();
+        common_vendor.index.showToast({
+          icon: "none",
+          title: res.data.msg
+        });
+        this.selectItemsAry = [];
+        this.closeDel();
+        this.createData();
+      }
+    },
+    maskClose() {
+    },
+    getDetail(item) {
+      let superFolder = 0;
+      if (this.breadCrumList.length !== 0) {
+        superFolder = this.breadCrumList[this.breadCrumList.length - 1].folderId;
+      }
+      this.superFolder = superFolder;
+      console.log(item);
+      this.$refs.indexPop.showPage = true;
+      this.$refs.indexPop.$refs.shareSett.superFolder = superFolder;
+      this.$refs.indexPop.$refs.midPop.showPop();
+      this.$refs.indexPop.$refs.midPop.isShow = true;
+      let listItem = item;
+      if (item.moveType == 2) {
+        listItem.fileClass = "floder";
+      } else {
+        let fileType = utils_index.getSuffix(item.fileName);
+        if (utils_index.isImage(fileType)) {
+          item.fileClass = "image";
+        } else if (utils_index.isVideo(fileType)) {
+          item.fileClass = "video";
+        } else {
+          item.fileClass = "file";
+        }
+      }
+      if (item.fileSize) {
+        listItem.size = item.fileSize;
+      } else {
+        listItem.size = item.folderSize;
+      }
+      if (item.fileName) {
+        listItem.name = item.fileName;
+      } else {
+        listItem.name = item.folderName;
+      }
+      this.$refs.indexPop.listItem = listItem;
+    },
+    allSelectFunc() {
+      this.quanxuan = false;
+      this.fileList.forEach((item) => item.select = true);
+      this.flodersList.forEach((item) => item.select = true);
+      this.allSelect = !this.allSelect;
+      this.selectItemsAry = this.selectItemsAry.concat(this.fileList).concat(this.flodersList);
+    },
+    cancelAllSelectFunc() {
+      this.quanxuan = true;
+      this.fileList.forEach((item) => item.select = false);
+      this.flodersList.forEach((item) => item.select = false);
+      this.allSelect = !this.allSelect;
+      this.selectItemsAry = [];
+    },
+    delItemsFunc(val) {
+      this.selectItemsAry.push(val);
+      this.itemData = val;
+      val.select = true;
+      console.log(this.selectItemsAry);
+    },
+    breadFunc(item, index) {
+      this.selectArray = [];
+      this.checked = false;
+      console.log(this.selectArray);
+      if (item == 0) {
+        this.breadCrumList = [];
+        this.folderId = 0;
+        this.isShowTitle = true;
+        this.createData();
+        return;
+      }
+      this.breadCrumList.splice(index + 1, this.breadCrumList.length);
+      this.folderId = item.folderId;
+      this.createData();
+    },
+    async createData() {
+      let folderId = this.folderId;
+      utils_api.getEverboxList({
+        superFolder: folderId,
+        pageNum: this.pageNum,
+        pageSize: 1e3,
+        defaultSort: this.defaultSort,
+        timeSort: this.timeSort,
+        sizeSort: this.sizeSort
+      }).then((res) => {
+        if (res.data.code == 401) {
+          return;
+        }
+        this.openNewListData(res);
+      });
+    },
+    selectItemFunc(val) {
+      val.select = false;
+      this.allSelect = false;
+      for (let i = 0; i < this.selectItemsAry.length; i++) {
+        if (this.selectItemsAry[i].select == false) {
+          this.selectItemsAry.splice(i, 1);
+        }
+      }
+      console.log(this.selectItemsAry);
+    },
+    goFolder(item) {
+      if (this.isSelectAll)
+        return;
+      this.isShowTitle = false;
+      this.folderId = item.folderId;
+      this.breadCrumList.push(item);
+      utils_api.getEverboxList({
+        superFolder: item.folderId,
+        pageNum: this.pageNum,
+        defaultSort: true,
+        timeSort: false,
+        pageSize: 1e3
+      }).then((res) => {
+        if (res.data.code == 0) {
+          this.openNewListData(res);
+          this.selectArray = [];
+        }
+      });
+    },
+    openNewListData(res) {
+      let flodersList = res.data.data.foldersList;
+      flodersList.forEach((item) => {
+        item.select = false;
+        item.moveType = "2";
+        item.utilsType = false;
+        let day11 = this.$options.filters["timedown"](item.createDate);
+        let daynum = this.$options.filters["timedownnum"](item.createDate);
+        if (daynum == true) {
+          let timeHH = this.$options.filters["timedownshow"](item.createDate);
+          let timeMM = this.$options.filters["timedownshowmm"](item.createDate);
+          this.timeDate.push("\u4ECA\u5929  " + timeHH + ":" + timeMM);
+        } else if (day11 <= 2 && daynum == false) {
+          let timeHH = this.$options.filters["timedownshow"](item.createDate);
+          let timeMM = this.$options.filters["timedownshowmm"](item.createDate);
+          this.timeDate.push("\u6628\u5929  " + timeHH + ":" + timeMM);
+        } else {
+          this.timeDate.push(item.createDate);
+        }
+      });
+      let fileList = res.data.data.filesList;
+      fileList.forEach((item) => {
+        item.select = false;
+        item.moveType = "1";
+        item.utilsType = false;
+        let day11 = this.$options.filters["timedown"](item.createDate);
+        let daynum = this.$options.filters["timedownnum"](item.createDate);
+        let nametyp = item.fileName;
+        let numsplit = nametyp.split(".")[0];
+        let houwen = nametyp.split(".")[nametyp.split(".").length - 1];
+        let numpd = numsplit.length;
+        if (numpd <= 10) {
+          this.timename.push(numsplit + "." + houwen);
+        } else {
+          let qianwen = numsplit.substring(0, 10);
+          this.timename.push(qianwen + "... ." + houwen);
+        }
+        if (daynum == true) {
+          let timeHH = this.$options.filters["timedownshow"](item.createDate);
+          let timeMM = this.$options.filters["timedownshowmm"](item.createDate);
+          this.timeDate.push("\u4ECA\u5929  " + timeHH + ":" + timeMM);
+        } else if (day11 <= 2 && daynum == false) {
+          let timeHH = this.$options.filters["timedownshow"](item.createDate);
+          let timeMM = this.$options.filters["timedownshowmm"](item.createDate);
+          this.timeDate.push("\u6628\u5929  " + timeHH + ":" + timeMM);
+        } else {
+          this.timeDate.push(item.createDate);
+        }
+        let fileType = utils_index.getSuffix(item.fileName);
+        if (utils_index.isImage(fileType)) {
+          item.fileClass = "image";
+        } else if (utils_index.isVideo(fileType)) {
+          item.fileClass = "video";
+        } else {
+          item.fileClass = "file";
+        }
+      });
+      this.flodersList = [];
+      this.flodersList = this.flodersList.concat(flodersList);
+      this.fileList = [];
+      this.fileList = this.fileList.concat(fileList);
+    },
+    closeSort() {
+      this.$refs.sortPop.close();
+    },
+    titleChange(index) {
+      console.log(index);
+      this.number = index;
+    },
+    bodyCloseSelected() {
+      this.isShowCollect = false;
+    },
+    searchClick() {
+      common_vendor.index.navigateTo({
+        url: "/pageIndex/index/searchCloud"
+      });
+    },
+    showSort() {
+      this.$refs.sortPop.open();
+    },
+    selectAll() {
+      this.$parent.isSelectAll = true;
+      this.isSelectAll = true;
+    },
+    sortClick(num) {
+      this.sortNum = num;
+    },
+    dateFormate(val) {
+      let day11 = this.$options.filters["timedown"](val);
+      let daynum = this.$options.filters["timedownnum"](val);
+      if (daynum == true) {
+        let timeHH = this.$options.filters["timedownshow"](val);
+        let timeMM = this.$options.filters["timedownshowmm"](val);
+        return "\u4ECA\u5929  " + timeHH + ":" + timeMM;
+      } else if (day11 <= 2 && daynum == false) {
+        let timeHH = this.$options.filters["timedownshow"](val);
+        let timeMM = this.$options.filters["timedownshowmm"](val);
+        return "\u6628\u5929  " + timeHH + ":" + timeMM;
+      } else {
+        return val;
+      }
+    },
+    byTes(value) {
+      if (value <= 0) {
+        return "0B";
+      }
+      return utils_index.bytesToSize(value);
+    }
+  },
+  computed: __spreadValues({}, common_vendor.mapState({
+    userFlowData: (state) => common_vendor.index.getStorageSync("userFlowData") ? JSON.parse(state.userFlowData) : {}
+  })),
+  filters: {
+    typeDate(value) {
+      if (!value)
+        return;
+      return DateYMD(value.expireDate);
+    },
+    hiddenAccout(value) {
+      if (!value) {
+        return;
+      } else {
+        return value.replace(/(\d{3})\d*(\d{4})/, "$1****$2");
+      }
+    },
+    formatinstDataaa(value) {
+      return formatinstData(value);
+    },
+    residue(value) {
+      return residuePrecision(value);
+    },
+    timedown(value) {
+      return utils_index.timedown(value);
+    },
+    timedownshow(value) {
+      return utils_index.timedownshow(value);
+    },
+    timedownshowmm(value) {
+      return utils_index.timedownshowmm(value);
+    },
+    timedownnum(value) {
+      return utils_index.timedownnum(value);
+    }
+  },
+  async mounted() {
+    const file = await utils_api.getEverboxList({
+      superFolder: 0,
+      pageNum: 1,
+      defaultSort: true,
+      timeSort: false,
+      pageSize: 1e3
+    });
+    if (file.data.code == 0) {
+      await this.openNewListData(file);
+    }
+  }
+};
+if (!Array) {
+  const _component_tabber = common_vendor.resolveComponent("tabber");
+  _component_tabber();
+}
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+  return common_vendor.e({
+    a: !$data.isSelectAll
+  }, !$data.isSelectAll ? {
+    b: common_assets._imports_0$1,
+    c: common_vendor.o((...args) => $options.searchClick && $options.searchClick(...args)),
+    d: common_vendor.o((...args) => $options.showSort && $options.showSort(...args)),
+    e: common_assets._imports_1,
+    f: common_vendor.o((...args) => $options.selectAll && $options.selectAll(...args)),
+    g: common_assets._imports_2,
+    h: $data.isShowTitle == false ? 1 : ""
+  } : common_vendor.e({
+    i: common_assets._imports_3,
+    j: common_vendor.o((...args) => $options.closeSelect && $options.closeSelect(...args)),
+    k: $data.quanxuan
+  }, $data.quanxuan ? {
+    l: common_vendor.o((...args) => $options.allSelectFunc && $options.allSelectFunc(...args))
+  } : {
+    m: common_vendor.o((...args) => $options.cancelAllSelectFunc && $options.cancelAllSelectFunc(...args))
+  }), {
+    n: $data.isShowTitle == false
+  }, $data.isShowTitle == false ? {
+    o: common_vendor.o(($event) => $options.breadFunc(0)),
+    p: common_vendor.f($data.breadCrumList, (item, index, i0) => {
+      return {
+        a: common_vendor.t(item.folderName),
+        b: common_vendor.o(($event) => $options.breadFunc(item, index)),
+        c: index
+      };
+    })
+  } : {}, {
+    q: common_vendor.f($data.flodersList, (item, index, i0) => {
+      return common_vendor.e({
+        a: common_vendor.o(($event) => $options.goFolder(item)),
+        b: common_vendor.t(item.folderName),
+        c: common_vendor.t($options.dateFormate(item.createDate)),
+        d: common_vendor.t($options.byTes(item.folderSize)),
+        e: common_vendor.o(($event) => $options.goFolder(item))
+      }, !$data.isSelectAll ? {
+        f: common_assets._imports_5,
+        g: common_vendor.o(($event) => $options.getDetail(item))
+      } : common_vendor.e({
+        h: !item.select
+      }, !item.select ? {
+        i: common_vendor.o(($event) => $options.delItemsFunc(item)),
+        j: common_assets._imports_6
+      } : {
+        k: common_vendor.o(($event) => $options.selectItemFunc(item)),
+        l: common_assets._imports_7
+      }), {
+        m: index
+      });
+    }),
+    r: common_assets._imports_4,
+    s: !$data.isSelectAll,
+    t: common_vendor.f($data.fileList, (item, index, i0) => {
+      return common_vendor.e({
+        a: item.fileClass == "image"
+      }, item.fileClass == "image" ? {
+        b: common_assets._imports_8
+      } : {}, {
+        c: item.fileClass == "video"
+      }, item.fileClass == "video" ? {
+        d: common_assets._imports_9
+      } : {}, {
+        e: item.fileClass == "file"
+      }, item.fileClass == "file" ? {
+        f: common_assets._imports_10
+      } : {}, {
+        g: common_vendor.t(item.fileName),
+        h: common_vendor.t($options.dateFormate(item.createDate)),
+        i: common_vendor.t($options.byTes(item.fileSize))
+      }, !$data.isSelectAll ? {
+        j: common_assets._imports_5,
+        k: common_vendor.o(($event) => $options.getDetail(item))
+      } : common_vendor.e({
+        l: !item.select
+      }, !item.select ? {
+        m: common_vendor.o(($event) => $options.delItemsFunc(item)),
+        n: common_assets._imports_6
+      } : {
+        o: common_vendor.o(($event) => $options.selectItemFunc(item)),
+        p: common_assets._imports_7
+      }), {
+        q: index
+      });
+    }),
+    v: !$data.isSelectAll,
+    w: $data.isSelectAll == true ? 1 : "",
+    x: !$data.isSelectAll
+  }, !$data.isSelectAll ? {
+    y: common_vendor.p({
+      pagePath: "/pageIndex/index/index"
+    })
+  } : {
+    z: common_assets._imports_11,
+    A: common_vendor.o((...args) => $options.multiplcDeleteFunc && $options.multiplcDeleteFunc(...args))
+  });
+}
+var Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-7225d126"], ["__file", "E:/Code/BeiJing-Digitalsee/Group-project/pageIndex/myShare/myShare.vue"]]);
+wx.createComponent(Component);

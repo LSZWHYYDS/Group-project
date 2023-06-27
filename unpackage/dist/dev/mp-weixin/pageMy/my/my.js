@@ -1,1 +1,27 @@
-"use strict";var e=require("../../common/vendor.js");const o=()=>"../../components/tabber.js",r={data(){return{}},onLoad(){},components:{tabber:o},methods:{}};Array||e.resolveComponent("tabber")();function t(a,c,s,_,m,d){return{a:e.p({pagePath:"/pageMy/my/my"})}}var n=e._export_sfc(r,[["render",t],["__file","D:/WXFile/WeChat Files/wxid_24g7xarmwwne22/FileStorage/File/2023-06/483a303c5dc0354ecc26cfa10a7ddca7_c3ad831319d2832c177ef660df75d852_8/wkkcApplet/pageMy/my/my.vue"]]);wx.createPage(n);
+"use strict";
+var common_vendor = require("../../common/vendor.js");
+const tabber = () => "../../components/tabber.js";
+const _sfc_main = {
+  data() {
+    return {};
+  },
+  onLoad() {
+  },
+  components: {
+    tabber
+  },
+  methods: {}
+};
+if (!Array) {
+  const _component_tabber = common_vendor.resolveComponent("tabber");
+  _component_tabber();
+}
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+  return {
+    a: common_vendor.p({
+      pagePath: "/pageMy/my/my"
+    })
+  };
+}
+var MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "E:/Code/BeiJing-Digitalsee/Group-project/pageMy/my/my.vue"]]);
+wx.createPage(MiniProgramPage);

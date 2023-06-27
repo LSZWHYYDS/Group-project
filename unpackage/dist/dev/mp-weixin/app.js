@@ -1,1 +1,37 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0});exports[Symbol.toStringTag]="Module";var a=require("./common/vendor.js"),n=require("./store/index.js");require("./utils/api.js");require("./utils/http.js");require("./utils/index1.js");require("./utils/base.js");const o={onLaunch:function(){},onShow:function(){},onHide:function(){}};var s=a._export_sfc(o,[["__file","D:/WXFile/WeChat Files/wxid_24g7xarmwwne22/FileStorage/File/2023-06/483a303c5dc0354ecc26cfa10a7ddca7_c3ad831319d2832c177ef660df75d852_8/wkkcApplet/App.vue"]]);function i(){const e=a.createSSRApp(s);return e.use(n.store),{app:e}}i().app.mount("#app");exports.createApp=i;
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports[Symbol.toStringTag] = "Module";
+var common_vendor = require("./common/vendor.js");
+var store_index = require("./store/index.js");
+require("./utils/api.js");
+require("./utils/http.js");
+require("./utils/index1.js");
+require("./utils/base.js");
+if (!Math) {
+  "./pages/login/login.js";
+  "./pages/login/phoneEmail.js";
+  "./pages/login/forgetPassword.js";
+  "./pageIndex/index/index.js";
+  "./pageIndex/index/upload.js";
+  "./pageIndex/index/searchCloud.js";
+  "./pageMy/my/my.js";
+  "./pageUpload/upload/upload.js";
+}
+const _sfc_main = {
+  onLaunch: function() {
+  },
+  onShow: function() {
+  },
+  onHide: function() {
+  }
+};
+var App = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "E:/Code/BeiJing-Digitalsee/Group-project/App.vue"]]);
+function createApp() {
+  const app = common_vendor.createSSRApp(App);
+  app.use(store_index.store);
+  return {
+    app
+  };
+}
+createApp().app.mount("#app");
+exports.createApp = createApp;

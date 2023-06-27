@@ -1,1 +1,20 @@
-"use strict";var o=require("../../common/vendor.js");const a={data(){return{}},onLoad(e){console.log(JSON.parse(e.list)),console.log(6969),this.$nextTick(()=>{})},components:{},methods:{}};function c(e,n,t,d,s,i){return{}}var r=o._export_sfc(a,[["render",c],["__file","D:/WXFile/WeChat Files/wxid_24g7xarmwwne22/FileStorage/File/2023-06/483a303c5dc0354ecc26cfa10a7ddca7_c3ad831319d2832c177ef660df75d852_8/wkkcApplet/pageUpload/upload/upload.vue"]]);wx.createPage(r);
+"use strict";
+var common_vendor = require("../../common/vendor.js");
+const _sfc_main = {
+  data() {
+    return {};
+  },
+  onLoad(option) {
+    console.log(JSON.parse(option.list));
+    console.log(6969);
+    this.$nextTick(() => {
+    });
+  },
+  components: {},
+  methods: {}
+};
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+  return {};
+}
+var MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "E:/Code/BeiJing-Digitalsee/Group-project/pageUpload/upload/upload.vue"]]);
+wx.createPage(MiniProgramPage);

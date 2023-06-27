@@ -1,0 +1,1 @@
+<view class="prohibition"><view class="demo" style="{{g + ';' + h + ';' + i + ';' + j}}"><view wx:if="{{a}}" class="left" bindtap="{{c}}" style="{{d + ';' + e}}"><uni-icons wx:if="{{b}}" u-i="58e265fe-0" bind:__l="__l" u-p="{{b}}"></uni-icons></view><view class="title">{{f}}</view></view></view>

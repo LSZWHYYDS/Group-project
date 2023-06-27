@@ -1,0 +1,1 @@
+"use strict";require("./index1.js");var o=require("./base.js"),n=require("../common/vendor.js"),s=o.url;const u=function(e,t){return n.axios.post(s+e,t).then(r=>r).catch(r=>r)},c=function(e,t){return n.axios.get(s+e,t).then(r=>r).catch(r=>r)};exports.get=c;exports.post=u;

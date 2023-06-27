@@ -1,0 +1,49 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/login/phoneEmail",
+    "pages/login/forgetPassword"
+  ],
+  "subPackages": [
+    {
+      "root": "pageIndex",
+      "pages": [
+        "index/index",
+        "index/upload",
+        "index/searchCloud"
+      ]
+    },
+    {
+      "root": "pageMy",
+      "pages": [
+        "my/my"
+      ]
+    },
+    {
+      "root": "pageUpload",
+      "pages": [
+        "upload/upload"
+      ]
+    }
+  ],
+  "usingComponents": {
+    "van-action-sheet": "/wxcomponents/vant/action-sheet/index",
+    "van-button": "/wxcomponents/vant/button/index",
+    "van-popup": "/wxcomponents/vant/popup/index",
+    "van-divider": "/wxcomponents/vant/divider/index"
+  },
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "preloadRule": {
+    "pages/login/login": {
+      "network": "all",
+      "packages": [
+        "pageIndex"
+      ]
+    }
+  }
+}

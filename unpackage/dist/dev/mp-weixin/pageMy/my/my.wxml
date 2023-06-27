@@ -1,0 +1,1 @@
+<view> 我的 <tabber wx:if="{{a}}" u-i="75d95eb2-0" bind:__l="__l" u-p="{{a}}"></tabber></view>

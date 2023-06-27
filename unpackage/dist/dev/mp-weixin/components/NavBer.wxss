@@ -1,0 +1,1 @@
+.demo{position:relative;width:100%;display:flex;align-items:center;justify-content:center;font-size:26rpx;z-index:100;padding-bottom:10rpx}.demo .left{float:left;position:absolute;width:100rpx;height:50rpx;top:0;bottom:0;left:20rpx;color:#fff;margin:auto}.demo .title{font-size:36rpx;font-family:Source Han Sans CN}

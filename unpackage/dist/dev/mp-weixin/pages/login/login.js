@@ -1,1 +1,121 @@
-"use strict";var e=require("../../common/vendor.js"),r=require("../../utils/api.js"),d=require("../../common/assets.js");require("../../utils/http.js");require("../../utils/index1.js");require("../../utils/base.js");const l=()=>"../../components/NavBer.js",g={data(){return{href:"https://uniapp.dcloud.io",title:"\u963F\u53D1\u963F\u53D1",backgroundColor:""}},onLoad(o){console.log(o),o.softId,this.softId=o.softId},components:{navbar:l},methods:{goBack(){e.index.navigateBake()},getUserInfo(){let o=this;e.index.showLoading({title:"\u767B\u5F55\u4E2D"}),e.index.getUserProfile({desc:"\u5FAE\u4FE1\u767B\u9646\u540E\u540C\u6B65\u6570\u636E",success:async t=>{console.log(t),e.index.login({provider:"weixin",success:async i=>{if(console.log(i),console.log(i.code),console.log(666),o.code=i.code,i.errMsg=="login:ok"){let c={code:i.code};const a=await r.wxappletLogin(c);if(console.log(a),a.data.code==0){let n=a.data.data;e.index.setStorageSync("token",n.token),e.index.setStorageSync("userInfo",JSON.stringify(n)),e.index.setStorageSync("inviteLink",n.inviteLink),e.index.showToast({icon:"none",title:a.data.msg}),setTimeout(()=>{e.index.reLaunch({url:"/pageIndex/index/index"})},800)}else e.index.showToast({icon:"none",title:a.data.msg})}}})},fail:()=>{e.index.showToast({title:"\u6388\u6743\u5DF2\u53D6\u6D88",icon:"error",mask:!0})},complete:()=>{e.index.hideLoading()}})},goLogin(o){e.index.navigateTo({url:"/pages/login/phoneEmail?id="+o})},mailClick(){let o={};o.userName="1725565883@qq.com",o.password="123456",r.mailLogin(o).then(t=>{console.log(t),t.code==200})}}};Array||e.resolveComponent("navbar")();function u(o,t,i,c,a,n){return{a:e.o(n.goBack),b:e.p({background:a.backgroundColor}),c:d._imports_0,d:e.o((...s)=>n.getUserInfo&&n.getUserInfo(...s)),e:e.o(s=>n.goLogin(1)),f:e.o(s=>n.goLogin(2))}}var m=e._export_sfc(g,[["render",u],["__scopeId","data-v-b237504c"],["__file","D:/WXFile/WeChat Files/wxid_24g7xarmwwne22/FileStorage/File/2023-06/483a303c5dc0354ecc26cfa10a7ddca7_c3ad831319d2832c177ef660df75d852_8/wkkcApplet/pages/login/login.vue"]]);wx.createPage(m);
+"use strict";
+var common_vendor = require("../../common/vendor.js");
+var utils_api = require("../../utils/api.js");
+var common_assets = require("../../common/assets.js");
+require("../../utils/http.js");
+require("../../utils/index1.js");
+require("../../utils/base.js");
+const navbar = () => "../../components/NavBer.js";
+const _sfc_main = {
+  data() {
+    return {
+      href: "https://uniapp.dcloud.io",
+      title: "\u963F\u53D1\u963F\u53D1",
+      backgroundColor: ""
+    };
+  },
+  onLoad(option) {
+    console.log(option);
+    option.softId;
+    this.softId = option.softId;
+  },
+  components: {
+    navbar
+  },
+  methods: {
+    goBack() {
+      common_vendor.index.navigateBake();
+    },
+    getUserInfo() {
+      let _this = this;
+      common_vendor.index.showLoading({
+        title: "\u767B\u5F55\u4E2D"
+      });
+      common_vendor.index.getUserProfile({
+        desc: "\u5FAE\u4FE1\u767B\u9646\u540E\u540C\u6B65\u6570\u636E",
+        success: async (obj) => {
+          console.log(obj);
+          common_vendor.index.login({
+            provider: "weixin",
+            success: async (res) => {
+              console.log(res);
+              console.log(res.code);
+              console.log(666);
+              _this.code = res.code;
+              if (res.errMsg == "login:ok") {
+                let param = {
+                  code: res.code
+                };
+                const userData = await utils_api.wxappletLogin(param);
+                console.log(userData);
+                if (userData.data.code == 0) {
+                  let data = userData.data.data;
+                  common_vendor.index.setStorageSync("token", data.token);
+                  common_vendor.index.setStorageSync("userInfo", JSON.stringify(data));
+                  common_vendor.index.setStorageSync("inviteLink", data.inviteLink);
+                  common_vendor.index.showToast({
+                    icon: "none",
+                    title: userData.data.msg
+                  });
+                  setTimeout(() => {
+                    common_vendor.index.reLaunch({
+                      url: "/pageIndex/index/index"
+                    });
+                  }, 800);
+                } else {
+                  common_vendor.index.showToast({
+                    icon: "none",
+                    title: userData.data.msg
+                  });
+                }
+              }
+            }
+          });
+        },
+        fail: () => {
+          common_vendor.index.showToast({
+            title: "\u6388\u6743\u5DF2\u53D6\u6D88",
+            icon: "error",
+            mask: true
+          });
+        },
+        complete: () => {
+          common_vendor.index.hideLoading();
+        }
+      });
+    },
+    goLogin(val) {
+      common_vendor.index.navigateTo({
+        url: "/pages/login/phoneEmail?id=" + val
+      });
+    },
+    mailClick() {
+      let data = {};
+      data.userName = "1725565883@qq.com";
+      data.password = "123456";
+      utils_api.mailLogin(data).then((res) => {
+        console.log(res);
+        if (res.code == 200)
+          ;
+      });
+    }
+  }
+};
+if (!Array) {
+  const _component_navbar = common_vendor.resolveComponent("navbar");
+  _component_navbar();
+}
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+  return {
+    a: common_vendor.o($options.goBack),
+    b: common_vendor.p({
+      background: $data.backgroundColor
+    }),
+    c: common_assets._imports_0,
+    d: common_vendor.o((...args) => $options.getUserInfo && $options.getUserInfo(...args)),
+    e: common_vendor.o(($event) => $options.goLogin(1)),
+    f: common_vendor.o(($event) => $options.goLogin(2))
+  };
+}
+var MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-b237504c"], ["__file", "E:/Code/BeiJing-Digitalsee/Group-project/pages/login/login.vue"]]);
+wx.createPage(MiniProgramPage);

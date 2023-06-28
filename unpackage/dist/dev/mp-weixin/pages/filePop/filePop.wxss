@@ -1,0 +1,14 @@
+/* 水平间距 */
+/* 水平间距 */
+.vue-popup-dialog.data-v-e3cc7f53 {
+  z-index: 10000 !important;
+}
+.uniPop.data-v-e3cc7f53 {
+  width: 100vw;
+  background-color: #fff;
+  padding: 20rpx;
+  box-sizing: border-box;
+  border-top-left-radius: 40rpx;
+  border-top-right-radius: 40rpx;
+  padding-bottom: 80rpx;
+}

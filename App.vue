@@ -1,6 +1,8 @@
 <script>
 	export default {
-		onLaunch: function() {},
+		onLaunch: function() {
+      console.log('测试log1')
+    },
 		onShow: function() {},
 		onHide: function() {}
 	}

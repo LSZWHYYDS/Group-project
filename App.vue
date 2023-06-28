@@ -1,15 +1,8 @@
 <script>
 	export default {
-		onLaunch: function() {
-			console.log('测试合并主分支')
-		},
-		onShow: function() {
-			// console.log('App Show')
-			// console.log('App Show')
-		},
-		onHide: function() {
-			// console.log('App Hide')
-		}
+		onLaunch: function() {},
+		onShow: function() {},
+		onHide: function() {}
 	}
 </script>
 
@@ -19,7 +12,7 @@
 	@import '/wxcomponents/vant/common/index.wxss';
 	/* #ifndef APP-NVUE */
 	@import '@/static/customicons.css';
-	
+
 	page {
 		background-color: #f5f5f5;
 	}

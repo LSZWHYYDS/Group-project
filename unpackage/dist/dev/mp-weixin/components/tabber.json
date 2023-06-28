@@ -1,6 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "file-pop": "../pages/filePop/filePop"
-  }
-}

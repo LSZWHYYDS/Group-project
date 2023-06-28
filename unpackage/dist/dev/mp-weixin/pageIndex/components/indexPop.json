@@ -1,8 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "file-pop": "../../pages/filePop/filePop",
-    "share-setting": "./shareSetting",
-    "uni-popup": "../../uni_modules/uni-popup/components/uni-popup/uni-popup"
-  }
-}

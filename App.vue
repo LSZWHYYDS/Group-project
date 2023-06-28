@@ -1,7 +1,7 @@
 <script>
 	export default {
 		onLaunch: function() {
-      console.log('测试log23456789')
+      console.log('测试log234')
     },
 		onShow: function() {},
 		onHide: function() {}

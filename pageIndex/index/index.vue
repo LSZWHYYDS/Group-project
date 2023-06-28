@@ -1,14 +1,13 @@
 <template>
   <view class="container" @click="bodyCloseSelected">
-    <view class="" style="width: 70%;">
+  <!--  <view class="" style="width: 70%;">
       <progressBar :progress="10" :height="'25rpx'" :textInside="false" bgColor="#387BFF" dsColor="#D2E1FF" />
-    </view>
-
-    <!-- 	<view class="index-title" v-if="!isSelectAll && isShowTitle">
+    </view> -->
+    	<view class="index-title" v-if="!isSelectAll && isShowTitle">
 			<text @click="titleChange(0)" :class="{ active:0===number}">我的分享</text>
 			<text @click="titleChange(1)" :class="{ active:1===number}">我的云盘</text>
 			<text @click="titleChange(2)" :class="{ active:2===number}">我的收集</text>
-		</view> -->
+		</view>
     <view>
       <view class="myShare" v-show="0===number">
         <share ref="shareRef"></share>

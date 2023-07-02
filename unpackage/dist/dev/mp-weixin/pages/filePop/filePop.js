@@ -1,5 +1,5 @@
 "use strict";
-const common_vendor = require("../../common/vendor.js");
+var common_vendor = require("../../common/vendor.js");
 const _sfc_main = {
   data() {
     return {
@@ -17,17 +17,6 @@ const _sfc_main = {
       this.isShow = false;
     }
   }
-  // computed: {
-  // 	...mapState({
-  // 		showFilePop: (state) => state.showFilePop,
-  // 	}),
-  // },
-  // watch: {
-  // 	showFilePop(val){
-  // 		console.log(val)
-  // 		console.log(2222222222222)
-  // 	}
-  // },
 };
 if (!Array) {
   const _easycom_uni_popup2 = common_vendor.resolveComponent("uni-popup");
@@ -39,7 +28,7 @@ if (!Math) {
 }
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
-    a: common_vendor.sr("popup", "e3cc7f53-0"),
+    a: common_vendor.sr("popup", "781ac172-0"),
     b: $data.isShow,
     c: common_vendor.o($options.maskClose),
     d: common_vendor.o($options.close),
@@ -49,5 +38,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   };
 }
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-e3cc7f53"], ["__file", "C:/Users/Administrator/Desktop/peoject/Group-project/pages/filePop/filePop.vue"]]);
+var Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-781ac172"], ["__file", "E:/Code/BeiJing-Digitalsee/Group-project/pages/filePop/filePop.vue"]]);
 wx.createComponent(Component);

@@ -1,5 +1,5 @@
 "use strict";
-const common_vendor = require("../common/vendor.js");
+var common_vendor = require("../common/vendor.js");
 const _sfc_main = {
   data() {
     return {
@@ -7,26 +7,20 @@ const _sfc_main = {
       paddingTop: 0
     };
   },
-  // props: ["title", "back"],
   props: {
     title: {
-      // 标题文字(默认为空)
       type: String,
       default: ""
     },
     color: {
-      // 标题和返回按钮颜色(默认白色)
       type: String,
       default: "#fff"
     },
-    //建议使用background  因为使用backgroundColor，会导致不识别渐变颜色
     background: {
-      // 背景颜色(不传值默认透明)
       type: String,
       default: "transparent"
     },
     back: {
-      // 是否显示返回按钮(不传值默认不显示)
       type: Boolean,
       default: false
     }
@@ -37,7 +31,6 @@ const _sfc_main = {
     this.paddingTop = demo.top + "px";
   },
   methods: {
-    // 左侧返回按钮调用
     onBack() {
       this.$emit("onBack");
     }
@@ -83,5 +76,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   });
 }
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "C:/Users/Administrator/Desktop/peoject/Group-project/components/NavBer.vue"]]);
+var Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "E:/Code/BeiJing-Digitalsee/Group-project/components/NavBer.vue"]]);
 wx.createComponent(Component);

@@ -1,7 +1,26 @@
 "use strict";
-const common_vendor = require("../../../../common/vendor.js");
-const uni_modules_uniFilePicker_components_uniFilePicker_chooseAndUploadFile = require("./choose-and-upload-file.js");
-const uni_modules_uniFilePicker_components_uniFilePicker_utils = require("./utils.js");
+var __defProp = Object.defineProperty;
+var __defProps = Object.defineProperties;
+var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
+var __getOwnPropSymbols = Object.getOwnPropertySymbols;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __propIsEnum = Object.prototype.propertyIsEnumerable;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __spreadValues = (a, b) => {
+  for (var prop in b || (b = {}))
+    if (__hasOwnProp.call(b, prop))
+      __defNormalProp(a, prop, b[prop]);
+  if (__getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(b)) {
+      if (__propIsEnum.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
+    }
+  return a;
+};
+var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+var common_vendor = require("../../../../common/vendor.js");
+var uni_modules_uniFilePicker_components_uniFilePicker_chooseAndUploadFile = require("./choose-and-upload-file.js");
+var uni_modules_uniFilePicker_components_uniFilePicker_utils = require("./utils.js");
 const uploadImage = () => "./upload-image.js";
 const uploadFile = () => "./upload-file.js";
 const _sfc_main = {
@@ -30,27 +49,22 @@ const _sfc_main = {
       type: Boolean,
       default: true
     },
-    // 自动上传
     autoUpload: {
       type: Boolean,
       default: true
     },
-    // 最大选择个数 ，h5只能限制单选或是多选
     limit: {
       type: [Number, String],
       default: 9
     },
-    // 列表样式 grid | list | list-card
     mode: {
       type: String,
       default: "grid"
     },
-    // 选择文件类型  image/video/all
     fileMediatype: {
       type: String,
       default: "image"
     },
-    // 文件类型筛选
     fileExtname: {
       type: [Array, String],
       default() {
@@ -65,11 +79,8 @@ const _sfc_main = {
       type: Object,
       default() {
         return {
-          // 是否显示边框
           border: true,
-          // 是否显示分隔线
           dividline: true,
-          // 线条样式
           borderStyle: {}
         };
       }
@@ -140,9 +151,9 @@ const _sfc_main = {
     }
   },
   created() {
-    if (!(common_vendor.Ds.config && common_vendor.Ds.config.provider)) {
+    if (!(common_vendor.pn.config && common_vendor.pn.config.provider)) {
       this.noSpace = true;
-      common_vendor.Ds.chooseAndUploadFile = uni_modules_uniFilePicker_components_uniFilePicker_chooseAndUploadFile.chooseAndUploadFile;
+      common_vendor.pn.chooseAndUploadFile = uni_modules_uniFilePicker_components_uniFilePicker_chooseAndUploadFile.chooseAndUploadFile;
     }
     this.form = this.getForm("uniForms");
     this.formItem = this.getForm("uniFormsItem");
@@ -154,10 +165,6 @@ const _sfc_main = {
     }
   },
   methods: {
-    /**
-     * 公开用户使用，清空文件
-     * @param {Object} index
-     */
     clearFiles(index) {
       if (index !== 0 && !index) {
         this.files = [];
@@ -171,9 +178,6 @@ const _sfc_main = {
         this.setEmit();
       });
     },
-    /**
-     * 公开用户使用，继续上传
-     */
     upload() {
       let files = [];
       this.files.forEach((v, index) => {
@@ -222,34 +226,26 @@ const _sfc_main = {
       let filesData = Object.keys(newVal).length > 0 ? newVal : [];
       this.files = [].concat(filesData);
     },
-    /**
-     * 选择文件
-     */
     choose() {
       if (this.disabled)
         return;
       if (this.files.length >= Number(this.limitLength) && this.showType !== "grid" && this.returnType === "array") {
         common_vendor.index.showToast({
-          title: `您最多选择 ${this.limitLength} 个文件`,
+          title: `\u60A8\u6700\u591A\u9009\u62E9 ${this.limitLength} \u4E2A\u6587\u4EF6`,
           icon: "none"
         });
         return;
       }
       this.chooseFiles();
     },
-    /**
-     * 选择文件并上传
-     */
     chooseFiles() {
       const _extname = uni_modules_uniFilePicker_components_uniFilePicker_utils.get_extname(this.fileExtname);
-      common_vendor.Ds.chooseAndUploadFile({
+      common_vendor.pn.chooseAndUploadFile({
         type: this.fileMediatype,
         compressed: false,
         sizeType: this.sizeType,
-        // TODO 如果为空，video 有问题
         extension: _extname.length > 0 ? _extname : void 0,
         count: this.limitLength - this.files.length,
-        //默认9
         onChooseFile: this.chooseFileCallback,
         onUploadProgress: (progressEvent) => {
           this.setProgress(progressEvent, progressEvent.index);
@@ -257,13 +253,9 @@ const _sfc_main = {
       }).then((result) => {
         this.setSuccessAndError(result.tempFiles);
       }).catch((err) => {
-        console.log("选择失败", err);
+        console.log("\u9009\u62E9\u5931\u8D25", err);
       });
     },
-    /**
-     * 选择文件回调
-     * @param {Object} res
-     */
     async chooseFileCallback(res) {
       const _extname = uni_modules_uniFilePicker_components_uniFilePicker_utils.get_extname(this.fileExtname);
       const is_one = Number(this.limitLength) === 1 && this.disablePreview && !this.disabled || this.returnType === "object";
@@ -287,10 +279,9 @@ const _sfc_main = {
         filedata.progress = 0;
         filedata.status = "ready";
         this.files.push(filedata);
-        currentData.push({
-          ...filedata,
+        currentData.push(__spreadProps(__spreadValues({}, filedata), {
           file: files[i]
-        });
+        }));
       }
       this.$emit("select", {
         tempFiles: currentData,
@@ -301,10 +292,6 @@ const _sfc_main = {
         res.tempFiles = [];
       }
     },
-    /**
-     * 批传
-     * @param {Object} e
-     */
     uploadFiles(files) {
       files = [].concat(files);
       return uni_modules_uniFilePicker_components_uniFilePicker_chooseAndUploadFile.uploadCloudFiles.call(this, files, 5, (res) => {
@@ -316,9 +303,6 @@ const _sfc_main = {
         console.log(err);
       });
     },
-    /**
-     * 成功或失败
-     */
     async setSuccessAndError(res, fn) {
       let successData = [];
       let errorData = [];
@@ -364,12 +348,6 @@ const _sfc_main = {
         });
       }
     },
-    /**
-     * 获取进度
-     * @param {Object} progressEvent
-     * @param {Object} index
-     * @param {Object} type
-     */
     setProgress(progressEvent, index, type) {
       this.files.length;
       const percentCompleted = Math.round(progressEvent.loaded * 100 / progressEvent.total);
@@ -386,10 +364,6 @@ const _sfc_main = {
         tempFile: this.files[idx]
       });
     },
-    /**
-     * 删除文件
-     * @param {Object} index
-     */
     delFile(index) {
       this.$emit("delete", {
         tempFile: this.files[index],
@@ -400,10 +374,6 @@ const _sfc_main = {
         this.setEmit();
       });
     },
-    /**
-     * 获取文件名和后缀
-     * @param {Object} name
-     */
     getFileExt(name) {
       const last_len = name.lastIndexOf(".");
       const len = name.length;
@@ -412,9 +382,6 @@ const _sfc_main = {
         ext: name.substring(last_len + 1, len)
       };
     },
-    /**
-     * 处理返回事件
-     */
     setEmit() {
       let data = [];
       if (this.returnType === "object") {
@@ -429,10 +396,6 @@ const _sfc_main = {
       }
       this.$emit("update:modelValue", this.localValue);
     },
-    /**
-     * 处理返回参数
-     * @param {Object} files
-     */
     backObject(files) {
       let newFilesData = [];
       files.forEach((v) => {
@@ -453,12 +416,9 @@ const _sfc_main = {
       fileList = {
         fileList: [].concat(fileList)
       };
-      const urls = await common_vendor.Ds.getTempFileURL(fileList);
+      const urls = await common_vendor.pn.getTempFileURL(fileList);
       return urls.fileList[0].tempFileURL || "";
     },
-    /**
-     * 获取父元素实例
-     */
     getForm(name = "uniForms") {
       let parent = this.$parent;
       let parentName = parent.$options.name;
@@ -513,5 +473,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   } : {});
 }
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "C:/Users/Administrator/Desktop/peoject/Group-project/uni_modules/uni-file-picker/components/uni-file-picker/uni-file-picker.vue"]]);
+var Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "E:/Code/BeiJing-Digitalsee/Group-project/uni_modules/uni-file-picker/components/uni-file-picker/uni-file-picker.vue"]]);
 wx.createComponent(Component);

@@ -1,15 +1,32 @@
 "use strict";
-const common_vendor = require("../../common/vendor.js");
-const utils_index = require("../../utils/index.js");
+var __defProp = Object.defineProperty;
+var __getOwnPropSymbols = Object.getOwnPropertySymbols;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __propIsEnum = Object.prototype.propertyIsEnumerable;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __spreadValues = (a, b) => {
+  for (var prop in b || (b = {}))
+    if (__hasOwnProp.call(b, prop))
+      __defNormalProp(a, prop, b[prop]);
+  if (__getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(b)) {
+      if (__propIsEnum.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
+    }
+  return a;
+};
+var common_vendor = require("../../common/vendor.js");
+var utils_index = require("../../utils/index.js");
 require("../../utils/base.js");
-const utils_api = require("../../utils/api.js");
+var utils_api = require("../../utils/api.js");
 require("../../utils/ali-oss.js");
-const common_assets = require("../../common/assets.js");
+var common_assets = require("../../common/assets.js");
 require("../../utils/http.js");
 require("../../utils/index1.js");
 const indexPop = () => "../components/indexPop.js";
 const shareSetting = () => "../components/shareSetting.js";
 const share = () => "../myShare/myShare.js";
+const progressBar = () => "../../components/liu-progressbar/liu-progressbar.js";
 const tabber = () => "../../components/tabber.js";
 const _sfc_main = {
   data() {
@@ -21,37 +38,31 @@ const _sfc_main = {
       timeDate: [],
       timename: [],
       fileList: [],
-      //文件列表
       flodersList: [],
-      //文件夹列表
       filezonglist: [],
-      //总文件列表
       folderId: 0,
       breadCrumList: [],
       selectArray: [],
       selectItemsAry: [],
       itemData: "",
-      //单个操作的数据
       allSelect: false,
       quanxuan: true,
-      //全选按钮切换
       pageNum: 1,
       timeSort: false,
-      //按时间排序
       sizeSort: false,
-      //按文件或文件夹大小排序
       defaultSort: true,
-      //
       showPage: false
     };
   },
   onLoad() {
+    console.log("\u6D4B\u8BD5log");
   },
   components: {
     tabber,
     indexPop,
     shareSetting,
-    share
+    share,
+    progressBar
   },
   created() {
     common_vendor.index.hideKeyboard();
@@ -74,7 +85,7 @@ const _sfc_main = {
       if (this.selectItemsAry.length == 0) {
         common_vendor.index.showToast({
           icon: "none",
-          title: "请选择文件"
+          title: "\u8BF7\u9009\u62E9\u6587\u4EF6"
         });
         return;
       }
@@ -86,14 +97,16 @@ const _sfc_main = {
       if (this.selectItemsAry.length == 0) {
         common_vendor.index.showToast({
           icon: "none",
-          title: "请选择文件"
+          title: "\u8BF7\u9009\u62E9\u6587\u4EF6"
         });
         return;
       }
       this.$refs.delAll.open();
     },
     async deleteSelectList() {
-      common_vendor.index.showLoading({ title: "删除中" });
+      common_vendor.index.showLoading({
+        title: "\u5220\u9664\u4E2D"
+      });
       let ary = [];
       this.selectItemsAry.forEach((item) => {
         let obj = {};
@@ -161,7 +174,6 @@ const _sfc_main = {
       }
       this.$refs.indexPop.listItem = listItem;
     },
-    //全选
     allSelectFunc() {
       this.quanxuan = false;
       this.fileList.forEach((item) => item.select = true);
@@ -169,7 +181,6 @@ const _sfc_main = {
       this.allSelect = !this.allSelect;
       this.selectItemsAry = this.selectItemsAry.concat(this.fileList).concat(this.flodersList);
     },
-    //取消全选
     cancelAllSelectFunc() {
       this.quanxuan = true;
       this.fileList.forEach((item) => item.select = false);
@@ -177,7 +188,6 @@ const _sfc_main = {
       this.allSelect = !this.allSelect;
       this.selectItemsAry = [];
     },
-    //添加文件
     delItemsFunc(val) {
       this.selectItemsAry.push(val);
       this.itemData = val;
@@ -199,7 +209,6 @@ const _sfc_main = {
       this.folderId = item.folderId;
       this.createData();
     },
-    //初始化数据
     async createData() {
       let folderId = this.folderId;
       utils_api.getEverboxList({
@@ -207,11 +216,8 @@ const _sfc_main = {
         pageNum: this.pageNum,
         pageSize: 1e3,
         defaultSort: this.defaultSort,
-        //默认时间排序 true
         timeSort: this.timeSort,
-        //时间排序
         sizeSort: this.sizeSort
-        //文件或文件夹大小排序
       }).then((res) => {
         if (res.data.code == 401) {
           return;
@@ -219,7 +225,6 @@ const _sfc_main = {
         this.openNewListData(res);
       });
     },
-    //反选文件
     selectItemFunc(val) {
       val.select = false;
       this.allSelect = false;
@@ -260,11 +265,11 @@ const _sfc_main = {
         if (daynum == true) {
           let timeHH = this.$options.filters["timedownshow"](item.createDate);
           let timeMM = this.$options.filters["timedownshowmm"](item.createDate);
-          this.timeDate.push("今天  " + timeHH + ":" + timeMM);
+          this.timeDate.push("\u4ECA\u5929  " + timeHH + ":" + timeMM);
         } else if (day11 <= 2 && daynum == false) {
           let timeHH = this.$options.filters["timedownshow"](item.createDate);
           let timeMM = this.$options.filters["timedownshowmm"](item.createDate);
-          this.timeDate.push("昨天  " + timeHH + ":" + timeMM);
+          this.timeDate.push("\u6628\u5929  " + timeHH + ":" + timeMM);
         } else {
           this.timeDate.push(item.createDate);
         }
@@ -289,11 +294,11 @@ const _sfc_main = {
         if (daynum == true) {
           let timeHH = this.$options.filters["timedownshow"](item.createDate);
           let timeMM = this.$options.filters["timedownshowmm"](item.createDate);
-          this.timeDate.push("今天  " + timeHH + ":" + timeMM);
+          this.timeDate.push("\u4ECA\u5929  " + timeHH + ":" + timeMM);
         } else if (day11 <= 2 && daynum == false) {
           let timeHH = this.$options.filters["timedownshow"](item.createDate);
           let timeMM = this.$options.filters["timedownshowmm"](item.createDate);
-          this.timeDate.push("昨天  " + timeHH + ":" + timeMM);
+          this.timeDate.push("\u6628\u5929  " + timeHH + ":" + timeMM);
         } else {
           this.timeDate.push(item.createDate);
         }
@@ -324,7 +329,6 @@ const _sfc_main = {
     searchClick() {
       common_vendor.index.navigateTo({
         url: "/pageIndex/index/searchCloud"
-        // url: "/pageIndex/index/upload?list=" + JSON.stringify(e.tempFiles)
       });
     },
     showSort() {
@@ -336,18 +340,17 @@ const _sfc_main = {
     sortClick(num) {
       this.sortNum = num;
     },
-    // 处理日期
     dateFormate(val) {
       let day11 = this.$options.filters["timedown"](val);
       let daynum = this.$options.filters["timedownnum"](val);
       if (daynum == true) {
         let timeHH = this.$options.filters["timedownshow"](val);
         let timeMM = this.$options.filters["timedownshowmm"](val);
-        return "今天  " + timeHH + ":" + timeMM;
+        return "\u4ECA\u5929  " + timeHH + ":" + timeMM;
       } else if (day11 <= 2 && daynum == false) {
         let timeHH = this.$options.filters["timedownshow"](val);
         let timeMM = this.$options.filters["timedownshowmm"](val);
-        return "昨天  " + timeHH + ":" + timeMM;
+        return "\u6628\u5929  " + timeHH + ":" + timeMM;
       } else {
         return val;
       }
@@ -359,36 +362,15 @@ const _sfc_main = {
       return utils_index.bytesToSize(value);
     }
   },
-  computed: {
-    ...common_vendor.mapState({
-      // userFlowData: (store) =>
-      // 	 uni.getStorageSync("userFlowData") ?
-      // 	JSON.parse(store.state.userFlowData) : {},
-      userFlowData: (state) => common_vendor.index.getStorageSync("userFlowData") ? JSON.parse(state.userFlowData) : {}
-      // files: (state) => state.files,
-      // pro: (state) => state.progress,
-      // parentTOP: (state) => state.top,
-    })
-  },
-  // watch: {
-  // },
+  computed: __spreadValues({}, common_vendor.mapState({
+    userFlowData: (state) => common_vendor.index.getStorageSync("userFlowData") ? JSON.parse(state.userFlowData) : {}
+  })),
   filters: {
     typeDate(value) {
       if (!value)
         return;
       return DateYMD(value.expireDate);
     },
-    // byTes(value) {
-    //   console.log(2221111)
-    //   console.log(value)
-    //   if (value <= 0 ) {
-    //     return "0B"; //Bytes
-    //   }
-    //   return bytesToSize(value);
-    // },
-    // bytesToSize(value){
-    // 	return bytesToSize(value);
-    // },
     hiddenAccout(value) {
       if (!value) {
         return;
@@ -445,14 +427,14 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     a: !$data.isSelectAll && $data.isShowTitle
   }, !$data.isSelectAll && $data.isShowTitle ? {
     b: common_vendor.o(($event) => $options.titleChange(0)),
-    c: 0 === $data.number ? 1 : "",
+    c: $data.number === 0 ? 1 : "",
     d: common_vendor.o(($event) => $options.titleChange(1)),
-    e: 1 === $data.number ? 1 : "",
+    e: $data.number === 1 ? 1 : "",
     f: common_vendor.o(($event) => $options.titleChange(2)),
-    g: 2 === $data.number ? 1 : ""
+    g: $data.number === 2 ? 1 : ""
   } : {}, {
-    h: common_vendor.sr("shareRef", "3665fb97-0"),
-    i: 0 === $data.number,
+    h: common_vendor.sr("shareRef", "5e3ad3ab-0"),
+    i: $data.number === 0,
     j: !$data.isSelectAll
   }, !$data.isSelectAll ? {
     k: common_assets._imports_0$1,
@@ -477,28 +459,28 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     z: common_vendor.f($data.breadCrumList, (item, index, i0) => {
       return {
         a: common_vendor.t(item.folderName),
-        b: common_vendor.o(($event) => $options.breadFunc(item, index), index),
+        b: common_vendor.o(($event) => $options.breadFunc(item, index)),
         c: index
       };
     })
   } : {}, {
     A: common_vendor.f($data.flodersList, (item, index, i0) => {
       return common_vendor.e({
-        a: common_vendor.o(($event) => $options.goFolder(item), index),
+        a: common_vendor.o(($event) => $options.goFolder(item)),
         b: common_vendor.t(item.folderName),
         c: common_vendor.t($options.dateFormate(item.createDate)),
         d: common_vendor.t($options.byTes(item.folderSize)),
-        e: common_vendor.o(($event) => $options.goFolder(item), index)
+        e: common_vendor.o(($event) => $options.goFolder(item))
       }, !$data.isSelectAll ? {
         f: common_assets._imports_5,
-        g: common_vendor.o(($event) => $options.getDetail(item), index)
+        g: common_vendor.o(($event) => $options.getDetail(item))
       } : common_vendor.e({
         h: !item.select
       }, !item.select ? {
-        i: common_vendor.o(($event) => $options.delItemsFunc(item), index),
+        i: common_vendor.o(($event) => $options.delItemsFunc(item)),
         j: common_assets._imports_6
       } : {
-        k: common_vendor.o(($event) => $options.selectItemFunc(item), index),
+        k: common_vendor.o(($event) => $options.selectItemFunc(item)),
         l: common_assets._imports_7
       }), {
         m: index
@@ -525,14 +507,14 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         i: common_vendor.t($options.byTes(item.fileSize))
       }, !$data.isSelectAll ? {
         j: common_assets._imports_5,
-        k: common_vendor.o(($event) => $options.getDetail(item), index)
+        k: common_vendor.o(($event) => $options.getDetail(item))
       } : common_vendor.e({
         l: !item.select
       }, !item.select ? {
-        m: common_vendor.o(($event) => $options.delItemsFunc(item), index),
+        m: common_vendor.o(($event) => $options.delItemsFunc(item)),
         n: common_assets._imports_6
       } : {
-        o: common_vendor.o(($event) => $options.selectItemFunc(item), index),
+        o: common_vendor.o(($event) => $options.selectItemFunc(item)),
         p: common_assets._imports_7
       }), {
         q: index
@@ -540,26 +522,26 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     E: !$data.isSelectAll,
     F: $data.isSelectAll == true ? 1 : "",
-    G: 1 === $data.number,
-    H: 2 === $data.number,
-    I: common_vendor.sr("indexPop", "3665fb97-1"),
+    G: $data.number === 1,
+    H: $data.number === 2,
+    I: common_vendor.sr("indexPop", "5e3ad3ab-1"),
     J: common_vendor.o($options.createData),
-    K: common_vendor.sr("selectRef", "3665fb97-2"),
+    K: common_vendor.sr("selectRef", "5e3ad3ab-2"),
     L: common_vendor.o((...args) => $options.closeSort && $options.closeSort(...args)),
     M: common_assets._imports_3,
-    N: 1 === $data.sortNum
-  }, 1 === $data.sortNum ? {
+    N: $data.sortNum === 1
+  }, $data.sortNum === 1 ? {
     O: common_assets._imports_11$1
   } : {}, {
-    P: 1 === $data.sortNum ? 1 : "",
+    P: $data.sortNum === 1 ? 1 : "",
     Q: common_vendor.o(($event) => $options.sortClick(1)),
-    R: 2 === $data.sortNum
-  }, 2 === $data.sortNum ? {
+    R: $data.sortNum === 2
+  }, $data.sortNum === 2 ? {
     S: common_assets._imports_11$1
   } : {}, {
     T: common_vendor.o(($event) => $options.sortClick(2)),
-    U: 2 === $data.sortNum ? 1 : "",
-    V: common_vendor.sr("sortPop", "3665fb97-3"),
+    U: $data.sortNum === 2 ? 1 : "",
+    V: common_vendor.sr("sortPop", "5e3ad3ab-3"),
     W: common_vendor.o($options.closeSort),
     X: common_vendor.p({
       type: "bottom",
@@ -569,7 +551,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     Z: common_assets._imports_3,
     aa: common_vendor.o((...args) => $options.deleteSelectList && $options.deleteSelectList(...args)),
     ab: common_vendor.o((...args) => $options.closeDel && $options.closeDel(...args)),
-    ac: common_vendor.sr("delAll", "3665fb97-4"),
+    ac: common_vendor.sr("delAll", "5e3ad3ab-4"),
     ad: common_vendor.o($options.closeDel),
     ae: common_vendor.p({
       type: "bottom",
@@ -592,5 +574,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     an: common_vendor.o((...args) => $options.bodyCloseSelected && $options.bodyCloseSelected(...args))
   });
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-3665fb97"], ["__file", "C:/Users/Administrator/Desktop/peoject/Group-project/pageIndex/index/index.vue"]]);
+var MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-5e3ad3ab"], ["__file", "E:/Code/BeiJing-Digitalsee/Group-project/pageIndex/index/index.vue"]]);
 wx.createPage(MiniProgramPage);

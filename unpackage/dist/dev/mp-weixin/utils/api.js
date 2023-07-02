@@ -1,6 +1,6 @@
 "use strict";
 require("../common/vendor.js");
-const utils_http = require("./http.js");
+var utils_http = require("./http.js");
 const getOssToken = (params) => utils_http.get("/oss/getOssToken", params);
 const createTransfer = (params) => utils_http.post("/transfer/createTransfer", params);
 const sendEmailAndSMS = (params) => utils_http.post("/transfer/sendEmailAndSMS/" + params);

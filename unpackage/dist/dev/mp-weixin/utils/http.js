@@ -1,7 +1,7 @@
 "use strict";
 require("./index1.js");
-const utils_base = require("./base.js");
-const common_vendor = require("../common/vendor.js");
+var utils_base = require("./base.js");
+var common_vendor = require("../common/vendor.js");
 var baseURL = utils_base.url;
 const post = function(url, params) {
   return common_vendor.axios.post(baseURL + url, params).then((response) => {

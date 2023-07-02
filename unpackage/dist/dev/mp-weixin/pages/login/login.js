@@ -1,7 +1,7 @@
 "use strict";
-const common_vendor = require("../../common/vendor.js");
-const utils_api = require("../../utils/api.js");
-const common_assets = require("../../common/assets.js");
+var common_vendor = require("../../common/vendor.js");
+var utils_api = require("../../utils/api.js");
+var common_assets = require("../../common/assets.js");
 require("../../utils/http.js");
 require("../../utils/index1.js");
 require("../../utils/base.js");
@@ -10,7 +10,7 @@ const _sfc_main = {
   data() {
     return {
       href: "https://uniapp.dcloud.io",
-      title: "阿发阿发",
+      title: "\u963F\u53D1\u963F\u53D1",
       backgroundColor: ""
     };
   },
@@ -20,7 +20,6 @@ const _sfc_main = {
     this.softId = option.softId;
   },
   components: {
-    // qrCode
     navbar
   },
   methods: {
@@ -30,10 +29,10 @@ const _sfc_main = {
     getUserInfo() {
       let _this = this;
       common_vendor.index.showLoading({
-        title: "登录中"
+        title: "\u767B\u5F55\u4E2D"
       });
       common_vendor.index.getUserProfile({
-        desc: "微信登陆后同步数据",
+        desc: "\u5FAE\u4FE1\u767B\u9646\u540E\u540C\u6B65\u6570\u636E",
         success: async (obj) => {
           console.log(obj);
           common_vendor.index.login({
@@ -75,7 +74,7 @@ const _sfc_main = {
         },
         fail: () => {
           common_vendor.index.showToast({
-            title: "授权已取消",
+            title: "\u6388\u6743\u5DF2\u53D6\u6D88",
             icon: "error",
             mask: true
           });
@@ -87,7 +86,6 @@ const _sfc_main = {
     },
     goLogin(val) {
       common_vendor.index.navigateTo({
-        // url: "/pages/listDetails/listDetails",
         url: "/pages/login/phoneEmail?id=" + val
       });
     },
@@ -119,5 +117,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     f: common_vendor.o(($event) => $options.goLogin(2))
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-e4e4508d"], ["__file", "C:/Users/Administrator/Desktop/peoject/Group-project/pages/login/login.vue"]]);
+var MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-b237504c"], ["__file", "E:/Code/BeiJing-Digitalsee/Group-project/pages/login/login.vue"]]);
 wx.createPage(MiniProgramPage);

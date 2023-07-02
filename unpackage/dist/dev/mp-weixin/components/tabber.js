@@ -1,6 +1,6 @@
 "use strict";
-const common_vendor = require("../common/vendor.js");
-const common_assets = require("../common/assets.js");
+var common_vendor = require("../common/vendor.js");
+var common_assets = require("../common/assets.js");
 const filePop = () => "../pages/filePop/filePop.js";
 const _sfc_main = {
   props: {
@@ -16,23 +16,20 @@ const _sfc_main = {
       tabbar: [
         {
           "pagePath": "/pageIndex/index/index",
-          "text": "文件"
+          "text": "\u6587\u4EF6"
         },
         {
-          // "pagePath": "/pageCloud/cloud/cloud",
           "text": "add"
         },
         {
           "pagePath": "/pageMy/my/my",
-          "text": "我的"
+          "text": "\u6211\u7684"
         }
       ],
       uploadList: [],
       imageStyles: {
         "height": 0,
-        // 边框高度
         "width": 0
-        // 边框宽度
       }
     };
   },
@@ -45,7 +42,6 @@ const _sfc_main = {
     sentFile() {
       common_vendor.index.chooseMessageFile({
         count: 6,
-        //默认100
         extension: [".zip", ".doc"],
         success: function(res) {
           console.log(JSON.stringify(res.tempFilePaths));
@@ -112,9 +108,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     f: common_assets._imports_6$1,
     g: common_assets._imports_7$1,
     h: common_vendor.o((...args) => $options.closePop && $options.closePop(...args)),
-    i: common_vendor.sr("midPop", "93ee7a96-0"),
+    i: common_vendor.sr("midPop", "7783c656-0"),
     j: $data.showPage
   };
 }
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-93ee7a96"], ["__file", "C:/Users/Administrator/Desktop/peoject/Group-project/components/tabber.vue"]]);
+var Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-7783c656"], ["__file", "E:/Code/BeiJing-Digitalsee/Group-project/components/tabber.vue"]]);
 wx.createComponent(Component);

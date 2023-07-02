@@ -1,8 +1,8 @@
 "use strict";
-const common_vendor = require("../../common/vendor.js");
-const utils_index = require("../../utils/index.js");
-const utils_api = require("../../utils/api.js");
-const common_assets = require("../../common/assets.js");
+var common_vendor = require("../../common/vendor.js");
+var utils_index = require("../../utils/index.js");
+var utils_api = require("../../utils/api.js");
+var common_assets = require("../../common/assets.js");
 require("../../utils/http.js");
 require("../../utils/index1.js");
 require("../../utils/base.js");
@@ -22,7 +22,6 @@ const _sfc_main = {
     };
   },
   components: {
-    // qrCode
     navbar
   },
   watch: {
@@ -44,7 +43,6 @@ const _sfc_main = {
   methods: {
     goBack() {
       common_vendor.index.redirectTo({
-        // url: "/pages/listDetails/listDetails",
         url: "/pages/login/login"
       });
     },
@@ -56,14 +54,14 @@ const _sfc_main = {
       if (_this.commonInput == "") {
         common_vendor.index.showToast({
           icon: "none",
-          title: "请输入邮箱号!"
+          title: "\u8BF7\u8F93\u5165\u90AE\u7BB1\u53F7!"
         });
         return;
       }
       if (_this.accountType != "email") {
         common_vendor.index.showToast({
           icon: "none",
-          title: "请输入正确的邮箱号!"
+          title: "\u8BF7\u8F93\u5165\u6B63\u786E\u7684\u90AE\u7BB1\u53F7!"
         });
         return;
       }
@@ -71,7 +69,7 @@ const _sfc_main = {
         if (res.data.code == 0) {
           common_vendor.index.showToast({
             icon: "none",
-            title: "发送成功"
+            title: "\u53D1\u9001\u6210\u529F"
           });
           _this.typeShow = false;
           if (!_this.typeShow) {
@@ -88,7 +86,7 @@ const _sfc_main = {
         } else {
           common_vendor.index.showToast({
             icon: "none",
-            title: "获取验证码失败"
+            title: "\u83B7\u53D6\u9A8C\u8BC1\u7801\u5931\u8D25"
           });
         }
       });
@@ -99,7 +97,7 @@ const _sfc_main = {
         if (_this.emailCode.length != 6) {
           common_vendor.index.showToast({
             icon: "none",
-            title: "请输入6位验证码"
+            title: "\u8BF7\u8F93\u51656\u4F4D\u9A8C\u8BC1\u7801"
           });
           return;
         }
@@ -117,14 +115,14 @@ const _sfc_main = {
         if (_this.password.length < 6 || _this.password.length > 15) {
           common_vendor.index.showToast({
             icon: "none",
-            title: "请输入6~15位密码"
+            title: "\u8BF7\u8F93\u51656~15\u4F4D\u5BC6\u7801"
           });
           return;
         }
         if (_this.password != _this.password_2) {
           common_vendor.index.showToast({
             icon: "none",
-            title: "两次密码输入不一致"
+            title: "\u4E24\u6B21\u5BC6\u7801\u8F93\u5165\u4E0D\u4E00\u81F4"
           });
           return;
         }
@@ -135,11 +133,10 @@ const _sfc_main = {
           if (res.data.code == 0) {
             common_vendor.index.showToast({
               icon: "none",
-              title: "修改成功"
+              title: "\u4FEE\u6539\u6210\u529F"
             });
             setTimeout(() => {
               common_vendor.index.reLaunch({
-                //邮箱密码登录页面
                 url: "/pages/login/phoneEmail"
               });
             }, 800);
@@ -186,5 +183,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     p: common_vendor.o((...args) => $options.forgetNext && $options.forgetNext(...args))
   });
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-2e9c21b4"], ["__file", "C:/Users/Administrator/Desktop/peoject/Group-project/pages/login/forgetPassword.vue"]]);
+var MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-9e3137f2"], ["__file", "E:/Code/BeiJing-Digitalsee/Group-project/pages/login/forgetPassword.vue"]]);
 wx.createPage(MiniProgramPage);

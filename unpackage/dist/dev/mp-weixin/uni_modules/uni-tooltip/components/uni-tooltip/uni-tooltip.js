@@ -1,5 +1,5 @@
 "use strict";
-const common_vendor = require("../../../../common/vendor.js");
+var common_vendor = require("../../../../common/vendor.js");
 const _sfc_main = {
   name: "uni-tooltip",
   data() {
@@ -23,5 +23,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     b: common_vendor.t($props.content)
   } : {});
 }
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "C:/Users/Administrator/Desktop/peoject/Group-project/uni_modules/uni-tooltip/components/uni-tooltip/uni-tooltip.vue"]]);
+var Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "E:/Code/BeiJing-Digitalsee/Group-project/uni_modules/uni-tooltip/components/uni-tooltip/uni-tooltip.vue"]]);
 wx.createComponent(Component);

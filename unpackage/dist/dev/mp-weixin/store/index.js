@@ -1,6 +1,6 @@
 "use strict";
-const common_vendor = require("../common/vendor.js");
-const utils_api = require("../utils/api.js");
+var common_vendor = require("../common/vendor.js");
+var utils_api = require("../utils/api.js");
 const store = common_vendor.createStore({
   state: {
     files: [],
@@ -38,28 +38,7 @@ const store = common_vendor.createStore({
         }
       });
     }
-    // getToken({commit}){
-    // 	//创建一个请求
-    // 	uni.request({			
-    // 		url:"{登录的接口}",
-    // 		method:"POST",
-    // 		//账号，密码
-    // 		data:{"username":"admin","password":"admin123"},
-    // 		success(res) {					
-    // 			const {code,msg,token} = res.data
-    // 			//接口调用成功后 使用commit调用mutations里的函数并把token传过去					
-    // 				commit("settoken",token)
-    // 		}
-    // 	})
-    // }
   },
-  getters: {
-    // count(state, getters) {
-    // 	return state.count
-    // },
-    // testArr(state, getters) {
-    // 	return state.testArr
-    // },
-  }
+  getters: {}
 });
 exports.store = store;

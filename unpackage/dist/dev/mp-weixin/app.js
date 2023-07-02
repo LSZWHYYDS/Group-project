@@ -1,7 +1,8 @@
 "use strict";
-Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
-const common_vendor = require("./common/vendor.js");
-const store_index = require("./store/index.js");
+Object.defineProperty(exports, "__esModule", { value: true });
+exports[Symbol.toStringTag] = "Module";
+var common_vendor = require("./common/vendor.js");
+var store_index = require("./store/index.js");
 require("./utils/api.js");
 require("./utils/http.js");
 require("./utils/index1.js");
@@ -24,7 +25,7 @@ const _sfc_main = {
   onHide: function() {
   }
 };
-const App = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "C:/Users/Administrator/Desktop/peoject/Group-project/App.vue"]]);
+var App = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "E:/Code/BeiJing-Digitalsee/Group-project/App.vue"]]);
 function createApp() {
   const app = common_vendor.createSSRApp(App);
   app.use(store_index.store);

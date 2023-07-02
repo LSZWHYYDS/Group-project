@@ -180,7 +180,7 @@
 				this.$refs.delAll.open();
 			},
 			async deleteSelectList(){
-				uni.showLoading({title: '删除中'}); 
+				uni.showLoading({title: '删除中'});
 				 let ary = [];
 				  this.selectItemsAry.forEach((item) => {
 					let obj = {};
@@ -192,7 +192,7 @@
 					obj.deleteType = item.moveType;
 					ary.push(obj);
 				  });
-			
+
 				  const res = await batchDelete(ary);
 				  if (res.data.code !== 0) {
 					uni.showToast({
@@ -358,9 +358,9 @@
 				  this.timeDate.push(item.createDate);
 				}
 			  });
-		
+
 			  let fileList = res.data.data.filesList;
-		
+
 			  fileList.forEach((item) => {
 				item.select = false;
 				item.moveType = "1";
@@ -369,7 +369,7 @@
 				// console.log(day11);
 				let daynum = this.$options.filters["timedownnum"](item.createDate);
 				// console.log(item.createDate);
-		
+
 				let nametyp = item.fileName;
 				let numsplit = nametyp.split(".")[0];
 				// let houwen = nametyp.split(".")[1];
@@ -386,7 +386,7 @@
 				  // console.log(numsplit + "... " + houwen);
 				  this.timename.push(qianwen + "... " + "." + houwen);
 				}
-		
+
 				if (daynum == true) {
 				  let timeHH = this.$options.filters["timedownshow"](item.createDate); //小时
 				  let timeMM = this.$options.filters["timedownshowmm"](item.createDate); //分钟
@@ -398,9 +398,9 @@
 				} else {
 				  this.timeDate.push(item.createDate);
 				}
-		
+
 				let fileType = getSuffix(item.fileName);
-		
+
 				if (isImage(fileType)) {
 				  item.fileClass = "image";
 				} else if (isVideo(fileType)) {
@@ -411,7 +411,7 @@
 			  });
 			  this.flodersList = [];
 			  this.flodersList = this.flodersList.concat(flodersList);
-		
+
 			  this.fileList = [];
 			  this.fileList = this.fileList.concat(fileList);
 			},
@@ -534,7 +534,7 @@
 			if (file.data.code == 0) {
 			  await this.openNewListData(file);
 			}
-			
+
 		},
 	}
 </script>
@@ -581,7 +581,7 @@
 				}
 				.btn {
 					image {
-						width: 60rpx; 
+						width: 60rpx;
 						height: 60rpx;
 					}
 					:nth-child(1) {

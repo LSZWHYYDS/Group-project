@@ -1,9 +1,9 @@
 /* 水平间距 */
 /* 水平间距 */
-.vue-popup-dialog.data-v-e3cc7f53 {
+.vue-popup-dialog.data-v-781ac172 {
   z-index: 10000 !important;
 }
-.uniPop.data-v-e3cc7f53 {
+.uniPop.data-v-781ac172 {
   width: 100vw;
   background-color: #fff;
   padding: 20rpx;

@@ -211,7 +211,7 @@
 				this.$refs.reNamePop.close();
 			},
 			closeDel(){
-				this.$refs.delPop.close();	
+				this.$refs.delPop.close();
 			},
 			renameClick(){
 				this.$refs.midPop.close();
@@ -350,7 +350,7 @@
 				this.downDayshow = "1天";
 			},
 		},
-	
+
 		computed: {
 			...mapState({
 				// userFlowData: (store) =>
@@ -365,7 +365,7 @@
 		mounted(){
 		},
 	}
-	
+
 </script>
 
 <style lang="scss" scoped>

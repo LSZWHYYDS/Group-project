@@ -1,9 +1,28 @@
 "use strict";
-const common_vendor = require("../../common/vendor.js");
-const utils_index = require("../../utils/index.js");
-const utils_api = require("../../utils/api.js");
+var __defProp = Object.defineProperty;
+var __defProps = Object.defineProperties;
+var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
+var __getOwnPropSymbols = Object.getOwnPropertySymbols;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __propIsEnum = Object.prototype.propertyIsEnumerable;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __spreadValues = (a, b) => {
+  for (var prop in b || (b = {}))
+    if (__hasOwnProp.call(b, prop))
+      __defNormalProp(a, prop, b[prop]);
+  if (__getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(b)) {
+      if (__propIsEnum.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
+    }
+  return a;
+};
+var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+var common_vendor = require("../../common/vendor.js");
+var utils_index = require("../../utils/index.js");
+var utils_api = require("../../utils/api.js");
 require("../../utils/ali-oss.js");
-const common_assets = require("../../common/assets.js");
+var common_assets = require("../../common/assets.js");
 require("../../utils/http.js");
 require("../../utils/index1.js");
 require("../../utils/base.js");
@@ -40,9 +59,7 @@ const _sfc_main = {
       return utils_index.timedownnum(value);
     }
   },
-  methods: {
-    ...common_vendor.mapMutations(["SET_FILELIST"]),
-    ...common_vendor.mapActions(["REQUEST_FLOW"]),
+  methods: __spreadProps(__spreadValues(__spreadValues({}, common_vendor.mapMutations(["SET_FILELIST"])), common_vendor.mapActions(["REQUEST_FLOW"])), {
     byTes(value) {
       if (value <= 0) {
         return "0B";
@@ -115,7 +132,6 @@ const _sfc_main = {
       this.folderId = item.folderId;
       this.createData();
     },
-    //初始化数据
     async createData() {
       let folderId = this.folderId;
       utils_api.getEverboxList({
@@ -123,11 +139,8 @@ const _sfc_main = {
         pageNum: this.pageNum,
         pageSize: 1e3,
         defaultSort: this.defaultSort,
-        //默认时间排序 true
         timeSort: this.timeSort,
-        //时间排序
         sizeSort: this.sizeSort
-        //文件或文件夹大小排序
       }).then((res) => {
         if (res.data.code == 401) {
           return;
@@ -154,7 +167,7 @@ const _sfc_main = {
     },
     search(res) {
       common_vendor.index.showToast({
-        title: "搜索：" + res.value,
+        title: "\u641C\u7D22\uFF1A" + res.value,
         icon: "none"
       });
     },
@@ -172,7 +185,7 @@ const _sfc_main = {
           if (data.filesList.length == 0 && data.foldersList.length == 0) {
             common_vendor.index.showToast({
               icon: "none",
-              title: "暂无数据"
+              title: "\u6682\u65E0\u6570\u636E"
             });
             return;
           }
@@ -182,23 +195,22 @@ const _sfc_main = {
         } else {
           common_vendor.index.showToast({
             icon: "none",
-            title: "暂未查询到该文件"
+            title: "\u6682\u672A\u67E5\u8BE2\u5230\u8BE5\u6587\u4EF6"
           });
         }
       });
     },
-    // 处理日期
     dateFormate(val) {
       let day11 = this.$options.filters["timedown"](val);
       let daynum = this.$options.filters["timedownnum"](val);
       if (daynum == true) {
         let timeHH = this.$options.filters["timedownshow"](val);
         let timeMM = this.$options.filters["timedownshowmm"](val);
-        return "今天  " + timeHH + ":" + timeMM;
+        return "\u4ECA\u5929  " + timeHH + ":" + timeMM;
       } else if (day11 <= 2 && daynum == false) {
         let timeHH = this.$options.filters["timedownshow"](val);
         let timeMM = this.$options.filters["timedownshowmm"](val);
-        return "昨天  " + timeHH + ":" + timeMM;
+        return "\u6628\u5929  " + timeHH + ":" + timeMM;
       } else {
         return val;
       }
@@ -216,11 +228,11 @@ const _sfc_main = {
         if (daynum == true) {
           let timeHH = this.$options.filters["timedownshow"](item.createDate);
           let timeMM = this.$options.filters["timedownshowmm"](item.createDate);
-          this.timeDate.push("今天  " + timeHH + ":" + timeMM);
+          this.timeDate.push("\u4ECA\u5929  " + timeHH + ":" + timeMM);
         } else if (day11 <= 2 && daynum == false) {
           let timeHH = this.$options.filters["timedownshow"](item.createDate);
           let timeMM = this.$options.filters["timedownshowmm"](item.createDate);
-          this.timeDate.push("昨天  " + timeHH + ":" + timeMM);
+          this.timeDate.push("\u6628\u5929  " + timeHH + ":" + timeMM);
         } else {
           this.timeDate.push(item.createDate);
         }
@@ -237,11 +249,11 @@ const _sfc_main = {
         if (daynum == true) {
           let timeHH = this.$options.filters["timedownshow"](item.createDate);
           let timeMM = this.$options.filters["timedownshowmm"](item.createDate);
-          this.timeDate.push("今天  " + timeHH + ":" + timeMM);
+          this.timeDate.push("\u4ECA\u5929  " + timeHH + ":" + timeMM);
         } else if (day11 <= 2 && daynum == false) {
           let timeHH = this.$options.filters["timedownshow"](item.createDate);
           let timeMM = this.$options.filters["timedownshowmm"](item.createDate);
-          this.timeDate.push("昨天  " + timeHH + ":" + timeMM);
+          this.timeDate.push("\u6628\u5929  " + timeHH + ":" + timeMM);
         } else {
           this.timeDate.push(item.createDate);
         }
@@ -269,20 +281,12 @@ const _sfc_main = {
       this.select_3 = false;
       this.timeshow = true;
       this.downDay = "1";
-      this.downDayshow = "1天";
+      this.downDayshow = "1\u5929";
     }
-  },
-  computed: {
-    ...common_vendor.mapState({
-      // userFlowData: (store) =>
-      // 	 uni.getStorageSync("userFlowData") ?
-      // 	JSON.parse(store.state.userFlowData) : {},
-      userFlowData: (state) => common_vendor.index.getStorageSync("userFlowData") ? JSON.parse(state.userFlowData) : {}
-      // files: (state) => state.files,
-      // pro: (state) => state.progress,
-      // parentTOP: (state) => state.top,
-    })
-  },
+  }),
+  computed: __spreadValues({}, common_vendor.mapState({
+    userFlowData: (state) => common_vendor.index.getStorageSync("userFlowData") ? JSON.parse(state.userFlowData) : {}
+  })),
   mounted() {
   }
 };
@@ -310,19 +314,19 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     g: common_vendor.f($data.breadCrumList, (item, index, i0) => {
       return {
         a: common_vendor.t(item.folderName),
-        b: common_vendor.o(($event) => $options.breadFunc(item, index), index),
+        b: common_vendor.o(($event) => $options.breadFunc(item, index)),
         c: index
       };
     })
   } : {}, {
     h: common_vendor.f($data.searchFloList, (item, index, i0) => {
       return {
-        a: common_vendor.o(($event) => $options.goFolder(item), index),
+        a: common_vendor.o(($event) => $options.goFolder(item)),
         b: common_vendor.t(item.folderName),
         c: common_vendor.t($options.dateFormate(item.createDate)),
         d: common_vendor.t($options.byTes(item.folderSize)),
-        e: common_vendor.o(($event) => $options.goFolder(item), index),
-        f: common_vendor.o(($event) => $options.getDetail(item), index),
+        e: common_vendor.o(($event) => $options.goFolder(item)),
+        f: common_vendor.o(($event) => $options.getDetail(item)),
         g: index
       };
     }),
@@ -345,14 +349,14 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         g: common_vendor.t(item.fileName),
         h: common_vendor.t($options.dateFormate(item.createDate)),
         i: common_vendor.t($options.byTes(item.fileSize)),
-        j: common_vendor.o(($event) => $options.getDetail(item), index),
+        j: common_vendor.o(($event) => $options.getDetail(item)),
         k: index
       });
     }),
     l: common_assets._imports_5,
-    m: common_vendor.sr("indexPop", "6020ab87-1"),
+    m: common_vendor.sr("indexPop", "5d2e0206-1"),
     n: common_vendor.o(($event) => $options.searchChange())
   });
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-6020ab87"], ["__file", "C:/Users/Administrator/Desktop/peoject/Group-project/pageIndex/index/searchCloud.vue"]]);
+var MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-5d2e0206"], ["__file", "E:/Code/BeiJing-Digitalsee/Group-project/pageIndex/index/searchCloud.vue"]]);
 wx.createPage(MiniProgramPage);

@@ -1,8 +1,8 @@
 "use strict";
-const common_vendor = require("../../common/vendor.js");
-const utils_index = require("../../utils/index.js");
-const utils_api = require("../../utils/api.js");
-const common_assets = require("../../common/assets.js");
+var common_vendor = require("../../common/vendor.js");
+var utils_index = require("../../utils/index.js");
+var utils_api = require("../../utils/api.js");
+var common_assets = require("../../common/assets.js");
 require("../../utils/http.js");
 require("../../utils/index1.js");
 require("../../utils/base.js");
@@ -12,31 +12,21 @@ const _sfc_main = {
   data() {
     return {
       showPage: true,
-      // showRename:false,//显示重命名
-      // showDel: false,//显示删除
       resetName: "",
       listItem: {
         name: "",
         size: "",
         fileClass: ""
       },
-      //单个点击数据
       selectItemsAry: [],
       button_2: 0,
       button_3: "",
-      //密码
       passwordShow: false,
-      //密码显示切换，显示/隐藏
       button_5: "",
-      //文件说明
       downNumber: 10,
-      //下载次数
       downDay: 1,
-      //剩余分享时间,默认1天
       button_4: 0,
-      //是否能够预览
       button_1: 0
-      //分享流量
     };
   },
   components: {
@@ -67,9 +57,9 @@ const _sfc_main = {
       console.log(this.button_2);
       console.log("button_3");
       console.log(this.button_3);
-      console.log("下载次数");
+      console.log("\u4E0B\u8F7D\u6B21\u6570");
       console.log(this.downNumber);
-      console.log("时间");
+      console.log("\u65F6\u95F4");
       console.log(this.downDay);
       console.log("button_4");
       console.log(this.button_4);
@@ -136,7 +126,7 @@ const _sfc_main = {
       this.$refs.delPop.open();
     },
     async deleteAry() {
-      common_vendor.index.showLoading({ title: "删除中" });
+      common_vendor.index.showLoading({ title: "\u5220\u9664\u4E2D" });
       let ary = [];
       this.selectItemsAry.push(this.listItem);
       this.selectItemsAry.forEach((item) => {
@@ -170,7 +160,7 @@ const _sfc_main = {
       if (this.resetName == "") {
         common_vendor.index.showToast({
           icon: "none",
-          title: "请输入文件名！"
+          title: "\u8BF7\u8F93\u5165\u6587\u4EF6\u540D\uFF01"
         });
         return;
       }
@@ -213,18 +203,17 @@ const _sfc_main = {
         });
       }
     },
-    // 处理日期
     dateFormate(val) {
       let day11 = this.$options.filters["timedown"](val);
       let daynum = this.$options.filters["timedownnum"](val);
       if (daynum == true) {
         let timeHH = this.$options.filters["timedownshow"](val);
         let timeMM = this.$options.filters["timedownshowmm"](val);
-        return "今天  " + timeHH + ":" + timeMM;
+        return "\u4ECA\u5929  " + timeHH + ":" + timeMM;
       } else if (day11 <= 2 && daynum == false) {
         let timeHH = this.$options.filters["timedownshow"](val);
         let timeMM = this.$options.filters["timedownshowmm"](val);
-        return "昨天  " + timeHH + ":" + timeMM;
+        return "\u6628\u5929  " + timeHH + ":" + timeMM;
       } else {
         return val;
       }
@@ -275,7 +264,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     o: common_vendor.o((...args) => $options.renameClick && $options.renameClick(...args)),
     p: common_vendor.o((...args) => $options.shareClick && $options.shareClick(...args)),
     q: common_vendor.o((...args) => $options.delClick && $options.delClick(...args)),
-    r: common_vendor.sr("midPop", "aa5ab5bf-0"),
+    r: common_vendor.sr("midPop", "441e0c64-0"),
     s: common_vendor.o($options.maskClose),
     t: common_vendor.o($options.closePop)
   }) : {}, {
@@ -284,7 +273,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     x: common_vendor.o((...args) => $options.confirmName && $options.confirmName(...args)),
     y: $data.resetName,
     z: common_vendor.o(($event) => $data.resetName = $event.detail.value),
-    A: common_vendor.sr("reNamePop", "aa5ab5bf-1"),
+    A: common_vendor.sr("reNamePop", "441e0c64-1"),
     B: common_vendor.o($options.closeRename),
     C: common_vendor.p({
       type: "bottom",
@@ -294,14 +283,14 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     E: common_assets._imports_3,
     F: common_vendor.o(($event) => $options.deleteAry()),
     G: common_vendor.o((...args) => $options.closeDel && $options.closeDel(...args)),
-    H: common_vendor.sr("delPop", "aa5ab5bf-2"),
+    H: common_vendor.sr("delPop", "441e0c64-2"),
     I: common_vendor.o($options.closeDel),
     J: common_vendor.p({
       type: "bottom",
       ["safe-area"]: false
     }),
-    K: common_vendor.sr("shareSett", "aa5ab5bf-3")
+    K: common_vendor.sr("shareSett", "441e0c64-3")
   });
 }
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-aa5ab5bf"], ["__file", "C:/Users/Administrator/Desktop/peoject/Group-project/pageIndex/components/indexPop.vue"]]);
+var Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-441e0c64"], ["__file", "E:/Code/BeiJing-Digitalsee/Group-project/pageIndex/components/indexPop.vue"]]);
 wx.createComponent(Component);

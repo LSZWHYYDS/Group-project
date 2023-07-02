@@ -1,7 +1,7 @@
 "use strict";
-const common_vendor = require("../common/vendor.js");
+var common_vendor = require("../common/vendor.js");
 const bytesToSize = function(value) {
-  if (null == value || value == "") {
+  if (value == null || value == "") {
     return "0 B";
   }
   var unitArr = new Array("B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB");
@@ -59,7 +59,7 @@ const typePhone = function(value) {
   }
 };
 const timedown = (value) => {
-  let newDate = common_vendor.dayjs(/* @__PURE__ */ new Date()).format("YYYY/MM/DD HH:mm");
+  let newDate = common_vendor.dayjs(new Date()).format("YYYY/MM/DD HH:mm");
   let oldDate = common_vendor.dayjs(value).format("YYYY/MM/DD HH:mm");
   let nd = new Date(newDate).getTime();
   let od = new Date(oldDate).getTime();
@@ -72,7 +72,7 @@ const timedownshowmm = (value) => {
   return common_vendor.dayjs(value).format("mm");
 };
 const timedownnum = (value) => {
-  let newDate = common_vendor.dayjs(/* @__PURE__ */ new Date()).format("YYYY/MM/DD").toString();
+  let newDate = common_vendor.dayjs(new Date()).format("YYYY/MM/DD").toString();
   let oldDate = common_vendor.dayjs(value).format("YYYY/MM/DD").toString();
   if (newDate == oldDate) {
     return true;

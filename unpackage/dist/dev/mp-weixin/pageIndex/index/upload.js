@@ -1,8 +1,27 @@
 "use strict";
-const common_vendor = require("../../common/vendor.js");
-const utils_index = require("../../utils/index.js");
-const utils_api = require("../../utils/api.js");
-const utils_aliOss = require("../../utils/ali-oss.js");
+var __defProp = Object.defineProperty;
+var __defProps = Object.defineProperties;
+var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
+var __getOwnPropSymbols = Object.getOwnPropertySymbols;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __propIsEnum = Object.prototype.propertyIsEnumerable;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __spreadValues = (a, b) => {
+  for (var prop in b || (b = {}))
+    if (__hasOwnProp.call(b, prop))
+      __defNormalProp(a, prop, b[prop]);
+  if (__getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(b)) {
+      if (__propIsEnum.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
+    }
+  return a;
+};
+var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+var common_vendor = require("../../common/vendor.js");
+var utils_index = require("../../utils/index.js");
+var utils_api = require("../../utils/api.js");
+var utils_aliOss = require("../../utils/ali-oss.js");
 require("../../utils/http.js");
 require("../../utils/index1.js");
 require("../../utils/base.js");
@@ -13,36 +32,25 @@ const _sfc_main = {
       tipShow: false,
       href: "https://uniapp.dcloud.io",
       load_2_show: 2,
-      //上传列表状态  状态分为 1(点击上传) 2（准备上传） 3（上传中) 4(下载)
       isShowFile: false,
       isShowCollect: false,
       rightBoxShow: true,
       rightStyle: false,
       rigthBtnShow: false,
       pickUpCode: "xxxxxx",
-      //取件码
       getCode: "",
       imgArr3: [],
       showWx: true,
       fileListAllNum: 0,
       addFileShow: false,
-      //上传列表状态  点击加号添加文件
       openSetList: false,
       pickUpCode: "xxxxxx",
-      //取件码
       fileList: [],
-      // 上传列表内容
       fileListName: [],
-      //禁止文件重复 储存文件名
       loginState: false,
       openPass: 0,
-      //0表示无密码，1表示有密码
       pass: "",
-      //密码
       description: "",
-      //描述
-      // copyUrl: urlPath,
-      // 控制设置选择 （可能删除)
       select_1: 0,
       select_2: 0,
       select_3: false,
@@ -54,50 +62,30 @@ const _sfc_main = {
       select_10: 0,
       passwordShow: false,
       openPass: 0,
-      //0表示无密码，1表示有密码
       pass: "",
-      //密码
       downloadLimit: 10,
-      //下载次数限制
       nubshow: false,
-      //下载次数
       enableDown: 1,
-      //	是否可以下载和转存 0否 1是（第一版传1即可）
       enablePreview: 1,
-      //	是否可以预览 0否 1是（第一版传1即可）
       mails: "",
-      //	邮件分享
       phones: "",
-      //	短信分享
       dateValue: 0,
-      //选择的时间
       downLimit: [5, 10, 20],
-      //进度条记录参数
       allSize: 0,
-      //上传文件总大小
       progress: {},
-      //进度条载体
       downTime: 0,
-      //计算时间
       alreadySize: 0,
-      //已下载大小
       alreadyNum: 0,
       speed: "256kb",
-      //速度
       waterNum: 0,
-      //
       upLoadEnd: false,
-      //上传完成
       transferGuid: "",
       getCode: "",
       aKeyCopayShow: true,
       overTime: "xxxx-xx-xx",
-      //过期时间
       extractCode: "",
-      //二维码
       qrCode: "",
       isShow: false,
-      //tootip
       top: 0,
       errFileList: [],
       resetUploadShow: false,
@@ -106,64 +94,55 @@ const _sfc_main = {
       shareShow: false,
       startX: 0,
       startY: 0,
-      //新增管控
       downNumber: 10,
-      //剩余下载次数,默认为10次
-      downNumbershow: "10次",
-      //显示分享数
+      downNumbershow: "10\u6B21",
       downDay: 1,
-      //剩余分享时间
-      downDayshow: "1天",
-      //显示分享时间剩余数
+      downDayshow: "1\u5929",
       utilsType: false,
-      //设置面板显示/隐藏
       drawer: false,
-      //弹窗开关，显示/隐藏
       show: false,
-      //分享设置弹出
       timeshow: false,
-      //有效期选择
       actions: [
         {
-          name: "1天",
+          name: "1\u5929",
           value: "1"
         },
         {
-          name: "3天",
+          name: "3\u5929",
           value: "3"
         },
         {
-          name: "7天",
+          name: "7\u5929",
           value: "7"
         },
         {
-          name: "永久有效",
+          name: "\u6C38\u4E45\u6709\u6548",
           value: "3650"
         },
         {
-          name: "自定义",
+          name: "\u81EA\u5B9A\u4E49",
           value: "0"
         }
       ],
       nubactions: [
         {
-          name: "50次",
+          name: "50\u6B21",
           value: "50"
         },
         {
-          name: "100次",
+          name: "100\u6B21",
           value: "100"
         },
         {
-          name: "200次",
+          name: "200\u6B21",
           value: "200"
         },
         {
-          name: "无限制",
+          name: "\u65E0\u9650\u5236",
           value: "9999999"
         },
         {
-          name: "自定义",
+          name: "\u81EA\u5B9A\u4E49",
           value: "0"
         }
       ]
@@ -175,9 +154,7 @@ const _sfc_main = {
     this.$nextTick(() => {
     });
   },
-  methods: {
-    ...common_vendor.mapMutations(["SET_FILELIST"]),
-    ...common_vendor.mapActions(["REQUEST_FLOW"]),
+  methods: __spreadProps(__spreadValues(__spreadValues({}, common_vendor.mapMutations(["SET_FILELIST"])), common_vendor.mapActions(["REQUEST_FLOW"])), {
     byTes(value) {
       return utils_index.bytesToSize(value);
     },
@@ -245,7 +222,7 @@ const _sfc_main = {
         if (fileList.length > 5) {
           common_vendor.index.showToast({
             icon: "none",
-            title: "未登录状态上传不得超过5个"
+            title: "\u672A\u767B\u5F55\u72B6\u6001\u4E0A\u4F20\u4E0D\u5F97\u8D85\u8FC75\u4E2A"
           });
           return;
         }
@@ -272,7 +249,7 @@ const _sfc_main = {
           if (fileArray[i].name == this.fileListName[j]) {
             common_vendor.index.showToast({
               icon: "none",
-              title: "发现文件名称相同的文件，该文件已被自动过滤"
+              title: "\u53D1\u73B0\u6587\u4EF6\u540D\u79F0\u76F8\u540C\u7684\u6587\u4EF6\uFF0C\u8BE5\u6587\u4EF6\u5DF2\u88AB\u81EA\u52A8\u8FC7\u6EE4"
             });
             this.fileListName.splice(j, 1);
             fileArray.splice(i, 1);
@@ -302,7 +279,6 @@ const _sfc_main = {
       const res = /* @__PURE__ */ new Map();
       return arr.filter((item) => !res.has(item[name]) && res.set(item[name], 1));
     },
-    //开始上传
     async uploadFunc() {
       this.load_2_show = 3;
       const transferGuid = await this.getTransferGuid();
@@ -313,16 +289,13 @@ const _sfc_main = {
       const token = getToken.data;
       this.multipartUpload(token);
     },
-    //oss上传函数
     async multipartUpload(token) {
       let allList = [];
       this.fileList.forEach((item) => {
         if (item.dir) {
           let name = utils_aliOss.getFileNameUUID();
           item.files.forEach((item2) => {
-            let ext = item2.webkitRelativePath.substring(
-              item2.webkitRelativePath.indexOf("/")
-            );
+            let ext = item2.webkitRelativePath.substring(item2.webkitRelativePath.indexOf("/"));
             if (!ext) {
               ext = item2.name.substring(item2.name.indexOf("/"));
             }
@@ -345,20 +318,18 @@ const _sfc_main = {
       const transferGuid = this.transferGuid;
       this.upLoadEnd = false;
       let arry = [];
-      const clientRusult = await Promise.all(
-        allList.map(async (file, index) => {
-          let o = {
-            fileName: file.file.name,
-            fileSize: file.file.size,
-            path: file.name,
-            originalName: file.file.webkitRelativePath ? file.file.webkitRelativePath : file.file.name,
-            transferGuid,
-            fileType: file.file.type
-          };
-          arry.push(o);
-          return await this.multiBackPath(token, file.name, file.file);
-        })
-      );
+      const clientRusult = await Promise.all(allList.map(async (file, index) => {
+        let o = {
+          fileName: file.file.name,
+          fileSize: file.file.size,
+          path: file.name,
+          originalName: file.file.webkitRelativePath ? file.file.webkitRelativePath : file.file.name,
+          transferGuid,
+          fileType: file.file.type
+        };
+        arry.push(o);
+        return await this.multiBackPath(token, file.name, file.file);
+      }));
       if (clientRusult.some((item) => item == false)) {
         this.resetUploadShow = true;
         return;
@@ -397,7 +368,6 @@ const _sfc_main = {
       this.upLoadEnd = true;
       this.downTime = 0;
     },
-    //获取 TransferGuid
     async getTransferGuid() {
       let data = {};
       !this.select_2 ? data.openPass = 0 : data.openPass = 1;
@@ -405,7 +375,7 @@ const _sfc_main = {
         if (!utils_index.isEmall(this.mails)) {
           common_vendor.index.showToast({
             icon: "none",
-            title: "邮件格式错误"
+            title: "\u90AE\u4EF6\u683C\u5F0F\u9519\u8BEF"
           });
           return;
         }
@@ -414,7 +384,7 @@ const _sfc_main = {
         if (this.pass.length > 12 || this.pass.length < 6) {
           common_vendor.index.showToast({
             icon: "none",
-            title: "请输入正确的密码格式"
+            title: "\u8BF7\u8F93\u5165\u6B63\u786E\u7684\u5BC6\u7801\u683C\u5F0F"
           });
           return;
         }
@@ -452,19 +422,19 @@ const _sfc_main = {
       this.show = false;
       if (item.target.value == 1) {
         this.downDay = "1";
-        this.downDayshow = "1天";
+        this.downDayshow = "1\u5929";
         this.timeshow = false;
       } else if (item.target.value == 3) {
         this.downDay = "3";
-        this.downDayshow = "3天";
+        this.downDayshow = "3\u5929";
         this.timeshow = false;
       } else if (item.target.value == 7) {
         this.downDay = "7";
-        this.downDayshow = "7天";
+        this.downDayshow = "7\u5929";
         this.timeshow = false;
       } else if (item.target.value == 3650) {
         this.downDay = "3650";
-        this.downDayshow = "永久有效";
+        this.downDayshow = "\u6C38\u4E45\u6709\u6548";
         this.timeshow = false;
       } else if (item.target.value == 0) {
         this.downDayshow = "";
@@ -479,19 +449,19 @@ const _sfc_main = {
       if (item.target.value == 50) {
         console.log(item.target.value);
         this.downNumber = 50;
-        this.downNumbershow = "50次";
+        this.downNumbershow = "50\u6B21";
         this.nubshow = false;
       } else if (item.target.value == 100) {
         this.downNumber = 100;
-        this.downNumbershow = "100次";
+        this.downNumbershow = "100\u6B21";
         this.nubshow = false;
       } else if (item.target.value == 200) {
         this.downNumber = 200;
-        this.downNumbershow = "200次";
+        this.downNumbershow = "200\u6B21";
         this.nubshow = false;
       } else if (item.target.value == 9999999) {
         this.downNumber = 9999999;
-        this.downNumbershow = "无限制";
+        this.downNumbershow = "\u65E0\u9650\u5236";
         this.nubshow = false;
       } else if (item.target.value == 0) {
         this.downNumbershow = "";
@@ -504,13 +474,13 @@ const _sfc_main = {
       this.select_6 = false;
       this.nubshow = true;
       this.downNumber = 10;
-      this.downNumbershow = "10次";
+      this.downNumbershow = "10\u6B21";
     },
     qhdwd() {
       this.select_3 = false;
       this.timeshow = true;
       this.downDay = "1";
-      this.downDayshow = "1天";
+      this.downDayshow = "1\u5929";
     },
     savePan(e) {
       this.select_1 = e;
@@ -519,7 +489,6 @@ const _sfc_main = {
         return;
       }
     },
-    //删除文件
     deleteItem(item, index) {
       this.fileListName = [...new Set(this.fileListName)];
       console.log(this.fileListName);
@@ -548,17 +517,10 @@ const _sfc_main = {
         this.allSize = 0;
       }
     }
-  },
-  computed: {
-    ...common_vendor.mapState({
-      // userFlowData: (store) =>
-      // 	 uni.getStorageSync("userFlowData") ?
-      // 	JSON.parse(store.state.userFlowData) : {},
-      userFlowData: (state) => common_vendor.index.getStorageSync("userFlowData") ? JSON.parse(state.userFlowData) : {}
-      // files: (state) => state.files,
-      // pro: (state) => state.progress,
-      // parentTOP: (state) => state.top,
-    }),
+  }),
+  computed: __spreadProps(__spreadValues({}, common_vendor.mapState({
+    userFlowData: (state) => common_vendor.index.getStorageSync("userFlowData") ? JSON.parse(state.userFlowData) : {}
+  })), {
     aKeyCopay() {
       let str = this.copyUrl;
       let code = this.pickUpCode;
@@ -567,15 +529,14 @@ const _sfc_main = {
         showName = this.fileList[0].name;
       }
       if (code == "xxxxxx") {
-        return "您有一份文件【" + showName + "】待查收！即刻点击链接获取：" + str;
+        return "\u60A8\u6709\u4E00\u4EFD\u6587\u4EF6\u3010" + showName + "\u3011\u5F85\u67E5\u6536\uFF01\u5373\u523B\u70B9\u51FB\u94FE\u63A5\u83B7\u53D6\uFF1A" + str;
       } else {
-        return "您有一份文件【" + showName + "】待查收！即刻点击链接获取：" + str + this.$t("la.pickUupCode") + code + " ( 有效期至 :" + this.overTime + " )";
+        return "\u60A8\u6709\u4E00\u4EFD\u6587\u4EF6\u3010" + showName + "\u3011\u5F85\u67E5\u6536\uFF01\u5373\u523B\u70B9\u51FB\u94FE\u63A5\u83B7\u53D6\uFF1A" + str + this.$t("la.pickUupCode") + code + " ( \u6709\u6548\u671F\u81F3 :" + this.overTime + " )";
       }
     },
     copyPickUpCode() {
       return this.pickUpCode;
     },
-    //计算高度
     getHeight() {
       let h = 0;
       if (this.load_2_show == 1) {
@@ -587,7 +548,7 @@ const _sfc_main = {
       }
       return h;
     }
-  },
+  }),
   mounted() {
     console.log(this.userFlowData);
     console.log("this.userFlowData");
@@ -608,7 +569,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return common_vendor.e({
     a: $data.load_2_show == 2
   }, $data.load_2_show == 2 ? common_vendor.e({
-    b: common_vendor.sr("fileInput2", "b63ae294-0"),
+    b: common_vendor.sr("fileInput2", "30ba4ef8-0"),
     c: common_vendor.o(($event) => $options.fileFunc($event)),
     d: common_vendor.p({
       ["file-mediatype"]: "all"
@@ -625,7 +586,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       }, item.thisType == "file" ? {} : {}, {
         d: item.thisType == "dir"
       }, item.thisType == "dir" ? {} : {}, {
-        e: common_vendor.t(item.name ? item.name : "未读取的"),
+        e: common_vendor.t(item.name ? item.name : "\u672A\u8BFB\u53D6\u7684"),
         f: item.dir
       }, item.dir ? {} : {}, {
         g: item.dir
@@ -635,7 +596,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         i: common_vendor.t(item.len)
       } : {}, {
         j: common_vendor.t($options.byTes(item.size)),
-        k: common_vendor.o(($event) => $options.deleteItem(item, index), index),
+        k: common_vendor.o(($event) => $options.deleteItem(item, index)),
         l: index
       });
     }),
@@ -658,7 +619,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       closeable: true,
       show: $data.nubshow,
       actions: $data.nubactions,
-      description: "选择下载次数",
+      description: "\u9009\u62E9\u4E0B\u8F7D\u6B21\u6570",
       closeOnClickAction: true
     }),
     v: !$data.select_3
@@ -677,7 +638,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       closeable: true,
       show: $data.timeshow,
       actions: $data.actions,
-      description: "选择有效期",
+      description: "\u9009\u62E9\u6709\u6548\u671F",
       closeOnClickAction: true
     }),
     F: $data.description,
@@ -728,5 +689,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   }) : {});
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-b63ae294"], ["__file", "C:/Users/Administrator/Desktop/peoject/Group-project/pageIndex/index/upload.vue"]]);
+var MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-30ba4ef8"], ["__file", "E:/Code/BeiJing-Digitalsee/Group-project/pageIndex/index/upload.vue"]]);
 wx.createPage(MiniProgramPage);

@@ -1,186 +1,186 @@
 /* 水平间距 */
 /* 水平间距 */
 /*页面尺寸基本设置*/
-page.data-v-6020ab87{width:100%;height:100%;box-sizing:border-box;font-family: "PingFang SC";font-style: normal;}
-image.data-v-6020ab87{
+page.data-v-5d2e0206{width:100%;height:100%;box-sizing:border-box;font-family: "PingFang SC";font-style: normal;}
+image.data-v-5d2e0206{
 	width: 100%;height: 100%;
 }
-.uni-popup__wrapper.uni-custom .uni-popup__wrapper-box.data-v-6020ab87{
+.uni-popup__wrapper.uni-custom .uni-popup__wrapper-box.data-v-5d2e0206{
 		background: none!important;
 }
-.page-root.data-v-6020ab87{
+.page-root.data-v-5d2e0206{
 	width:100%;min-height:100%;
 	display:flex;
 	flex-direction:column;
 	box-sizing:border-box;
 	background-color:#F7F7F7;
 }
-.page-tabbar-root.data-v-6020ab87{
+.page-tabbar-root.data-v-5d2e0206{
 	width:100%;height:100%;
 	display:flex;
 	flex-direction:column;
 	box-sizing:border-box;
 	justify-content:space-between;
 }
-.status-bar.data-v-6020ab87:before{/*顶部状态栏高度预留*/
+.status-bar.data-v-5d2e0206:before{/*顶部状态栏高度预留*/
 	content:'';
 	display:block;
 	height: var(--status-bar-height);
 	width:100%;
 	background-color:transparent;
 }
-.tab-component-page.data-v-6020ab87{display:flex;flex-direction:column;height:100%;}
+.tab-component-page.data-v-5d2e0206{display:flex;flex-direction:column;height:100%;}
 /*flex 弹性布局*/
-.me-fx-row.data-v-6020ab87{/*横向排列*/
+.me-fx-row.data-v-5d2e0206{/*横向排列*/
 	display:flex;
 }
-.me-fx-row-c.data-v-6020ab87{/*左右居中*/
+.me-fx-row-c.data-v-5d2e0206{/*左右居中*/
 	display:flex;
 	justify-content:center;
 }
-.me-fx-row-sb.data-v-6020ab87{/*两端对齐*/
+.me-fx-row-sb.data-v-5d2e0206{/*两端对齐*/
 	display:flex;
 	justify-content:space-between;
 }
-.me-fx-row-sb-c.data-v-6020ab87{/*两端对齐 上下居中*/
+.me-fx-row-sb-c.data-v-5d2e0206{/*两端对齐 上下居中*/
 	display:flex;
 	justify-content:space-between;
 	align-items:center;
 }
-.me-fx-row-sb-start.data-v-6020ab87{/*两端对齐 上对齐*/
+.me-fx-row-sb-start.data-v-5d2e0206{/*两端对齐 上对齐*/
 	display:flex;
 	justify-content:space-between;
 	align-items:flex-start;
 }
-.me-fx-row-sb-end.data-v-6020ab87{/*两端对齐 底部对齐*/
+.me-fx-row-sb-end.data-v-5d2e0206{/*两端对齐 底部对齐*/
 	display:flex;
 	justify-content:space-between;
 	align-items:flex-end;
 }
-.me-fx-row-sa.data-v-6020ab87{/*两端对齐右边距*/
+.me-fx-row-sa.data-v-5d2e0206{/*两端对齐右边距*/
 	display:flex;
 	justify-content:space-around;
 }
-.me-fx-row-sa-c.data-v-6020ab87{/*两端对齐右边距 上下居中*/
+.me-fx-row-sa-c.data-v-5d2e0206{/*两端对齐右边距 上下居中*/
 	display:flex;
 	justify-content:space-around;
 	align-items:center;
 }
-.me-fx-row-sa-end.data-v-6020ab87{/*两端对齐右边距 底部对齐*/
+.me-fx-row-sa-end.data-v-5d2e0206{/*两端对齐右边距 底部对齐*/
 	display:flex;
 	justify-content:space-around;
 	align-items:flex-end;
 }
-.me-fx-row-c-c.data-v-6020ab87{/*居中对齐 上下居中*/
+.me-fx-row-c-c.data-v-5d2e0206{/*居中对齐 上下居中*/
 	display:flex;
 	justify-content:center;
 	align-items:center;
 }
-.me-fx-row-c-end.data-v-6020ab87{/*居中对齐 底部对齐*/
+.me-fx-row-c-end.data-v-5d2e0206{/*居中对齐 底部对齐*/
 	display:flex;
 	justify-content:center;
 	align-items:flex-end;
 }
-.me-fx-row-end.data-v-6020ab87{/*右对齐*/
+.me-fx-row-end.data-v-5d2e0206{/*右对齐*/
 	display:flex;
 	justify-content:flex-end;
 }
-.me-fx-row-end-c.data-v-6020ab87{/*右对齐 上下居中*/
+.me-fx-row-end-c.data-v-5d2e0206{/*右对齐 上下居中*/
 	display:flex;
 	justify-content:flex-end;
 	align-items:center;
 }
-.me-fx-row-start-c.data-v-6020ab87{/*左对齐 上下居中*/
+.me-fx-row-start-c.data-v-5d2e0206{/*左对齐 上下居中*/
 	display:flex;
 	align-items:center;
 }
-.me-fx-row-start-end.data-v-6020ab87{/*左对齐 底部对齐*/
+.me-fx-row-start-end.data-v-5d2e0206{/*左对齐 底部对齐*/
 	display:flex;
 	align-items:flex-end;
 }
-.me-fx-col.data-v-6020ab87{/*纵向排列*/
+.me-fx-col.data-v-5d2e0206{/*纵向排列*/
 	display:flex;
 	flex-direction:column;
 }
-.me-fx-col-c.data-v-6020ab87{/*上下居中*/
+.me-fx-col-c.data-v-5d2e0206{/*上下居中*/
 	display:flex;
 	flex-direction:column;
 	justify-content:center;
 }
-.me-fx-col-sb.data-v-6020ab87{/*两端对齐*/
+.me-fx-col-sb.data-v-5d2e0206{/*两端对齐*/
 	display:flex;
 	flex-direction:column;
 	justify-content:space-between;
 }
-.me-fx-col-sb-c.data-v-6020ab87{/*两端对齐 左右居中*/
+.me-fx-col-sb-c.data-v-5d2e0206{/*两端对齐 左右居中*/
 	display:flex;
 	flex-direction:column;
 	justify-content:space-between;
 	align-items:center;
 }
-.me-fx-col-sa.data-v-6020ab87{/*两端对齐有边距*/
+.me-fx-col-sa.data-v-5d2e0206{/*两端对齐有边距*/
 	display:flex;
 	flex-direction:column;
 	justify-content:space-around;
 }
-.me-fx-col-sa-c.data-v-6020ab87{/*两端对齐有边距 左右居中*/
+.me-fx-col-sa-c.data-v-5d2e0206{/*两端对齐有边距 左右居中*/
 	display:flex;
 	flex-direction:column;
 	justify-content:space-around;
 	align-items:center;
 }
-.me-fx-col-c-c.data-v-6020ab87{/*上下左右居中*/
+.me-fx-col-c-c.data-v-5d2e0206{/*上下左右居中*/
 	display:flex;
 	flex-direction:column;
 	justify-content:center;
 	align-items:center;
 }
-.me-fx-col-start-c.data-v-6020ab87{/*上对齐 左右居中*/
+.me-fx-col-start-c.data-v-5d2e0206{/*上对齐 左右居中*/
 	display:flex;
 	flex-direction:column;
 	align-items:center;
 }
-.me-fx-col-end.data-v-6020ab87{/*下对齐*/
+.me-fx-col-end.data-v-5d2e0206{/*下对齐*/
 	display:flex;
 	flex-direction:column;
 	justify-content:flex-end;
 }
-.me-fx-col-end-c.data-v-6020ab87{/*下对齐 左右居中*/
+.me-fx-col-end-c.data-v-5d2e0206{/*下对齐 左右居中*/
 	display:flex;
 	flex-direction:column;
 	justify-content:flex-end;
 	align-items:center;
 }
-.me-fx-1.data-v-6020ab87{/*占满剩余空间*/
+.me-fx-1.data-v-5d2e0206{/*占满剩余空间*/
 	flex:1;
 }
 /*浮动布局*/
-.me-fot-parent.data-v-6020ab87:after{/*加在浮动元素的父元素上 解决因所有子元素浮动后父元素的高度问题*/
+.me-fot-parent.data-v-5d2e0206:after{/*加在浮动元素的父元素上 解决因所有子元素浮动后父元素的高度问题*/
 	content:'';
 	display:block;
 	clear:both;
 }
-.me-fot-lt.data-v-6020ab87{/*左浮动*/
+.me-fot-lt.data-v-5d2e0206{/*左浮动*/
 	float:left;
 }
-.me-fot-rt.data-v-6020ab87{/*右浮动*/
+.me-fot-rt.data-v-5d2e0206{/*右浮动*/
 	float:right;
 }
 /*其他常用样式*/
-.me-text-beyond.data-v-6020ab87{/*文本内容超宽度省略号显示 单行*/
+.me-text-beyond.data-v-5d2e0206{/*文本内容超宽度省略号显示 单行*/
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	width:100%;
 }
-.me-text-beyond-multi.data-v-6020ab87{/*文本内容超宽度省略号显示 多行*/
+.me-text-beyond-multi.data-v-5d2e0206{/*文本内容超宽度省略号显示 多行*/
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 2;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
-.pop-button.data-v-6020ab87 {
+.pop-button.data-v-5d2e0206 {
 	width: 520rpx;
 	height: 88rpx;
 	text-align: center;
@@ -192,7 +192,7 @@ image.data-v-6020ab87{
 	font-weight: 400;
 	font-size: 28rpx;
 }
-.pop-button-del.data-v-6020ab87 {
+.pop-button-del.data-v-5d2e0206 {
 	width: 520rpx;
 	height: 88rpx;
 	text-align: center;
@@ -204,34 +204,34 @@ image.data-v-6020ab87{
 	font-weight: 400;
 	font-size: 28rpx;
 }
-.mtop30.data-v-6020ab87 {
+.mtop30.data-v-5d2e0206 {
 	margin-top: 60rpx;
 }
-.mtop20.data-v-6020ab87 {
+.mtop20.data-v-5d2e0206 {
 	margin-top: 40rpx;
 }
-.mtop15.data-v-6020ab87 {
+.mtop15.data-v-5d2e0206 {
 	margin-top: 30rpx;
 }
-.mtop10.data-v-6020ab87 {
+.mtop10.data-v-5d2e0206 {
 	margin-top: 20rpx;
 }
-.mtop5.data-v-6020ab87 {
+.mtop5.data-v-5d2e0206 {
 	margin-top: 10rpx;
 }
-.mbot10.data-v-6020ab87 {
+.mbot10.data-v-5d2e0206 {
 	margin-bottom: 20rpx;
 }
-.mbot15.data-v-6020ab87 {
+.mbot15.data-v-5d2e0206 {
 	margin-bottom: 30rpx;
 }
-.mbot20.data-v-6020ab87 {
+.mbot20.data-v-5d2e0206 {
 	margin-bottom: 40rpx;
 }
-.mr5.data-v-6020ab87 {
+.mr5.data-v-5d2e0206 {
 	margin-right: 10rpx;
 }
-.uniPop.data-v-6020ab87 {
+.uniPop.data-v-5d2e0206 {
 	width:100vw;
 	background-color:#fff;
 	padding: 20rpx;
@@ -240,27 +240,27 @@ image.data-v-6020ab87{
 	border-top-right-radius: 40rpx;
 	padding-bottom:90rpx;
 }
-.wh30.data-v-6020ab87{
+.wh30.data-v-5d2e0206{
 	width: 60rpx;
 	height: 60rpx;
 }
-.wh24.data-v-6020ab87{
+.wh24.data-v-5d2e0206{
 	width: 48rpx;
 	height: 48rpx;
 }
-.searchCloud.data-v-6020ab87 {
+.searchCloud.data-v-5d2e0206 {
   width: 100%;
   height: 100vh;
   justify-content: center;
   background-color: #fff;
 }
-.fileListBox.data-v-6020ab87 {
+.fileListBox.data-v-5d2e0206 {
   height: calc(100% - 260rpx);
   overflow-y: auto;
   width: 100%;
   margin-bottom: 40rpx;
 }
-.fileListBox .fileItems.data-v-6020ab87 {
+.fileListBox .fileItems.data-v-5d2e0206 {
   padding: 20rpx 40rpx;
   box-sizing: border-box;
   display: flex;
@@ -268,11 +268,11 @@ image.data-v-6020ab87{
   height: 120rpx;
   width: 100%;
 }
-.fileListBox .fileItems .typeImg.data-v-6020ab87 {
+.fileListBox .fileItems .typeImg.data-v-5d2e0206 {
   width: 80rpx;
   height: 80rpx;
 }
-.fileListBox .fileItems .msg_box.data-v-6020ab87 {
+.fileListBox .fileItems .msg_box.data-v-5d2e0206 {
   width: 520rpx;
   height: 100%;
   display: flex;
@@ -281,7 +281,7 @@ image.data-v-6020ab87{
   padding-left: 20rpx;
   box-sizing: border-box;
 }
-.fileListBox .fileItems .msg_box .text_name.data-v-6020ab87 {
+.fileListBox .fileItems .msg_box .text_name.data-v-5d2e0206 {
   font-weight: 700;
   color: #333;
   margin-bottom: 6rpx;
@@ -291,20 +291,20 @@ image.data-v-6020ab87{
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-.fileListBox .fileItems .msg_box .text_date.data-v-6020ab87 {
+.fileListBox .fileItems .msg_box .text_date.data-v-5d2e0206 {
   font-size: 24rpx;
   color: #999;
 }
-.fileListBox .fileItems .moreBox.data-v-6020ab87 {
+.fileListBox .fileItems .moreBox.data-v-5d2e0206 {
   display: flex;
   align-items: center;
   height: 100%;
 }
-.fileListBox .fileItems .moreBox image.data-v-6020ab87 {
+.fileListBox .fileItems .moreBox image.data-v-5d2e0206 {
   width: 60rpx;
   height: 60rpx;
 }
-.fileListBox .wenxin.data-v-6020ab87 {
+.fileListBox .wenxin.data-v-5d2e0206 {
   text-align: center;
   margin-top: 20rpx;
   margin-bottom: 40rpx;
@@ -312,11 +312,11 @@ image.data-v-6020ab87{
   color: #999999;
   font-size: 24rpx;
 }
-.cloudPop.data-v-6020ab87 {
+.cloudPop.data-v-5d2e0206 {
   height: 702rpx;
   width: 100%;
 }
-.cloudPop .top.data-v-6020ab87 {
+.cloudPop .top.data-v-5d2e0206 {
   padding: 10rpx 40rpx;
   box-sizing: border-box;
   display: flex;
@@ -325,34 +325,34 @@ image.data-v-6020ab87{
   width: 100%;
   border-bottom: 2rpx solid #e8e6e6;
 }
-.cloudPop .top .msg_box.data-v-6020ab87 {
+.cloudPop .top .msg_box.data-v-5d2e0206 {
   width: 520rpx;
   height: 100%;
   padding-left: 20rpx;
   box-sizing: border-box;
   margin-bottom: 20rpx;
 }
-.cloudPop .top .msg_box .text1.data-v-6020ab87 {
+.cloudPop .top .msg_box .text1.data-v-5d2e0206 {
   font-weight: 700;
   color: #333;
   margin-bottom: 6rpx;
   width: 100%;
   font-size: 28rpx;
 }
-.cloudPop .top .msg_box .text2.data-v-6020ab87 {
+.cloudPop .top .msg_box .text2.data-v-5d2e0206 {
   font-size: 24rpx;
   color: #999;
 }
-.cloudPop .top .closeIcon.data-v-6020ab87 {
+.cloudPop .top .closeIcon.data-v-5d2e0206 {
   position: fixed;
   right: 20rpx;
   top: 20rpx;
 }
-.cloudPop .top .closeIcon image.data-v-6020ab87 {
+.cloudPop .top .closeIcon image.data-v-5d2e0206 {
   width: 60rpx;
   height: 60rpx;
 }
-.renameTitle.data-v-6020ab87 {
+.renameTitle.data-v-5d2e0206 {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -360,16 +360,16 @@ image.data-v-6020ab87{
   border-bottom: 2rpx solid #eeeeee;
   padding-bottom: 20rpx;
 }
-.renameTitle image.data-v-6020ab87 {
+.renameTitle image.data-v-5d2e0206 {
   width: 60rpx;
   height: 60rpx;
 }
-.renameTitle .title.data-v-6020ab87 {
+.renameTitle .title.data-v-5d2e0206 {
   color: #666666;
   font-weight: 400;
   font-size: 32rpx;
 }
-.renameTitle .sure.data-v-6020ab87 {
+.renameTitle .sure.data-v-5d2e0206 {
   width: 114rpx;
   height: 64rpx;
   border: 2rpx solid #3679FF;
@@ -380,7 +380,7 @@ image.data-v-6020ab87{
   text-align: center;
   line-height: 64rpx;
 }
-.renameText.data-v-6020ab87 {
+.renameText.data-v-5d2e0206 {
   width: 670rpx;
   height: 100rpx;
   background: #F3F4F5;
@@ -394,11 +394,11 @@ image.data-v-6020ab87{
   line-height: 40rpx;
   text-indent: 20rpx;
 }
-.renameText input.data-v-6020ab87 {
+.renameText input.data-v-5d2e0206 {
   margin-top: 10rpx;
   padding-left: 20rpx;
 }
-.delTitle.data-v-6020ab87 {
+.delTitle.data-v-5d2e0206 {
   text-align: center;
   height: 100rpx;
   position: relative;
@@ -408,20 +408,20 @@ image.data-v-6020ab87{
   font-weight: 400;
   font-size: 32rpx;
 }
-.delTitle image.data-v-6020ab87 {
+.delTitle image.data-v-5d2e0206 {
   width: 60rpx;
   height: 60rpx;
   position: absolute;
   right: 10rpx;
   top: 20rpx;
 }
-.toDel.data-v-6020ab87 {
+.toDel.data-v-5d2e0206 {
   color: #666666;
   text-align: center;
   padding: 70rpx 0;
   font-size: 28rpx;
 }
-.breadCrum.data-v-6020ab87 {
+.breadCrum.data-v-5d2e0206 {
   display: flex;
   font-weight: 400;
   font-size: 24rpx;

@@ -1,39 +1,29 @@
 "use strict";
-const common_vendor = require("../../common/vendor.js");
-const utils_base = require("../../utils/base.js");
-const utils_api = require("../../utils/api.js");
-const common_assets = require("../../common/assets.js");
+var common_vendor = require("../../common/vendor.js");
+var utils_base = require("../../utils/base.js");
+var utils_api = require("../../utils/api.js");
+var common_assets = require("../../common/assets.js");
 require("../../utils/http.js");
 require("../../utils/index1.js");
 const _sfc_main = {
   data() {
     return {
       showPage: true,
-      // showRename:false,//显示重命名
-      // showDel: false,//显示删除
       resetName: "",
       listItem: {
         name: "",
         size: "",
         fileClass: ""
       },
-      //单个点击数据
       selectItemsAry: [],
       button_2: 0,
       button_3: "",
-      //密码
       passwordShow: false,
-      //密码显示切换，显示/隐藏
       button_5: "",
-      //文件说明
       downNumber: 10,
-      //下载次数
       downDay: 1,
-      //剩余分享时间,默认1天
       button_4: 0,
-      //是否能够预览
       button_1: 0,
-      //分享流量
       fileListAllNum: 0,
       code: "",
       overTime: "",
@@ -47,7 +37,7 @@ const _sfc_main = {
       if (this.selectItemsAry.length == 0) {
         common_vendor.index.showToast({
           icon: "none",
-          title: "请选择文件"
+          title: "\u8BF7\u9009\u62E9\u6587\u4EF6"
         });
         return;
       }
@@ -81,7 +71,7 @@ const _sfc_main = {
       if (filesize == 0 || isShow == true) {
         common_vendor.index.showToast({
           icon: "none",
-          title: "空文件不能分享"
+          title: "\u7A7A\u6587\u4EF6\u4E0D\u80FD\u5206\u4EAB"
         });
         return;
       }
@@ -112,7 +102,7 @@ const _sfc_main = {
       await utils_api.sendEmailAndSMS(transferGuid);
       if (val == 1) {
         console.log(this.shareUrl);
-        common_vendor.index.showToast({ title: "创建分享成功！" });
+        common_vendor.index.showToast({ title: "\u521B\u5EFA\u5206\u4EAB\u6210\u529F\uFF01" });
         console.log(this.selectItemsAry);
         console.log(this.listName);
         this.$refs.sharePop.close();
@@ -121,7 +111,7 @@ const _sfc_main = {
     },
     changeBtn() {
       if (!this.button_5) {
-        this.button_5 = "传输文件描述（选填）...";
+        this.button_5 = "\u4F20\u8F93\u6587\u4EF6\u63CF\u8FF0\uFF08\u9009\u586B\uFF09...";
         let timeId = setTimeout(() => {
           this.button_5 = "";
           clearTimeout(timeId);
@@ -226,12 +216,12 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     w: common_vendor.o((...args) => $options.switch4Change && $options.switch4Change(...args)),
     x: common_assets._imports_3$1,
     y: common_vendor.p({
-      content: "对方下载时使用您的流量"
+      content: "\u5BF9\u65B9\u4E0B\u8F7D\u65F6\u4F7F\u7528\u60A8\u7684\u6D41\u91CF"
     }),
     z: $data.button_1 == 0,
     A: common_vendor.o((...args) => $options.switch1Change && $options.switch1Change(...args)),
     B: common_vendor.o(($event) => $options.multiplcShareFunc(1)),
-    C: common_vendor.sr("sharePop", "bf7b3d1f-0"),
+    C: common_vendor.sr("sharePop", "1ed83ac0-0"),
     D: common_vendor.o($options.closeShare),
     E: common_vendor.p({
       type: "bottom",
@@ -240,5 +230,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   });
 }
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-bf7b3d1f"], ["__file", "C:/Users/Administrator/Desktop/peoject/Group-project/pageIndex/components/shareSetting.vue"]]);
+var Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-1ed83ac0"], ["__file", "E:/Code/BeiJing-Digitalsee/Group-project/pageIndex/components/shareSetting.vue"]]);
 wx.createComponent(Component);

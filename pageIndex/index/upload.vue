@@ -134,6 +134,8 @@
 					开始上传
 				</view>
 			</view>
+      
+      
 			<!--弹出层:更多设置 开始-->
 			<view>
 				<van-popup :show="show" closeable close-icon-position="top-right" :close-on-click-overlay="true"

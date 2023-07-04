@@ -9,9 +9,12 @@
 			<text @click="titleChange(2)" :class="{ active:2===number}">我的收集</text>
 		</view>
     <view>
+
       <view class="myShare" v-show="0===number">
         <share ref="shareRef"></share>
       </view>
+
+
       <view class="myCloud" v-show="1===number">
         <view class="cloud_top" v-if="!isSelectAll" :class="{padTopTitle:isShowTitle == false}">
           <view class="search" @click="searchClick">
@@ -45,7 +48,7 @@
                 <text class="text_name">{{ item.folderName }}</text>
                 <text class="text_date">{{ dateFormate(item.createDate) }} | {{ byTes(item.folderSize) }}</text>
               </view>
-              <view v-if="!isSelectAll" class="moreBox" @click="getDetail(item)">
+             <view v-if="!isSelectAll" class="moreBox" @click="getDetail(item)">
                 <image src="@/static/ellipsis.svg" mode="" style="width: 60rpx;height: 60rpx;"></image>
               </view>
               <view v-else class="moreBox">
@@ -63,7 +66,7 @@
                 <text class="text_name">{{ item.fileName }}</text>
                 <text class="text_date">{{ dateFormate(item.createDate) }} | {{ byTes(item.fileSize) }}</text>
               </view>
-              <view v-if="!isSelectAll" class="moreBox" @click="getDetail(item)">
+             <view v-if="!isSelectAll" class="moreBox" @click="getDetail(item)">
                 <image src="@/static/ellipsis.svg" mode="" style="width: 60rpx;height: 60rpx;"></image>
               </view>
               <view v-else class="moreBox">
@@ -77,9 +80,12 @@
           </view>
         </view>
       </view>
+
+
       <view class="myCollect" v-show="2===number">
         345
       </view>
+
     </view>
     <indexPop ref="indexPop" @getCreateData="createData"></indexPop>
     <shareSetting ref="selectRef"></shareSetting>
@@ -123,6 +129,7 @@
       </uni-popup>
     </view>
     <tabber v-if="!isSelectAll" pagePath="/pageIndex/index/index"></tabber>
+
     <view class="footerNav" v-if="isSelectAll && number==1" style="position: fixed;bottom: 80rpx;">
       <view class="fot">
         <image src="@/static/down.svg" mode=""></image>
@@ -493,7 +500,6 @@
         this.$refs.sortPop.close();
       },
       titleChange(index) {
-        console.log(index)
         this.number = index;
       },
       bodyCloseSelected() {
@@ -653,9 +659,9 @@
       }
     }
 
-    // .myShare {
-    // 	margin-top: 120rpx;
-    // }
+    .myShare {
+    	margin-top: 120rpx;
+    }
     .myCloud {
       height: 100vh;
 

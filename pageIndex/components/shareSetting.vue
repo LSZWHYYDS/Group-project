@@ -8,11 +8,11 @@
 						<image @click="closeShare" src="@/static/close.svg" mode=""></image>
 					</view>
 					<view class="shareSet">
-<!-- 						<view class="fileDes">
+						<view class="fileDes">
 							<text>文件主题</text>
 							<text>20字</text>
 						</view>
-						<textarea @blur="bindTextAreaBlur" maxlength="20" placeholder-style="font-size: 26rpx;color: #999999;font-weight: 400;" placeholder="给分享文件起个名字咯~" style="height:120rpx;" /> -->
+						<textarea @blur="bindTextAreaBlur" maxlength="20" placeholder-style="font-size: 26rpx;color: #999999;font-weight: 400;" placeholder="给分享文件起个名字咯~" style="height:120rpx;" />
 						<view class="fileDes">
 							<text>文件说明</text>
 							<text>100字</text>
@@ -79,11 +79,13 @@
 				</view>
 			</uni-popup>
 		</view>
+    <createShare ref="createShareRef"/>
 	</view>
 </template>
 
 <script>
 	import { urlOSS } from '@/utils/base.js'
+  import createShare from '../index/components/create-share.vue'
 	import {
 		bytesToSize,
 		getSuffix,
@@ -129,6 +131,7 @@
 			}
 		},
 		components: {
+      createShare
 		},
 		methods: {
 			async multiplcShareFunc(val){
@@ -139,13 +142,10 @@
 					})
 					return
 				}
-				console.log(this.superFolder)
-				console.log(this.selectItemsAry)
 				let data = {};
 				let fileIdList = [];
 				let folderIdList = [];
 				let fileNum = this.selectItemsAry.length;
-				console.log(fileNum)
 				if (fileNum == 0) return;
 				let filesize = 0;
 				let isShow = false;
@@ -165,7 +165,7 @@
 						return;
 					  }
 					}
-				});					  
+				});
 			   //参数注入
 				// this.allSize = filesize + "";
 				data.filesSize = filesize;
@@ -176,7 +176,7 @@
 						title: "空文件不能分享"
 					})
 					return;
-				  }	  
+				  }
 				  //新增参数(下载次数/有效期/是否设置密码/密码/是否允许预览/提供下载流量/文件描述)
 				  data.downloadLimit = this.downNumber;
 				  data.downDay = this.downDay;
@@ -184,7 +184,7 @@
 				  data.pass = this.button_3;
 				  data.enablePreview = this.button_4;
 				  data.shareFlow = this.button_1;
-				  data.description = this.button_5;  
+				  data.description = this.button_5;
 					let transfersVO = data;
 				  const ever = await everBoxShare({
 					transfersVO,
@@ -192,7 +192,6 @@
 					folderIdList,
 					superFolder: 0,
 				  });
-				console.log(ever.data);
 				if (ever.data.code == 1) {
 					uni.showToast({icon: "none",title: res.data.msg})
 					return;
@@ -205,36 +204,20 @@
 				await sendEmailAndSMS(transferGuid); //上传完成发送邮件或者手机号通知
 				  if(val == 1){
 					// this.show = false;
-					console.log(this.shareUrl)
-					uni.showToast({title: "创建分享成功！"})
 					// if(this.selectItemsAry[0].folderName) {
 					//   this.listName = this.selectItemsAry[0].folderName;
 					// }else{
 					//   this.listName = this.selectItemsAry[0].fileName;
 					// }
-					console.log(this.selectItemsAry)
-					console.log(this.listName)
+
 					// this.showCopy = true;
 					this.$refs.sharePop.close();
+          this.$refs.createShareRef.open();
+
+
+
 				  }
 				  return
-				console.log(this.selectItemsAry)
-				console.log('selectItemsAry')
-				console.log('button_5')
-				console.log(this.button_5)
-				console.log('button_2')
-				console.log(this.button_2)
-				console.log('button_3')
-				console.log(this.button_3)
-				console.log('下载次数')
-				console.log(this.downNumber)				
-				console.log('时间')
-				console.log(this.downDay)
-				console.log('button_4')
-				console.log(this.button_4)
-				console.log('button_1')
-				console.log(this.button_1)
-				
 			},
 			changeBtn(){
 				if(!this.button_5){
@@ -286,6 +269,7 @@
 				this.button_1 = 0;
 			},
 			closeShare(){
+        console.log('test')
 				this.resetDate()
 				this.$refs.sharePop.close();
 			},

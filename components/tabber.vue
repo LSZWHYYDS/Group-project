@@ -115,9 +115,6 @@
 				// this.fileFunc(e)
 			},
 			changeTab(item) {
-				console.log(item.pagePath)
-				console.log(this.pagePath)
-				console.log(111)
 				if(item.pagePath) {
 					this.$emit("pagePath", JSON.stringify(item.pagePath))
 					uni.reLaunch({

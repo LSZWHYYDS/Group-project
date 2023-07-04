@@ -1,6 +1,6 @@
 <template>
 	<view class="container">
-			<view class="myCloud" style="display:none;">
+		<view class="myCloud" >
 				<view class="cloud_top" v-if="!isSelectAll" :class="{padTopTitle:isShowTitle == false}">
 					<view class="search" @click="searchClick">
 						<image src="../img/searchSl.svg"></image>
@@ -71,7 +71,7 @@
 				<text>删除</text>
 			</view>
 		</view>
-	</view>
+  </view>
 </template>
 
 <script>
@@ -133,8 +133,6 @@
 				defaultSort: true, //
 				showPage:false,
 			}
-		},
-		onLoad() {
 		},
 		components: {
 			tabber,
@@ -337,15 +335,14 @@
 			},
 			openNewListData(res) {
 			  let flodersList = res.data.data.foldersList;
-			  // console.log(this.timeDate);
+
 			  flodersList.forEach((item) => {
 				item.select = false;
 				item.moveType = "2";
 				item.utilsType = false;
 				let day11 = this.$options.filters["timedown"](item.createDate);
 				let daynum = this.$options.filters["timedownnum"](item.createDate);
-				// console.log(day11);
-				// console.log(item.createDate);
+
 				if (daynum == true) {
 				  let timeHH = this.$options.filters["timedownshow"](item.createDate); //小时
 				  let timeMM = this.$options.filters["timedownshowmm"](item.createDate); //分钟
@@ -532,7 +529,7 @@
 			  pageSize: 1000,
 			});
 			if (file.data.code == 0) {
-			  await this.openNewListData(file);
+			  // await this.openNewListData(file);
 			}
 
 		},
@@ -560,7 +557,7 @@
 				display: flex;
 				justify-content: space-between;
 				position: fixed;
-				margin-top: 120rpx;
+				// margin-top: 120rpx;
 				background:#fff;
 				.search {
 					width: 510rpx;

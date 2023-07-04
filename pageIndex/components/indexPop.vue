@@ -142,7 +142,7 @@
 				console.log('button_3')
 				console.log(this.button_3)
 				console.log('下载次数')
-				console.log(this.downNumber)				
+				console.log(this.downNumber)
 				console.log('时间')
 				console.log(this.downDay)
 				console.log('button_4')

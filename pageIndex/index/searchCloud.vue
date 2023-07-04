@@ -7,7 +7,8 @@
 			<view class="breadCrum"  v-if="searchFloList.length+searchFileList.length > 0 || breadCrumList.length>0" >
 				<text style="color:#333333" @click="searchChange()">全部 </text>
 				<template v-for="(item, index) of breadCrumList" :key="index">
-					<view class="" style="color:#717E98;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;" @click="breadFunc(item, index)">
+					<view class="" style="color:#717E98;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;" 
+          @click="breadFunc(item, index)">
 						> {{ item.folderName }}
 					</view>
 				</template>

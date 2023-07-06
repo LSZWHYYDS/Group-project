@@ -18,7 +18,6 @@
 </template>
 
 <script>
-
 	import { mailLogin,wxLogin,wxappletLogin} from '@/utils/api.js'//具体根据你项目的路径修改
 	import navbar from '@/components/NavBer.vue'//具体根据你项目的路径修改
 	var _self;

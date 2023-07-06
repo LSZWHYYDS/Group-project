@@ -210,7 +210,6 @@
       }
     },
     onLoad() {
-      console.log('测试log')
     },
     components: {
       tabber,

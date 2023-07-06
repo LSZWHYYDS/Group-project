@@ -50,7 +50,6 @@
        * @description 点击分享到好友
        * */
       shareToFriend() {
-        console.log(2);
       },
       /**
        * @description 拷贝链接

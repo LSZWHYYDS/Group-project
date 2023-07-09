@@ -79,7 +79,7 @@
 				</view>
 			</uni-popup>
 		</view>
-    <createShare ref="createShareRef"/>
+    <createShare ref="createShareRef" :shareLink="shareUrl" v-if="shareUrl" />
 	</view>
 </template>
 
@@ -127,7 +127,6 @@
 				overTime:'',
 				shareUrl: "",
 				superFolder:0,
-
 			}
 		},
 		components: {
@@ -213,9 +212,6 @@
 					// this.showCopy = true;
 					this.$refs.sharePop.close();
           this.$refs.createShareRef.open();
-
-
-
 				  }
 				  return
 			},
@@ -269,12 +265,9 @@
 				this.button_1 = 0;
 			},
 			closeShare(){
-        console.log('test')
 				this.resetDate()
 				this.$refs.sharePop.close();
 			},
-		},
-		mounted() {
 		}
 	}
 </script>

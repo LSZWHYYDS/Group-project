@@ -9,6 +9,7 @@
     "axios-miniprogram-adapter": "^0.3.5",
     "lodash-es": "^4.17.21",
     "qs": "^6.11.1",
+    "uqrcodejs": "^4.0.7",
     "vuex": "^3.4.0"
   }
 }

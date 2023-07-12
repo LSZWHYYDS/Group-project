@@ -1,5 +1,5 @@
 <template>
-	<uni-popup v-show="isShow" ref="popup" :safe-area="false" type="bottom"  style="z-index:99999;" @maskClick="maskClose" @close="close">
+	<uni-popup ref="popup" :safe-area="false" type="bottom"  style="z-index:99999;" @maskClick="maskClose" @close="close">
 		<!-- <uni-popup-share></uni-popup-share> -->
 		<view class="uniPop">
 			<slot></slot>
@@ -11,7 +11,6 @@
 	export default {
 		data() {
 			return {
-				isShow:true,
 			};
 		},
 		methods: {
@@ -22,20 +21,9 @@
 				this.$emit('maskClose')
 			},
 			close(){
-				this.isShow = false
+        this.$refs.popup.close()
 			},
 		},
-		// computed: {
-		// 	...mapState({
-		// 		showFilePop: (state) => state.showFilePop,
-		// 	}),
-		// },
-		// watch: {
-		// 	showFilePop(val){
-		// 		console.log(val)
-		// 		console.log(2222222222222)
-		// 	}
-		// },
 	}
 
 </script>

@@ -10,12 +10,12 @@
 		</view>
     <view>
 
-      <view class="myShare" v-show="0===number">
+      <view class="myShare" v-if="0===number">
         <share ref="shareRef"></share>
       </view>
 
 
-      <view class="myCloud" v-show="1===number">
+      <view class="myCloud" v-if="1===number">
         <view class="cloud_top" v-if="!isSelectAll" :class="{padTopTitle:isShowTitle == false}">
           <view class="search" @click="searchClick">
             <image src="../img/searchSl.svg"></image>
@@ -44,14 +44,14 @@
           <view>
             <view class="fileItems" v-for="(item, index) of flodersList" :key=index>
               <image @click="goFolder(item)" class="typeImg" src="@/static/type_1.svg" mode=""></image>
-              <view @click="goFolder(item)" class="msg_box">
+           <view @click="goFolder(item)" class="msg_box">
                 <text class="text_name">{{ item.folderName }}</text>
                 <text class="text_date">{{ dateFormate(item.createDate) }} | {{ byTes(item.folderSize) }}</text>
               </view>
-             <view v-if="!isSelectAll" class="moreBox" @click="getDetail(item)">
+            <view v-if="!isSelectAll" class="moreBox" @click="getDetail(item)">
                 <image src="@/static/ellipsis.svg" mode="" style="width: 60rpx;height: 60rpx;"></image>
               </view>
-              <view v-else class="moreBox">
+            <view v-else class="moreBox">
                 <image v-if="!item.select" @click="delItemsFunc(item)" src="@/static/active_not.svg" mode=""></image>
                 <image v-else @click="selectItemFunc(item)" src="@/static/active_check.svg" mode=""></image>
               </view>
@@ -62,11 +62,11 @@
               <image v-if="item.fileClass == 'image'" class="typeImg" src="@/static/type_3.svg" mode=""></image>
               <image v-if="item.fileClass == 'video'" class="typeImg" src="@/static/type_2.svg" mode=""></image>
               <image v-if="item.fileClass == 'file'" class="typeImg" src="@/static/type_4.svg" mode=""></image>
-              <view class="msg_box">
+             <view class="msg_box">
                 <text class="text_name">{{ item.fileName }}</text>
                 <text class="text_date">{{ dateFormate(item.createDate) }} | {{ byTes(item.fileSize) }}</text>
               </view>
-             <view v-if="!isSelectAll" class="moreBox" @click="getDetail(item)">
+            <view v-if="!isSelectAll" class="moreBox" @click="getDetail(item)">
                 <image src="@/static/ellipsis.svg" mode="" style="width: 60rpx;height: 60rpx;"></image>
               </view>
               <view v-else class="moreBox">
@@ -82,8 +82,8 @@
       </view>
 
 
-      <view class="myCollect" v-show="2===number">
-        345
+      <view class="myCollect" v-if="2 === number">
+        <collect></collect>
       </view>
 
     </view>
@@ -152,6 +152,7 @@
   import shareSetting from "@/pageIndex/components/shareSetting.vue";
   import share from "@/pageIndex/myShare/myShare.vue";
   import progressBar from '@/components/liu-progressbar/liu-progressbar.vue'
+  import collect from './collect/collect.vue'
   import {
     bytesToSize,
     getSuffix,
@@ -216,7 +217,8 @@
       indexPop,
       shareSetting,
       share,
-      progressBar
+      progressBar,
+      collect
     },
     created() {
       uni.hideKeyboard();
@@ -660,6 +662,9 @@
 
     .myShare {
     	margin-top: 120rpx;
+    }
+    .myCollect{
+      margin-top: 120rpx;
     }
     .myCloud {
       height: 100vh;

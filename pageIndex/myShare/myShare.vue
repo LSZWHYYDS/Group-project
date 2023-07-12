@@ -1,6 +1,6 @@
 <template>
 	<view class="container">
-		<view class="myCloud" >
+		<view class="myCloud">
 				<view class="cloud_top" v-if="!isSelectAll" :class="{padTopTitle:isShowTitle == false}">
 					<view class="search" @click="searchClick">
 						<image src="../img/searchSl.svg"></image>
@@ -96,7 +96,8 @@
 		getOssToken,
 		getUserFlow,
 		getEverboxList,
-		batchDelete
+		batchDelete,
+    getMyShareHistory
 	} from '@/utils/api.js' //具体根据你项目的路径修改
 	import {
 		client,
@@ -531,6 +532,10 @@
 			if (file.data.code == 0) {
 			  // await this.openNewListData(file);
 			}
+
+      const shareHistory = await getMyShareHistory()
+
+      this.filezonglist = shareHistory.data.data
 
 		},
 	}

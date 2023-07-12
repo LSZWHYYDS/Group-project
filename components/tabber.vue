@@ -20,7 +20,7 @@
 				<view class="addFiles">
 					<view class="titleFile">
 						<!-- <uni-file-picker v-model="uploadList" file-mediatype="all"  @select="uploadSelect($event)"> -->
-							<view class="titleStl">
+							<view class="titleStl" @click="navigateToSendFile">
 								<image class="wh30" src="@/static/sendFile.svg" mode=""></image>
 									<text class="mtop5">发文件</text>
 							</view>
@@ -40,7 +40,7 @@
 					</view>
 					<view class="closeStl"  @click="closePop">
 						<image src="@/static/closeRed.svg" mode=""></image>
-					</view>	
+					</view>
 				</view>
 			</filePop>
 		</view>
@@ -98,21 +98,11 @@
 					}
 				})
 			},
-			getCode(){
-				console.log(111)
-			},
+			getCode(){},
 			uploadSelect(e, type) {
-				console.log(e)
-				return
-				// uni.navigateTo({
-				// 	url: "/pageUpload/upload/upload?list=" + JSON.stringify(e.tempFiles)
-				// })
-				console.log(990)
 				uni.navigateTo({
 					url: "/pageUpload/upload/upload?list=" + JSON.stringify(e.tempFiles)
 				})
-				// this.load_2_show = 2;
-				// this.fileFunc(e)
 			},
 			changeTab(item) {
 				if(item.pagePath) {
@@ -129,6 +119,12 @@
 			closePop(){
 				this.showPage = false
 			},
+
+      navigateToSendFile(){
+        uni.navigateTo({
+        	url:'/pages/sendFile/sendFile'
+        })
+      }
 		}
 	}
 </script>
@@ -199,7 +195,7 @@
 		justify-content: space-around;
 		align-items: flex-start;
         height: 168rpx;
-		
+
 		box-sizing: border-box;
 		background-color: #fff;
 		left: 0;

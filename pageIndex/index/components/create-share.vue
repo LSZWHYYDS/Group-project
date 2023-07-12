@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <view @touchmove.prevent.stop>
     <uni-popup ref="popup" type="bottom" :mask-click="false" :safe-area="false" class="create-share-popup">
       <view class="qr-bg">
         <text class="text-placeholder">扫码查看好友分享的文件</text>
         <!-- *****不能把 type=“2d” ，不然无法绘制图形，如果要使用同一个 canvas，可以通过填空字符串实现。 -->
         <canvas type="" id="qrcode" canvas-id="qrcode" style="width: 200px;height: 200px;"></canvas>
       </view>
-      <div class="inner-box">
+      <view class="inner-box">
         <view class="share-mode-box">
           <button class="wrapper-btn" open-type="share">
             <view class="wechat">
@@ -33,9 +33,9 @@
 
         </view>
         <button class="close-btn" type="default" @tap="closePopup">关闭</button>
-      </div>
+        </view>
     </uni-popup>
-  </div>
+  </view>
 </template>
 
 <script>
@@ -90,12 +90,9 @@
         let that = this;
         //   })
         uni.canvasToTempFilePath({
-          destWidth: 100,
-          destHeight: 100,
           canvasId: 'qrcode',
           success: function(res) {
             let data = res.tempFilePath
-            console.log(res)
             uni.saveImageToPhotosAlbum({
               filePath: res.tempFilePath,
               success: function() {
@@ -107,7 +104,7 @@
               }
             });
           },
-        },that)
+        }, that)
       },
       /**
        * @description 生成二维码
@@ -119,6 +116,7 @@
         qr.data = this.shareLink;
         // 设置二维码大小，必须与canvas设置的宽高一致
         qr.size = 200;
+        qr.margin = 10;
         // 调用制作二维码方法
         qr.make();
         // 获取canvas上下文
@@ -141,6 +139,7 @@
 
   .create-share-popup {
     .qr-bg {
+      position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;

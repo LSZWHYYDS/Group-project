@@ -14,7 +14,6 @@
         <share ref="shareRef"></share>
       </view>
 
-
       <view class="myCloud" v-if="1===number">
         <view class="cloud_top" v-if="!isSelectAll" :class="{padTopTitle:isShowTitle == false}">
           <view class="search" @click="searchClick">

@@ -32,7 +32,6 @@ axios.defaults.adapter = mpAdapter;
 axios.interceptors.request.use(
 	config => {
 		let Authorization = uni.getStorageSync('token');
-		console.log(Authorization)
 		let u = config.url;
 		config.headers['Authorization'] = Authorization
 		// if (takeTokenArray.some(item => u.indexOf(item) > -1)) {

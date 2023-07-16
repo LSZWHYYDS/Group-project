@@ -96,6 +96,8 @@
 
 <style lang="scss" scoped>
    .moreSetting {
+      position: relative;
+      z-index: 10;
       height: 680rpx;
       background-color: #fff;
       border-top-right-radius: 30rpx;

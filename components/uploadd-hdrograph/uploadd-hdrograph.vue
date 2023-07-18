@@ -5,7 +5,7 @@
             <text class="text">{{modelVale1}}<text class="unit">%</text></text>
             <text>{{ uploadSpeedResult }}</text>
          </view>
-         <view class="" v-else>
+         <view v-else>
             <image src="../../static/correct.png" class="correct"></image>
          </view>
       </l-liquid>
@@ -16,42 +16,43 @@
    import {
       ref,
       defineComponent,
+      getCurrentInstance,
       computed,
-      onMounted
+      onMounted,
+      toRef
    } from '../l-liquid/vue';
    let timer
-   export default defineComponent({
+   export default {
       setup() {
+         const {  proxy, ctx } = getCurrentInstance()
+         const _this = ctx
+
          const target1 = ref(4)
          const modelVale1 = ref(20)
          const uploadSpeed = ref(1.01)
-
-         const onClick = number => {
-            target1.value = Math.max(Math.min(100, target1.value + number), 0)
-         }
+         const uploadHdrographRef = ref(null)
 
          const uploadSpeedResult = computed(() => {
             return `${uploadSpeed.value} MB/s`
          })
 
+         const onClick = number => {
+            target1.value = Math.max(Math.min(100, target1.value + number), 0)
+         }
+
          onMounted(() => {
-            // timer = setInterval(()=>{
-            //    // target1.value = Math.max(Math.min(100, target1.value + 1), 0)
-            //    target1.value ++ ;
-            //    if(target1.value >= 100){
-            //       clearInterval(timer)
-            //    }
-            // },1000)
+            uploadHdrographRef.value = _this
          })
 
          return {
             target1,
             modelVale1,
             uploadSpeedResult,
-            onClick
+            onClick,
+            uploadHdrographRef: toRef(uploadHdrographRef)
          }
       }
-   })
+   }
 </script>
 
 <style lang="scss">

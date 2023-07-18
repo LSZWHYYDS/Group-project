@@ -69,7 +69,7 @@
       </view>
       <!-- 上传的水位图组件 -->
       <view class="hdrograph" v-else>
-         <UploaddHdrograph ref="uploadHdrograph" />
+         <UploaddHdrograph ref="uploadHdrographRef" />
          <view class="upload-info">
             <text class="text">正在上传</text>
             <text class="text space">{{uploadProgressInfo.totalUploadCount}}</text>
@@ -104,29 +104,32 @@
          UploaddHdrograph
       },
       mounted() {
-         this.$watch(
-            () => {
-               console.log('子组件的值');
-               console.log(this.$refs.uploadHdrograph);
-               // return this.$refs.target1
-            },
-            (val) => {
-               alert('$watch $refs.<name>.<data>: ' + val)
-            }
-         )
-
+         // console.log(this.$refs.uploadHdrograph);
+         // setTimeout(() => {
+         //    this.$watch(
+         //       () => {
+         //          console.log('子组件的值');
+         //          console.log(this.$refs.uploadHdrograph);
+         //          return this.$refs.uploadHdrograph.target1
+         //       },
+         //       (val) => {
+         //          alert('$watch $refs.<name>.<data>: ' + val)
+         //       }
+         //    )
+         // })
       },
       data() {
          return {
             downloadNumber: 0,
             periodNumber: 0,
             isShowHdrograph: false,
+            // 上传
             uploadProgressInfo: {
                totalUploadCount: 100,
                currentUploadCount: 100,
                uploadSize: 10
             },
-            fileData: []
+            fileData: [],
          }
       },
       methods: {
@@ -166,7 +169,18 @@
          handleUpload() {
             this.isShowHdrograph = true
          }
+      },
+
+      watch: {
+         isShowHdrograph: {
+            handler: function(newValue, oldValue){
+               if (newValue) {
+                  console.log(this.$refs.uploadHdrographRef);
+               }
+            },
+         }
       }
+
    }
 </script>
 

@@ -1,11 +1,11 @@
 <template>
    <view>
       <l-liquid :percent="target1" v-model:current="modelVale1" outline size="170px">
-         <view class="info" v-if="!(target1 === 100)">
+         <view class="info" v-if="!(target1 >= 100)">
             <text class="text">{{modelVale1}}<text class="unit">%</text></text>
             <text>{{ uploadSpeedResult }}</text>
          </view>
-         <view class="" v-else>
+         <view v-else>
             <image src="../../static/correct.png" class="correct"></image>
          </view>
       </l-liquid>
@@ -17,41 +17,43 @@
       ref,
       defineComponent,
       computed,
-      onMounted
+      onMounted,
+      watch,
+      toRef
    } from '../l-liquid/vue';
    let timer
-   export default defineComponent({
-      setup() {
-         const target1 = ref(4)
+   export default {
+      setup(props) {
+         const target1 = ref(80)
          const modelVale1 = ref(20)
          const uploadSpeed = ref(1.01)
-
-         const onClick = number => {
-            target1.value = Math.max(Math.min(100, target1.value + number), 0)
-         }
+         const uploadHdrographRef = ref(null)
 
          const uploadSpeedResult = computed(() => {
             return `${uploadSpeed.value} MB/s`
          })
 
-         onMounted(() => {
-            // timer = setInterval(()=>{
-            //    // target1.value = Math.max(Math.min(100, target1.value + 1), 0)
-            //    target1.value ++ ;
-            //    if(target1.value >= 100){
-            //       clearInterval(timer)
-            //    }
-            // },1000)
+         const onClick = number => {
+            target1.value = Math.max(Math.min(100, target1.value + number), 0)
+         }
+
+         watch(() => target1.value, (value, oldValue) => {
+            if (value >= 100) {
+               props.handleUploadCompleted()
+            }
          })
+
+         onMounted(() => {})
 
          return {
             target1,
             modelVale1,
             uploadSpeedResult,
-            onClick
+            onClick,
+            uploadHdrographRef: toRef(uploadHdrographRef)
          }
       }
-   })
+   }
 </script>
 
 <style lang="scss">

@@ -148,7 +148,7 @@
 
 <script>
   import indexPop from "@/pageIndex/components/indexPop.vue";
-  import shareSetting from "@/pageIndex/components/shareSetting.vue";
+  import shareSetting from "@/components/create-share.vue";
   import share from "@/pageIndex/myShare/myShare.vue";
   import progressBar from '@/components/liu-progressbar/liu-progressbar.vue'
   import collect from './collect/collect.vue'
@@ -246,7 +246,8 @@
         }
         this.$refs.selectRef.changeBtn();
         this.$refs.selectRef.selectItemsAry = this.selectItemsAry;
-        this.$refs.selectRef.$refs.sharePop.open();
+        // this.$refs.selectRef.$refs.sharePop.open();
+        this.$refs.selectRef.open();
       },
       multiplcDeleteFunc() {
         if (this.selectItemsAry.length == 0) {

@@ -22,7 +22,7 @@
                   <text>存储至网盘</text>
                </view>
                <view class="right">
-                  <switch checked color="#007AFF" style="transform:scale(0.7)" />
+                  <switch checked color="#007AFF" style="transform:scale(0.7);width: 115rpx;" />
                </view>
             </view>
             <!-- 三层 限制下载次数 -->
@@ -60,31 +60,45 @@
                      <image src="../../static/setUp.png"></image>
                   </button>
                </view>
-               <view class="right" @tap="handleUpload">
+               <view class="right" @tap="handleStartUpload">
                   <button type="default" class="btns">开始上传</button>
                </view>
             </view>
          </view>
+         <!-- 更多设置开始 -->
          <MoreSetting ref="moreSetting" />
       </view>
       <!-- 上传的水位图组件 -->
       <view class="hdrograph" v-else>
-         <UploaddHdrograph ref="uploadHdrograph" />
-         <view class="upload-info">
-            <text class="text">正在上传</text>
-            <text class="text space">{{uploadProgressInfo.totalUploadCount}}</text>
-            <text class="text">个文件中的第</text>
-            <text class="text space">{{uploadProgressInfo.currentUploadCount}}</text>
-            <text class="text">个文件</text>
+         <UploaddHdrograph :handleUploadCompleted="handleUploadCompleted" />
+         <!-- 未上传完毕时候展示信息 -->
+         <view v-if="uploadCompleted">
+            <view class="upload-info">
+               <text class="text">正在上传</text>
+               <text class="text space">{{uploadProgressInfo.totalUploadCount}}</text>
+               <text class="text">个文件中的第</text>
+               <text class="text space">{{uploadProgressInfo.currentUploadCount}}</text>
+               <text class="text">个文件</text>
+            </view>
+            <view style="text-align: center;">
+               <text class="text" style="margin-top: 10rpx">已上传<text
+                     class="space">{{ uploadProgressInfo.uploadSize }}</text>MB</text>
+            </view>
          </view>
-         <view>
-            <text class="text" style="margin-top: 10rpx;">已上传<text
-                  class="space">{{ uploadProgressInfo.uploadSize }}</text>MB</text>
+         <!-- 上传完毕时候展示的UI -->
+         <view v-else>
+            <view style="text-align: center;">
+               <text class="text">上传完成</text>
+            </view>
+            <view>
+               <text class="text" style="margin-top: 10rpx;">可在<text class="space-completed">我的分享</text>中查看详情</text>
+            </view>
          </view>
          <view class="operation-btn">
-            <button type="default">复制链接</button>
-            <button type="default">二维码分享</button>
+            <button type="default" @tap="copyLink">复制链接</button>
+            <button type="default" @tap="openShare">二维码分享</button>
          </view>
+         <CreateShare v-if="isShowShares" ref="createShare" />
       </view>
    </view>
 </template>
@@ -97,23 +111,15 @@
    import UploadList from './uploadList.vue'
    import MoreSetting from './moreSetting.vue'
    import UploaddHdrograph from '@/components/uploadd-hdrograph/uploadd-hdrograph.vue'
+   import CreateShare from "@/components/create-share.vue"
    export default {
       components: {
          UploadList,
          MoreSetting,
+         CreateShare,
          UploaddHdrograph
       },
       mounted() {
-         this.$watch(
-            () => {
-               console.log('子组件的值');
-               console.log(this.$refs.uploadHdrograph);
-               // return this.$refs.target1
-            },
-            (val) => {
-               alert('$watch $refs.<name>.<data>: ' + val)
-            }
-         )
 
       },
       data() {
@@ -121,15 +127,24 @@
             downloadNumber: 0,
             periodNumber: 0,
             isShowHdrograph: false,
+            uploadCompleted: true,
+            // 上传
             uploadProgressInfo: {
                totalUploadCount: 100,
                currentUploadCount: 100,
                uploadSize: 10
             },
-            fileData: []
+            fileData: [],
+
+            // 控制分享组件
+            isShowShares: false
          }
       },
       methods: {
+         handleUploadCompleted() {
+            this.uploadCompleted = false
+         },
+
          handleAddFile() {
             let that = this;
             wx.chooseMessageFile({
@@ -163,10 +178,30 @@
             this.$refs.moreSetting.openMoreSetingPopup()
          },
 
-         handleUpload() {
+         handleStartUpload() {
             this.isShowHdrograph = true
+         },
+
+         openShare() {
+            this.isShowShares = true;
+            setTimeout(() => {
+               this.$refs.createShare.open()
+            })
+         },
+         
+         copyLink(){
+            
          }
-      }
+      },
+
+      // watch: {
+      //    isShowHdrograph: {
+      //       handler: function(newValue, oldValue) {
+      //          if (newValue) {}
+      //       },
+      //    }
+      // }
+
    }
 </script>
 
@@ -207,7 +242,7 @@
 
             .right {
                .addBg {
-                  width: 65rpx;
+                  width: 87rpx;
                   height: 40rpx;
                   background-image: url('../../static/addBig.png');
                   background-repeat: no-repeat;
@@ -240,7 +275,7 @@
                display: flex;
                justify-content: space-between;
                align-items: center;
-               margin-right: 16rpx;
+               margin-right: 40rpx;
 
                text {
                   line-height: 0;
@@ -251,13 +286,13 @@
 
 
          .inputStyle {
-            padding: 20rpx;
+            padding: 20rpx 22rpx;
 
             textarea {
                width: 100%;
                height: 100rpx;
                box-sizing: border-box;
-               padding: 10rpx;
+               padding: 10rpx 20rpx;
                background-color: #F4F7FA;
                color: #333;
             }
@@ -313,6 +348,11 @@
 
          .space {
             color: #333;
+            margin: 0 10rpx;
+         }
+
+         .space-completed {
+            color: #3679FF;
             margin: 0 10rpx;
          }
 

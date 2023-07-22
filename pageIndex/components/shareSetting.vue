@@ -85,7 +85,7 @@
 
 <script>
 	import { urlOSS } from '@/utils/base.js'
-  import createShare from '../index/components/create-share.vue'
+  import createShare from '@/components/create-share.vue'
 	import {
 		bytesToSize,
 		getSuffix,
@@ -211,7 +211,7 @@
 
 					// this.showCopy = true;
 					this.$refs.sharePop.close();
-          this.$refs.createShareRef.open();
+               this.$refs.createShareRef.open();
 				  }
 				  return
 			},

@@ -1,7 +1,7 @@
 <template>
    <view>
       <l-liquid :percent="target1" v-model:current="modelVale1" outline size="170px">
-         <view class="info" v-if="!(target1 === 100)">
+         <view class="info" v-if="!(target1 >= 100)">
             <text class="text">{{modelVale1}}<text class="unit">%</text></text>
             <text>{{ uploadSpeedResult }}</text>
          </view>
@@ -16,18 +16,15 @@
    import {
       ref,
       defineComponent,
-      getCurrentInstance,
       computed,
       onMounted,
+      watch,
       toRef
    } from '../l-liquid/vue';
    let timer
    export default {
-      setup() {
-         const {  proxy, ctx } = getCurrentInstance()
-         const _this = ctx
-
-         const target1 = ref(4)
+      setup(props) {
+         const target1 = ref(80)
          const modelVale1 = ref(20)
          const uploadSpeed = ref(1.01)
          const uploadHdrographRef = ref(null)
@@ -40,9 +37,13 @@
             target1.value = Math.max(Math.min(100, target1.value + number), 0)
          }
 
-         onMounted(() => {
-            uploadHdrographRef.value = _this
+         watch(() => target1.value, (value, oldValue) => {
+            if (value >= 100) {
+               props.handleUploadCompleted()
+            }
          })
+
+         onMounted(() => {})
 
          return {
             target1,

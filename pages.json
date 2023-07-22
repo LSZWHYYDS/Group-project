@@ -29,9 +29,13 @@
         "navigationBarTitleText": "悟空快传",
         "enablePullDownRefresh": false
       }
-
-    }
-  ],
+  },{
+        "path": "pages/collectFile/collectFile",
+        "style": {
+          "navigationBarTitleText": "文件收集",
+          "enablePullDownRefresh": false
+        }
+    }],
   "subPackages": [{
       "root": "pageIndex",
       "pages": [{

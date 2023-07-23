@@ -35,6 +35,12 @@
           "navigationBarTitleText": "文件收集",
           "enablePullDownRefresh": false
         }
+    },{
+        "path": "pages/collectFile/collectSuccess",
+        "style": {
+          "navigationBarTitleText": "文件收集",
+          "enablePullDownRefresh": false
+        }
     }],
   "subPackages": [{
       "root": "pageIndex",

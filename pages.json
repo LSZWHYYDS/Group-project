@@ -32,16 +32,25 @@
   },{
         "path": "pages/collectFile/collectFile",
         "style": {
-          "navigationBarTitleText": "文件收集",
+          "navigationBarTitleText": "悟空快传",
           "enablePullDownRefresh": false
         }
     },{
         "path": "pages/collectFile/collectSuccess",
         "style": {
-          "navigationBarTitleText": "文件收集",
+          "navigationBarTitleText": "悟空快传",
           "enablePullDownRefresh": false
         }
-    }],
+    }    ,{
+            "path" : "pages/claimCode/claimCode",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "悟空快传",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
   "subPackages": [{
       "root": "pageIndex",
       "pages": [{

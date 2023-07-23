@@ -49,7 +49,11 @@
          },
 
          navigateToSuccessPage(){
-            uni.reLaunch({
+            // uni.reLaunch({
+            // 	url: '/pages/collectFile/collectSuccess'
+            // });
+            
+            uni.navigateTo({
             	url: '/pages/collectFile/collectSuccess'
             });
          }

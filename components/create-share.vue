@@ -128,7 +128,11 @@
             // 设置二维码链接
             qr.data = this.shareLink;
             // 设置二维码大小，必须与canvas设置的宽高一致
-            qr.size = 165;
+            if (this.type === 'collect-bg') {
+               qr.size = 130;
+            } else {
+               qr.size = 155;
+            }
             // 调用制作二维码方法
             qr.make();
             // 获取canvas上下文
@@ -179,8 +183,8 @@
                position: absolute;
                width: 340rpx;
                height: 330rpx;
-               bottom: 62rpx;
-               left: 199rpx;
+               bottom: 55rpx;
+               left: 207rpx;
             }
          }
 
@@ -192,10 +196,10 @@
 
             .qrcodeStyle {
                position: absolute;
-               width: 235rpx;
-               height: 229rpx;
-               bottom: 124rpx;
-               left: 227rpx;
+               bottom: 88rpx;
+               left: 228rpx;
+               width: 290rpx;
+               height: 270rpx;
             }
 
          }

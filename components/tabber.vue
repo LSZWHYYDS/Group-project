@@ -47,12 +47,16 @@
             </view>
          </filePop>
       </view>
+      
+      
+      <ClaimCode ref="claimCodeRef"/>
    </view>
 
 </template>
 
 <script>
    import filePop from "@/pages/filePop/filePop.vue";
+   import ClaimCode from './claimCode.vue'
    export default {
       props: {
          pagePath: {
@@ -86,7 +90,8 @@
 
       },
       components: {
-         filePop
+         filePop,
+         ClaimCode
       },
       mounted() {
 
@@ -101,7 +106,12 @@
                }
             })
          },
-         getCode() {},
+         getCode() {
+            this.$refs.claimCodeRef.open()
+            // uni.navigateTo({
+            //    url: "/pages/claimCode/claimCode"
+            // })
+         },
          uploadSelect(e, type) {
             uni.navigateTo({
                url: "/pageUpload/upload/upload?list=" + JSON.stringify(e.tempFiles)

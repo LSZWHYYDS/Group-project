@@ -78,6 +78,14 @@
         "style": {
           "navigationBarTitleText": "我的"
         }
+      }, {
+        "path": "setMenu/setMenu",
+        "style": {
+          "navigationBarTitleText": "",
+          "enablePullDownRefresh": false,
+          "navigationStyle": "custom"
+        }
+
       }]
     }, {
       "root": "pageUpload",

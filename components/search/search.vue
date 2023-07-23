@@ -64,14 +64,11 @@
         this.sortNum = num
       },
       shangchaun(){
-        console.log("选择文件")
         wx.chooseMessageFile({
           count: 10,
           type:"all",
           success(e){
-            console.log("成功",e);
           },fail(l) {
-            console.log("失败",l);
           }
         })
       },

@@ -10,12 +10,11 @@
                <input type="text" placeholder="请输入取件码文件" placeholder-style="color:#999 ">
             </view>
 
-            <view class="btn">
+            <view class="btn" @click="navigateToViewFile">
                <button type="default">确定</button>
             </view>
-            
-            
-            <view>
+
+            <view class="close-icon">
                <image src="../static/redClose.png"></image>
             </view>
          </view>
@@ -35,12 +34,23 @@
       methods: {
          open() {
             this.$refs.popup.open()
+         },
+         navigateToViewFile(){
+            uni.navigateTo({
+               url: "/pages/claimCode/claimCode"
+            })
          }
       }
    }
 </script>
 
 <style lang="scss" scoped>
+   image{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+   }
+
    .claim-code-bg {
       height: 900rpx;
       background-color: #fff;
@@ -77,6 +87,14 @@
             margin: 50rpx auto 0;
             background-color: #3679FF;
          }
+      }
+
+
+
+      .close-icon{
+         width: 100rpx;
+         height: 80rpx;
+         margin: 160rpx auto 0;
       }
 
    }

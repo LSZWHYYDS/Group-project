@@ -1,9 +1,7 @@
 <script>
 	export default {
 		onLaunch: function() {},
-		onShow: function() {
-         console.log(1111)
-      },
+		onShow: function() {},
 		onHide: function() {}
 	}
 </script>

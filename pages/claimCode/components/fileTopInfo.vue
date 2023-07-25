@@ -24,6 +24,14 @@
          fileIconType: {
             type: String,
             require: false
+         },
+         fileData : {
+            type : Object,
+            require : true,
+            default : {
+               fileNumber : 0,
+               fileSize : 0
+            }
          }
       },
       data() {

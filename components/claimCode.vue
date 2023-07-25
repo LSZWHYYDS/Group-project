@@ -17,6 +17,7 @@
             <view class="close-icon">
                <image src="../static/redClose.png"></image>
             </view>
+
          </view>
       </uni-popup>
    </view>
@@ -37,7 +38,7 @@
          },
          navigateToViewFile(){
             uni.navigateTo({
-               url: "/pages/claimCode/claimCode"
+               url: "/pages/claimCode/havePassword"
             })
          }
       }

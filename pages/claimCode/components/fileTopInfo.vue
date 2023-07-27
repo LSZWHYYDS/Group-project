@@ -9,9 +9,9 @@
       </view>
 
       <view class="fileSize">
-         <text>{{ 5 }}个文件</text>
-         <text> | </text>
-         <text>1.21GB</text>
+         <text>{{ 5 }} 个文件</text>
+         <text style="margin: 0 10rpx;"> | </text>
+         <text>1.21 GB</text>
       </view>
 
    </view>

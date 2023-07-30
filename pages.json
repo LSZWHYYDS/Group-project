@@ -42,8 +42,8 @@
           "enablePullDownRefresh": false
         }
     }    ,{
-            "path" : "pages/claimCode/claimCode",
-            "style" :
+            "path" : "pages/claimCode/havePassword",
+            "style" :                                                                                    
             {
                 "navigationBarTitleText": "悟空快传",
                 "enablePullDownRefresh": false

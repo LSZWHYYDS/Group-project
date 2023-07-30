@@ -1,9 +1,21 @@
 <template>
-   <view class="">
+   <view>
       <TopFileTheme fileIconType="type_1.svg" :fileData="fileData" />
+      <!-- 如果文件是永久的话 FileDetails组件就不展示 -->
       <FileDetails />
       <FileStatus />
-      <BtnCom />
+      <BtnCom @haveTraffic="handleOpenHavePopup" @noTraffic="handleOpenNoTrafficPopup" />
+
+      <!-- 底部下载弹窗（有流量情况）  -->
+      <FileDownPopup ref="downRef" />
+      <!-- 底部下载弹窗（无流量情况） -->
+      <NoTrafficPopup ref="trafficPopup" title="没有流量则进行购买" height="900rpx"
+         :closeNoTrafficPopup="handleCloseNoTrafficPopup" >
+         <!-- 没有流量 则引导购买 -->
+         <TrafficDeficiency />
+      </NoTrafficPopup>
+      <!-- 点击完确定后 展示支付的弹窗 -->
+      <BuyTraffic ref="buyTrafficRef" />
    </view>
 </template>
 
@@ -11,6 +23,10 @@
    import TopFileTheme from './components/fileTopInfo.vue'
    import FileDetails from './components/fileDetails.vue'
    import FileStatus from './components/fileStatus.vue'
+   import FileDownPopup from './components/fileDownPopup.vue'
+   import NoTrafficPopup from '@/components/trafficPopup.vue'
+   import TrafficDeficiency from './components/trafficDeficiency.vue'
+   import BuyTraffic from './components/buyTraffic.vue'
    import BtnCom from './components/button.vue'
 
    export default {
@@ -19,6 +35,10 @@
          TopFileTheme,
          FileDetails,
          FileStatus,
+         FileDownPopup,
+         NoTrafficPopup,
+         TrafficDeficiency,
+         BuyTraffic,
          BtnCom
       },
       data() {
@@ -31,7 +51,23 @@
       },
 
       methods: {
+         handleOpenHavePopup() {
+            this.$refs.downRef.showPop()
+         },
 
+         handleOpenNoTrafficPopup() {
+            this.$refs.trafficPopup.showPop()
+         },
+
+         handleCloseNoTrafficPopup() {
+            this.$refs.trafficPopup.close()
+            this.handleOpenBuyPopup()
+         },
+         
+         
+         handleOpenBuyPopup(){
+            this.$refs.buyTrafficRef.handleOpenBuyPopup()
+         }
       }
    }
 </script>

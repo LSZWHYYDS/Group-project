@@ -1,8 +1,6 @@
 <script>
 	export default {
-		onLaunch: function() {
-         console.log('111');
-      },
+		onLaunch: function() {},
 		onShow: function() {},
 		onHide: function() {}
 	}

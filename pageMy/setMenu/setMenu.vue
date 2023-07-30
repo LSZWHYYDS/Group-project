@@ -92,6 +92,7 @@
    .flex {
       display: flex;
       align-items: center;
+      
    }
 
    #box {

@@ -1,4 +1,5 @@
 <template>
+   <!-- 此文件接受一个props 根据props决定是否是永久，还是指定时间 -->
    <view class="wrapper">
       <!-- 文件夹文本说明 -->
       <view class="folder">

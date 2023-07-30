@@ -1,12 +1,24 @@
 <template>
    <view class="wrapper">
       <button type="default" class="btn-view">查看文件列表</button>
-      <button type="default" class="btn-download">下载全部</button>
+      <button type="default" class="btn-download" @tap="openDownPopup">下载全部</button>
       <button type="default" class="btn-save">转存</button>
    </view>
 </template>
 
 <script>
+   export default {
+      name: 'button',
+      data() {
+         return {}
+      },
+      methods: {
+         openDownPopup() {
+            const hasTraffic = false ;
+            hasTraffic ? this.$emit('haveTraffic') : this.$emit('noTraffic')
+         }
+      }
+   }
 </script>
 
 <style lang="scss" scoped>
@@ -27,6 +39,4 @@
          background-color: #D7E4FF;
       }
    }
-
-
 </style>

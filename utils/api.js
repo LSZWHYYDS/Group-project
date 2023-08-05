@@ -81,7 +81,6 @@ export const getLink = params => get("/transfer/getLink/" + params)
 //downloadZip 下载文件夹
 export const downloadZip = value => get('/download/downloadZip/' + value)
 
-
 //获取文件链接 transferGuid
 export const getZipLink = (value, newLink) => get("/download/getZipLink/" + value + "/" + newLink)
 //  download/downloadFolder/
@@ -90,8 +89,6 @@ export const getZipLink = (value, newLink) => get("/download/getZipLink/" + valu
 export const downloadFolder = (value, newLink) => post('/download/downloadFolder/' + value + "/" + newLink)
 
 export const newdownloadFolder = (value, newLink) => post('/download/newdownloadFolder/' + value + "/" + newLink)
-
-
 
 //手机登录验证码 login/sendPhoneCode/{
 

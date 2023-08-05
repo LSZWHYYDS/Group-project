@@ -3,8 +3,7 @@ import {service} from './request.js'//request向外暴露的方法
  	get,
  	post
  } from "./http.js"
- 
- 
+
 // export function mailLogin(data) {
 //   return service({
 //     url: '/login/mailLogin',//接口地址
@@ -165,7 +164,7 @@ export const rename = value => post('/everbox/rename', value)
 
 
 
-//下载 
+//下载
 export const createBoxDownLink = value => post('/download/createBoxDownLink', value)
 //划出下载
 export const createindexBoxDownLink = value => post('/download/createindexBoxDownLink', value)
@@ -184,7 +183,7 @@ export const createZip = value => post('/download/createZip/' + value)
 export const uploadSize = value => get("/everbox/uploadSize")
 
 
-//创建新文件夹 post：folder/newFolder 
+//创建新文件夹 post：folder/newFolder
 /**
  * @params
  * superFolder   父级目录
@@ -196,9 +195,9 @@ export const newFolder = value => post("/folder/newFolder", value)
 
 
 /**
- * 
+ *
  * everbox/saveToEverbox
- * 
+ *
  * @params
  * newSuperFolder       要存至的目录（根目录传0）
  *  transferGuid              要存储的链接
@@ -248,12 +247,12 @@ export const cancelMyShare = params => post('/transfer/cancelMyShare', params)
 
 
 
-/** 
+/**
  *  恢复文件 recycle/restore
- *  
- *  @params 
+ *
+ *  @params
  * [{
- *  recycleId 
+ *  recycleId
  *  delPlies
  * },
  *  {
@@ -294,10 +293,10 @@ export const getInvite = params => get("/everbox/getInvite")
 //orderPrice/getSizeKind  获取 空间和流量 价格列表
 
 /**
- * 
- * @param {*} params 
+ *
+ * @param {*} params
  * mealType 1 空间 mealType 2 流量
- * @returns 
+ * @returns
  */
 export const getSizeKind = params => get("/orderPrice/getSizeKind")
 
@@ -410,7 +409,7 @@ export const getFlow = params => get("/flow/getFlow")
  * everbox/getUserSpace
  * flow/getUserFlow
  */
-//已购买空间 
+//已购买空间
 export const getUserSpace = e => get("/everbox/getUserSpace")
 //已购买流量
 export const getUserFlow = e => get("/flow/getUserFlow")

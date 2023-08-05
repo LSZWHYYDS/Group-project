@@ -2,6 +2,7 @@
 	export default {
 		onLaunch: function() {
          console.log('11111111111');
+         console.log('22222');
       },
 		onShow: function() {},
 		onHide: function() {}

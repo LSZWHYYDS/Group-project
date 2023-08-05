@@ -110,7 +110,7 @@
     <!-- 修改密码 -->
     <view class="modification" v-if="conceal">
       <view class="modification_nav flex">
-        <image src="../../pageIndex/img/check.png"  @click="xiugai" style="width: 60rpx;height: 60rpx;"></image>
+        <image src="../../static/my_quxiao.png"  @click="xiugai" style="width: 60rpx;height: 60rpx;"></image>
         <view class="">修改密码</view>
         <view class="entirety_btn entirety_btn_mima" @click="xiugai(1)">确定</view>
       </view>

@@ -1,6 +1,8 @@
 <script>
 	export default {
-		onLaunch: function() {},
+		onLaunch: function() {
+         console.log('test git file status');
+      },
 		onShow: function() {},
 		onHide: function() {}
 	}

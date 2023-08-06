@@ -1,6 +1,6 @@
 let url;
-// url = 'https://kc.wkzx.store';//线上
-	url = 'https://test.wkkc.vip';//测试
+url = 'https://kc.wkzx.store';//线上
+	// url = 'https://test.wkkc.vip';//测试
 // if (process.env.NODE_ENV === 'production') { // 请求baseurl设置
 // 	// url = 'https://back.wkzs.vip'//
 // 	url = 'https://kc.wkzx.store';//线上

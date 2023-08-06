@@ -81,7 +81,7 @@
          return {
             statusBarHeight: 0, //导航栏距离顶部的高度
             titleBarHeight: 0, //导航栏高度
-            ids: 2, //1空间套餐2流量套餐
+            ids: 1, //1空间套餐2流量套餐
             num: 5, //套餐个数
             interspace:0,//选中的空间套餐
             interspace_time:0,//选中的大小

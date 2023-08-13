@@ -1,6 +1,6 @@
 <template>
    <view class="wrapper">
-      <button type="default" class="btn-view">查看文件列表</button>
+      <button type="default" class="btn-view" @tap="navigateToFileList">查看文件列表</button>
       <button type="default" class="btn-download" @tap="openDownPopup">下载全部</button>
       <button type="default" class="btn-save">转存</button>
    </view>
@@ -16,6 +16,12 @@
          openDownPopup() {
             const hasTraffic = false ;
             hasTraffic ? this.$emit('haveTraffic') : this.$emit('noTraffic')
+         },
+
+         navigateToFileList(){
+            uni.navigateTo({
+               url: '/pages/claimCode/viewFileList'
+            })
          }
       }
    }

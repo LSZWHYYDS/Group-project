@@ -28,14 +28,17 @@
          },
          closeNoTrafficPopup : {
             type : Function
+         },
+         errorPopup : {
+            type : Function ,
          }
-
       },
       data() {
 
       },
       methods: {
          showPop() {
+            console.log(this)
             this.$refs.popup.open('bottom')
          },
          maskClose() {

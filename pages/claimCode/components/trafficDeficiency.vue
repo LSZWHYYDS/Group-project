@@ -10,7 +10,7 @@
             <text>10.23 GB</text>
          </view>
       </view>
-      <view class="amountPaid">
+     <view class="amountPaid">
          <text class="box">支付金额</text>
          <view class="box" style="text-align: right;">
             <text>¥</text>
@@ -19,7 +19,8 @@
       </view>
 
       <view class="input">
-         <input type="text" placeholder-style="text-align:center;color:#fff" placeholder="输入邮箱/手机号">
+         <input type="text" v-model="inputValue" placeholder-style="text-align:center;color:#fff"
+            placeholder="输入邮箱/手机号">
          <text>购买成功后会给您发送购买订单凭证</text>
       </view>
 
@@ -28,12 +29,31 @@
 </template>
 
 <script>
+   import {
+      validatePhoneNumberOrEmail
+   } from '@/utils/index.js'
    export default {
       name: 'trafficDeficiency',
+      props:{
+        name : {
+           type : Number
+        }
+      },
+      data() {
+         return {
+            inputValue: '',
+            messageText: '请输入正确的手机号或者邮箱!',
+         }
+      },
       methods: {
          openBuyPopup() {
+            // 点击确定之前验证手机号或邮箱是否输入
+            if (!validatePhoneNumberOrEmail(this.inputValue)) {
+               this.$parent.errorPopup()
+               return
+            }
             this.$parent.closeNoTrafficPopup()
-         }
+         },
       }
    }
 </script>

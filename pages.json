@@ -50,6 +50,15 @@
             }
 
         }
+        ,{
+            "path" : "pages/claimCode/viewFileList",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
   "subPackages": [{
       "root": "pageIndex",

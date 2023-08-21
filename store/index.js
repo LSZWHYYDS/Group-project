@@ -32,7 +32,6 @@ import { getFlow, getUserSpace, getUserFlow} from "../utils/api"
 	actions: {
 		 REQUEST_FLOW({commit}){
 		  getFlow().then(res=>{
-			  console.log(11111222)
 		   if(res.data.code == 0){
 			   console.log(9999)
 			   console.log("loginUserId"+ res.data.data.userId)

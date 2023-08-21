@@ -1,8 +1,8 @@
 /*
- * @Description: 
+ * @Description:
  * @Autor: Nan
  * @Date: 2021-01-05 09:39:48
- * @NameSearch: 
+ * @NameSearch:
  * @LastEditors: Nan
  * @LastEditTime: 2021-03-04 11:11:08
  * @FilePath: \panDown\pan\src\utils\index.js
@@ -12,7 +12,7 @@ import dayjs from 'dayjs'
 
 
 /**
- * @description: 
+ * @description:
  * @param {*} value
  * @return {*}
  * @author: Nan
@@ -66,7 +66,7 @@ export const getCharacter = () => {
 //判断邮箱
 
 export const isEmall = function(value) {
-	// 身份证号码为15位或者18位，15位时全为数字，18位前17位为数字，最后一位是校验位，可能为数字或字符X 
+	// 身份证号码为15位或者18位，15位时全为数字，18位前17位为数字，最后一位是校验位，可能为数字或字符X
 	// var reg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
 	// var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 	//放宽正则,至少有两处单词*顶级域名一般为2~4位（如cn、com、club）
@@ -80,7 +80,7 @@ export const isEmall = function(value) {
 
 
 export const typePhone = function(value) {
-	// 身份证号码为15位或者18位，15位时全为数字，18位前17位为数字，最后一位是校验位，可能为数字或字符X 
+	// 身份证号码为15位或者18位，15位时全为数字，18位前17位为数字，最后一位是校验位，可能为数字或字符X
 	var reg = /^1[23456789]\d{9}$/;
 	if (reg.test(value) === false) {
 		return false;
@@ -125,7 +125,7 @@ export const DateDJS = function(value) {
 	}
 }
 
-//计算剩余天数 
+//计算剩余天数
 
 export const residueDay = function(last) {
 
@@ -276,7 +276,7 @@ export const Debounce = (fn, t) => {
 		}, delay);
 	}
 };
-/** 
+/**
  * 函数节流
  * @param fn
  * @param interval
@@ -426,4 +426,22 @@ export const getFiles = async (files) => {
 	}
 	const c = await Promise.all(addFilesItems(items))
 	return c
+}
+
+
+
+export function validatePhoneNumberOrEmail(input) {
+  // 校验手机号
+  const phoneNumberRegex = /^1[0-9]{10}$/; // 以1开头，后面跟10位数字
+  if (phoneNumberRegex.test(input)) {
+    return true;
+  }
+
+  // 校验电子邮件地址
+  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/; // 简化的邮箱正则
+  if (emailRegex.test(input)) {
+    return true;
+  }
+
+  return false;
 }

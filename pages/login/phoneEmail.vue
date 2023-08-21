@@ -190,7 +190,7 @@
 						let data = res.data.data;
 						console.log(data)
 						// uni.setStorageSync("token", data.token)
-            uni.setStorageSync("token",'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2OTA5MzgxMDQsInVzZXJJZCI6IjI4MDcifQ.OGFI9f7gAc3n5A2seMU-AMyA-5oqF4NUJwsZhMP0BYA')
+            uni.setStorageSync("token",'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2OTM1NTI1NTEsInVzZXJJZCI6IjI4MDcifQ.Shpe45zhSKxfbURxF4oI5J9vGjEjNAvKM6p5oSt1kEc')
 						uni.setStorageSync("userInfo",JSON.stringify(data))
 						uni.setStorageSync("loginUserId",data.userId)
 						uni.setStorageSync("inviteLink",data.inviteLink)
